@@ -50,4 +50,3 @@ def get_middle(s):
 
 # print(get_middle("testing"))
 # print(get_middle("middle"))
-
