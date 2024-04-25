@@ -69,6 +69,7 @@ def add(lst):
         new_lst.append(sum_)
     return new_lst
 
+
 #
 # print(add([1, 2, 3, 4, 5]))
 # print(add([5, 3, 9, 8]))
@@ -80,11 +81,14 @@ Example:
 If the building contains no ghosts, return the string:
 "You just wanted my autograph didn't you?"
 """
+
+
 def ghostbusters(building):
     if " " not in building:
         return "You just wanted my autograph didn't you?"
     else:
         return "".join(building.split())
+
 
 #
 # print(ghostbusters("asdas asd asd"))
@@ -95,14 +99,44 @@ accum("abcd") -> "A-Bb-Ccc-Dddd"
 accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
 accum("cwAt") -> "C-Ww-Aaa-Tttt"
 The parameter of accum is a string which includes only letters from a..z and A..Z."""
+
+
 def accum(st):
     str = ""
     j = 0
     for i in st:
-        j = j + 1
-        str += (i.upper() + i.lower()*(j-1)) + "-"
+        j += 1
+        str += (i.upper() + i.lower() * (j - 1)) + "-"
     return str[:-1]
 
 
 # print(accum("acdeEzYYA"))
+"""Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive.
+The string can contain any char.
+Examples input/output:
+XO("ooxx") => true
+XO("xooxx") => false
+XO("ooxXm") => true
+XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
+XO("zzoo") => false
+"""
 
+
+def xo(s):
+    s = s.lower()
+    if not "x" in s and not "o" in s:
+        return True
+    else:
+        os = 0
+        xs = 0
+        for i in s:
+            if i == "x":
+                xs += 1
+            if i == "o":
+                os += 1
+    return True if os == xs else False
+
+
+# print(xo("zpzpzpp"))
+# print(xo('ooxx'))
+# print(xo('xooox'))
