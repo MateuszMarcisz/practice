@@ -172,10 +172,50 @@ def how_much_i_love_you(nb_petals):
         nb_petals = nb_petals - (6 * z)
     lst = ["I love you", "a little", "a lot", "passionately", "madly", "not at all"]
     return lst[nb_petals - 1]
-# to jest zdecydowanie ładniejsze poniżej:
-# return ["I love you", "a little", "a lot", "passionately", "madly", "not at all"][nb_petals % 6 - 1]
 
-# print(how_much_i_love_you(1))
-# print(how_much_i_love_you(2))
-# print(how_much_i_love_you(10))
-# print(how_much_i_love_you(20))
+    # to jest zdecydowanie ładniejsze poniżej:
+    # return ["I love you", "a little", "a lot", "passionately", "madly", "not at all"][nb_petals % 6 - 1]
+
+    # print(how_much_i_love_you(1))
+    # print(how_much_i_love_you(2))
+    # print(how_much_i_love_you(10))
+    # print(how_much_i_love_you(20))
+
+
+def monkey_count(n):
+    return [x for x in range(1, n + 1)]
+    # lst = []
+    # for i in range(1, n+1):
+    #     lst.append(i)
+    # return lst
+    # return list(range(1, n + 1)) # to jest najelegantsze
+
+
+# print(monkey_count(6))
+"""All of the animals are having a feast! Each animal is bringing one dish. 
+There is just one rule: the dish must start and end with the same letters as the animal's name. 
+For example, the great blue heron is bringing garlic naan and the chickadee is bringing chocolate cake.
+Write a function feast that takes the animal's name and dish as arguments and returns true or false
+to indicate whether the beast is allowed to bring the dish to the feast.
+Assume that beast and dish are always lowercase strings, and that each has at least two letters. 
+beast and dish may contain hyphens and spaces, but these will not appear at the beginning or end of the string. 
+They will not contain numerals"""
+
+
+def feast(beast, dish):
+    return beast[0] == dish[0] and beast[-1] == dish[-1]
+
+
+# print(feast("blue heron", "bln"))
+
+"""Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
+Examples:
+solution('abc', 'bc') # returns true
+solution('abc', 'd') # returns false"""
+
+
+def solution(text, ending):
+    return text[len(text) - len(ending):] == ending
+    # return text.endswith(ending)
+
+# print(solution('abc', 'bc'))
