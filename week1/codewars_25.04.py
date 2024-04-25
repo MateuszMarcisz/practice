@@ -1,3 +1,6 @@
+import string
+
+
 def sum_array(a):
     return sum(a)
 
@@ -218,4 +221,71 @@ def solution(text, ending):
     return text[len(text) - len(ending):] == ending
     # return text.endswith(ending)
 
+
 # print(solution('abc', 'bc'))
+
+"""Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the "instructions" 
+for the development and functioning of living organisms.
+If you want to know more: http://en.wikipedia.org/wiki/DNA
+In DNA strings, symbols "A" and "T" are complements of each other, as "C" and "G".
+Your function receives one side of the DNA (string, except for Haskell); 
+you need to return the other complementary side. 
+DNA strand is never empty or there is no DNA at all (again, except for Haskell).
+More similar exercise are found here: http://rosalind.info/problems/list-view/ (source)
+Example: (input --> output)
+"ATTGC" --> "TAACG"
+"GTAT" --> "CATA"
+"""
+
+
+def DNA_strand(dna):
+    # dct = {
+    #     "A": "T",
+    #     "T": "A",
+    #     "C": "G",
+    #     "G": "C"
+    # }
+    # complementary_dna = []
+    # for i in dna:
+    #     complementary_dna.append(dct[i])
+    # return "".join(complementary_dna)
+    return dna.translate(str.maketrans('ATCG', 'TAGC'))
+
+
+# print(DNA_strand("ATTGC"))
+
+"""Simple, given a string of words, return the length of the shortest word(s).
+String will never be empty and you do not need to account for different data types."""
+
+
+def find_short(s):
+    # s = s.split()
+    # l = float('inf')
+    # for i in s:
+    #     if len(i) < l:
+    #         l = len(i)
+    # return l
+    return min([len(i) for i in s.split()])
+    # return min(map(len,s.split()))
+
+
+# print(find_short("losowe słowa wpisałem aby było co liczyć"))
+
+"""Given an array of integers, find the one that appears an odd number of times.
+There will always be only one integer that appears an odd number of times.
+Examples:
+[7] should return 7, because it occurs 1 time (which is odd).
+[0] should return 0, because it occurs 1 time (which is odd).
+[1,1,2] should return 2, because it occurs 1 time (which is odd).
+[0,1,0,1,0] should return 0, because it occurs 3 times (which is odd).
+[1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd)."""
+
+
+def find_it(seq):
+    for i in seq:
+        if seq.count(i) % 2 != 0:
+            return i
+
+
+# print(find_it([1, 2, 2, 3, 3, 3, 4, 3, 3, 3, 2, 2, 1]))
+
