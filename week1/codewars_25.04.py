@@ -137,6 +137,45 @@ def xo(s):
     return True if os == xs else False
 
 
+# def xo(s): # można używać też count
+#     s = s.lower()
+#     return s.count('x') == s.count('o')
+
 # print(xo("zpzpzpp"))
 # print(xo('ooxx'))
 # print(xo('xooox'))
+def invert(lst):
+    # lst1 = []
+    # for i in lst:
+    #     lst1.append(-i)
+    # return lst1
+    return [-x for x in lst]
+
+
+# print(invert([0, 1, 3, 5, -7, 6, 4, -9]))
+"""Who remembers back to their time in the schoolyard, when girls would take a flower and tear its petals, saying each of the following phrases each time a petal was torn:
+    "I love you"
+    "a little"
+    "a lot"
+    "passionately"
+    "madly"
+    "not at all"
+If there are more than 6 petals, you start over with "I love you" for 7 petals, "a little" for 8 petals and so on.
+When the last petal was torn there were cries of excitement, dreams, surging thoughts and emotions.
+Your goal in this kata is to determine which phrase the girls would say at the last petal for a flower of a given number of petals. The number of petals is always greater than 0.
+"""
+
+
+def how_much_i_love_you(nb_petals):
+    z = nb_petals // 6
+    if nb_petals > 6:
+        nb_petals = nb_petals - (6 * z)
+    lst = ["I love you", "a little", "a lot", "passionately", "madly", "not at all"]
+    return lst[nb_petals - 1]
+# to jest zdecydowanie ładniejsze poniżej:
+# return ["I love you", "a little", "a lot", "passionately", "madly", "not at all"][nb_petals % 6 - 1]
+
+# print(how_much_i_love_you(1))
+# print(how_much_i_love_you(2))
+# print(how_much_i_love_you(10))
+# print(how_much_i_love_you(20))
