@@ -288,4 +288,56 @@ def find_it(seq):
 
 
 # print(find_it([1, 2, 2, 3, 3, 3, 4, 3, 3, 3, 2, 2, 1]))
+"""
+You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items.
+We want to create the text that should be displayed next to such an item.
+Implement the function which takes an array containing the names of people that like an item.
+It must return the display text as shown in the examples:
+[]                                -->  "no one likes this"
+["Peter"]                         -->  "Peter likes this"
+["Jacob", "Alex"]                 -->  "Jacob and Alex like this"
+["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
+["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
+"""
 
+
+def likes(names):
+    if not names:
+        return "no one likes this"
+    elif len(names) == 1:
+        return f"{names[0]} likes this"
+    elif len(names) == 2:
+        return f"{names[0]} and {names[1]} like this"
+    elif len(names) == 3:
+        return f"{names[0]}, {names[1]} and {names[2]} like this"
+    else:
+        return f"{names[0]}, {names[1]} and {len(names) - 2} others like this"
+
+
+# print(likes([]))
+# print(likes(["Peter"]))
+# print(likes(["Jacob", "Alex"]))
+# print(likes(["Max", "John", "Mark"]))
+# print(likes(["Alex", "Jacob", "Mark", "Max"]))
+"""Write a function that takes in a string of one or more words, and returns the same string,
+but with all words that have five or more letters reversed (Just like the name of this Kata). 
+Strings passed in will consist of only letters and spaces. 
+Spaces will be included only when more than one word is present.
+Examples:
+"Hey fellow warriors"  --> "Hey wollef sroirraw" 
+"This is a test        --> "This is a test" 
+"This is another test" --> "This is rehtona test" """
+
+
+def spin_words(sentence):
+    return " ".join([x[::-1] if len(x) > 4 else x for x in sentence.split()])
+    # wierd = []
+    # for i in sentence.split():
+    #     if len(i) > 4:
+    #         wierd.append(i[::-1])
+    #     else:
+    #         wierd.append(i)
+    # return " ".join(wierd)
+
+
+# print(spin_words("Hey fellow warriors"))
