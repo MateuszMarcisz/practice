@@ -55,6 +55,7 @@ import math
 def logs(x, a, b):
     return math.log(a * b, x)
 
+
 #
 # print(logs(10, 1000, 10))
 
@@ -68,6 +69,8 @@ create_phone_number([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) # => returns "(123) 456-7890
 The returned format must be correct in order to complete this challenge.
 Don't forget the space after the closing parentheses!
 """
+
+
 def create_phone_number(n):
     # z = []
     # for num in n[:3]:
@@ -79,4 +82,78 @@ def create_phone_number(n):
 
 
 # print(create_phone_number([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]))
+# """Make me slow! Calling makeMeSlow() should take at least 7 seconds."""
+# def make_me_slow():
+#     for i in range(9999999999999999999999999999999999999999999999999999999999):
+#         print(i)
+"""#Make them bark
+You have been hired by a dogbreeder to write a program to keep record of his dogs.
+You've already made a constructor Dog, so no one has to hardcode every puppy.
+The work seems to be done. It's high time to collect the payment.
+..hold on! The dogbreeder says he wont pay you, until he can make every dog object .bark().
+Even the ones already done with your constructor. 
+"Every dog barks" he says. He also refuses to rewrite them, lazy as he is.
+You can't even count how much objects that bastard client of yours already made.
+He has a lot of dogs, and none of them can .bark().
+Can you solve this problem, or will you let this client outsmart you for good?
+Practical info:
+    The .bark() method of a dog should return the string 'Woof!'.
+    The contructor you made (it is preloaded) looks like this:
+class Dog(object):
+    def __init__(self, name, breed, sex, age):
+        self.name  = name
+        self.breed = breed
+        self.sex   = sex
+        self.age   = age
+Hint: A friend of yours just told you about how javascript handles classes diferently from other programming languages. 
+He couldn't stop ranting about "prototypes", or something like that. Maybe that could help you..."""
 
+# class Dog(object):
+#     def __init__(self, name, breed, sex, age):
+#         self.name = name
+#         self.breed = breed
+#         self.sex = sex
+#         self.age = age
+#         self.bark = self.bark
+#
+#     @staticmethod
+#     def bark():
+#         return "Woof!"
+#
+#
+# zeus = Dog('Zeus', 'Dobermann', 'male', '4')
+# print(zeus.bark(), "Woof!")
+# print(Dog.bark())
+
+"""Make multiple functions that will return the sum, difference, modulus, product, quotient, and the exponent respectively.
+Please use the following function names:
+addition = add
+multiply = multiply
+division = divide (both integer and float divisions are accepted)
+modulus = mod
+exponential = exponent
+subtraction = subt"""
+
+
+def add(a, b):
+    return a + b
+
+
+def multiply(a, b):
+    return a * b
+
+
+def divide(a, b):
+    return a / b
+
+
+def mod(a, b):
+    return a % b
+
+
+def exponent(a, b):
+    return a ** b
+
+
+def subt(a, b):
+    return a - b
