@@ -1,3 +1,5 @@
+import string
+
 codewars_26_04 = """Digital root is the recursive sum of all the digits in a number.
 Given n, take the sum of the digits of n. If that value has more than one digit,
 continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
@@ -157,3 +159,104 @@ def exponent(a, b):
 
 def subt(a, b):
     return a - b
+
+
+"""Create a function that returns the sum of the two lowest positive numbers given an array of minimum 4 positive integers. 
+No floats or non-positive integers will be passed.
+For example, when an array is passed like [19, 5, 42, 2, 77], the output should be 7.
+[10, 343445353, 3453445, 3453545353453] should return 3453455.
+"""
+
+
+def sum_two_smallest_numbers(numbers):
+    return sum(sorted(numbers)[:2])
+
+
+# print(sum_two_smallest_numbers([19, 5, 42, 2, 77]))
+
+"""Your goal in this kata is to implement a difference function, 
+which subtracts one list from another and returns the result.
+It should remove all values from list a, which are present in list b keeping their order.
+array_diff([1,2],[1]) == [2]
+If a value is present in b, all of its occurrences must be removed from the other:
+array_diff([1,2,2,2,3],[2]) == [1,3]"""
+
+
+def array_diff(a, b):
+    for i in b:
+        while i in a:
+            a.remove(i)
+    return a
+    # return [x for x in a if x not in b]
+
+
+# print(array_diff([1, 2, 2, 2, 3], [2, 1]))
+# print(array_diff([1, 2], [1]))
+
+
+"""Count the number of Duplicates
+
+Write a function that will return the count of distinct case-insensitive alphabetic characters
+and numeric digits that occur more than once in the input string. 
+The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+Example
+"abcde" -> 0 # no characters repeats more than once
+"aabbcde" -> 2 # 'a' and 'b'
+"aabBcde" -> 2 # 'a' occurs twice and 'b' twice (`b` and `B`)
+"indivisibility" -> 1 # 'i' occurs six times
+"Indivisibilities" -> 2 # 'i' occurs seven times and 's' occurs twice
+"aA11" -> 2 # 'a' and '1'
+"ABBA" -> 2 # 'A' and 'B' each occur twice"""
+
+
+def duplicate_count(text):
+    text = text.lower()
+    count = 0
+    for i in set(text):
+        if text.count(i) > 1:
+            count += 1
+    return count
+
+
+# print(duplicate_count("indivisibility"))
+# print(duplicate_count("ABBA"))
+# print(duplicate_count("Indivisibilities"))
+
+"""Jaden Smith, the son of Will Smith, is the star of films such as The Karate Kid (2010) and After Earth (2013).
+Jaden is also known for some of his philosophy that he delivers via Twitter. 
+When writing on Twitter, he is known for almost always capitalizing every word. 
+For simplicity, you'll have to capitalize each word, check out how contractions are expected to be in the example below.
+Your task is to convert strings to how they would be written by Jaden Smith. 
+The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
+Example:
+Not Jaden-Cased: "How can mirrors be real if our eyes aren't real"
+Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real" """
+
+
+def to_jaden_case(string):
+    return " ".join([x.capitalize() for x in string.split()])
+
+
+# return string.title() for some reasons capitalize T in aren't
+
+
+# print(to_jaden_case("How can mirrors be real if our eyes aren't real"))
+
+"""Usually when you buy something, you're asked whether your credit card number, phone number
+or answer to your most secret question is still correct. 
+However, since someone could look over your shoulder, you don't want that shown on your screen. Instead, we mask it.
+Your task is to write a function maskify, which changes all but the last four characters into '#'.
+Examples (input --> output):
+"4556364607935616" --> "############5616"
+     "64607935616" -->      "#######5616"
+               "1" -->                "1"
+                "" -->                 ""
+// "What was the name of your first pet?"
+"Skippy" --> "##ippy"
+"Nananananananananananananananana Batman!" --> "####################################man!" """
+
+
+def maskify(cc):
+    return '#' * len(cc[:-4]) + cc[-4:]
+
+# print(maskify("Nananananananananananananananana Batman!"))
