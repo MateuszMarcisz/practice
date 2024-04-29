@@ -51,4 +51,24 @@ def open_or_senior(data):
     #     else:
     #         lst.append('Open')
     # return lst
+
+
 # print(open_or_senior([[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]))
+
+"""Can you find the needle in the haystack?
+Write a function findNeedle() that takes an array full of junk but containing one "needle"
+After your function finds the needle it should return a message (as a string) that says:
+"found the needle at position " plus the index it found the needle, so:
+Example(Input --> Output)
+["hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk"] --> "found the needle at position 5" """
+
+
+def find_needle(haystack):
+    # for i in haystack:
+    #     if i == "needle":
+    #         return haystack.index(i)
+
+    return f"found the needle at position {haystack.index('needle')}"
+
+
+# print(find_needle(["hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk"]))
