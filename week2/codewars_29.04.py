@@ -72,3 +72,65 @@ def find_needle(haystack):
 
 
 # print(find_needle(["hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk"]))
+"""If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. 
+The sum of these multiples is 23.
+Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.
+Additionally, if the number is negative, return 0.
+Note: If the number is a multiple of both 3 and 5, only count it once.
+Courtesy of projecteuler.net (Problem 1)"""
+
+
+def solution(number):
+    return sum(i for i in range(1, number) if i % 3 == 0 or i % 5 == 0) if number > 0 else 0
+    # if number < 0:
+    #     return 0
+    # else:
+    #     numbers = []
+    #     for i in range(1, number):
+    #         if i % 3 == 0 or i % 5 == 0:
+    #             numbers.append(i)
+    # return sum(numbers)
+
+
+# print(solution(10))
+"""In this kata you will create a function that takes a list of non-negative integers
+and strings and returns a new list with the strings filtered out.
+Example
+filter_list([1,2,'a','b']) == [1,2]
+filter_list([1,'a','b',0,15]) == [1,0,15]
+filter_list([1,2,'aasf','1','123',123]) == [1,2,123]"""
+
+
+def filter_list(l):
+    return [i for i in l if isinstance(i, int)]
+    # lst = []
+    # for i in l:
+    #     lst.append(i) if isinstance(i, int) else None
+    # return lst
+
+
+# print(filter_list([1,2,'aasf','1','123',123]))
+
+
+"""Consider an array/list of sheep where some sheep may be missing from their place.
+We need a function that counts the number of sheep present in the array (true means present).
+For example,
+[True,  True,  True,  False,
+  True,  True,  True,  True ,
+  True,  False, True,  False,
+  True,  False, False, True ,
+  True,  True,  True,  True ,
+  False, False, True,  True]"""
+
+
+def count_sheeps(sheep):
+    # TODO May the force be with you
+    return sheep.count(True)
+
+
+# print(count_sheeps([True, True, True, False,
+#                     True, True, True, True,
+#                     True, False, True, False,
+#                     True, False, False, True,
+#                     True, True, True, True,
+#                     False, False, True, True]))
