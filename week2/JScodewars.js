@@ -161,5 +161,25 @@ function solution(number){
      return (numbers).reduce((a, b) => a + b, 0);
  }
 }
-const result = solution(10);
-console.log(result);
+// const result = solution(10);
+// console.log(result);
+
+// Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present).
+// For example,
+// [true,  true,  true,  false,
+//   true,  true,  true,  true ,
+//   true,  false, true,  false,
+//   true,  false, false, true ,
+//   true,  true,  true,  true ,
+//   false, false, true,  true]
+// The correct answer would be 17.
+function countSheeps(sheep) {
+    return sheep.filter(i => i === true).length;
+}
+// const result = countSheeps([true,  true,  true,  false,
+//   true,  true,  true,  true ,
+//   true,  false, true,  false,
+//   true,  false, false, true ,
+//   true,  true,  true,  true ,
+//   false, false, true,  true]);
+// console.log(result);
