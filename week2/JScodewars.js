@@ -49,19 +49,40 @@ function oddCount(n){
 // numberProperty(-7)  // ==> [false, false, false]
 // numberProperty(-10) // ==> [false, true,  true]
 
-function numberProperty(n) {
-const lst = [];
-const prime = [];
+function numberProperty(n)
+// {
+// const lst = [];
+// const prime = [];
+//     if (n <= 1) {
+//         lst.push(false);
+//     } else{
+//         for (let i = 2; i < n; i++) {
+//                 if (n % i === 0) {
+//                     prime.push(false);
+//                 }
+//             }
+//             if (prime.includes(false)) {
+//                 lst.push(false);
+//             } else {
+//                 lst.push(true);
+//             }
+//         }
+//     lst.push(n % 2 === 0);
+//     lst.push(n % 10 === 0);
+//     return lst
+// }
+{const lst = [];
     if (n <= 1) {
         lst.push(false);
-    }
-        else{
-            for (let i = 2; i < n; i++) {
+    } else{
+        let prime = true
+        for (let i = 2; i < n; i++) {
                 if (n % i === 0) {
-                    prime.push(false);
+                    prime = false;
+                    break;
                 }
             }
-            if (prime.includes(false)) {
+            if (prime === false) {
                 lst.push(false);
             } else {
                 lst.push(true);
@@ -72,8 +93,8 @@ const prime = [];
     return lst
 }
 
-// works but get timed out...
+// works but get timed out... not its fixed, most important was adding break to the prime loop
 // const result = numberProperty(-10);
-// const result1 = numberProperty(131);
+// const result1 = numberProperty(341);
 // console.log(result);
 // console.log(result1);
