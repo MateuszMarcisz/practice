@@ -1,3 +1,6 @@
+import heapq
+from statistics import median
+
 codewars_2904 = """Implement the function unique_in_order which takes as argument a sequence
 and returns a list of items without any elements with the same value next to each other
 and preserving the original order of elements.
@@ -134,3 +137,61 @@ def count_sheeps(sheep):
 #                     True, False, False, True,
 #                     True, True, True, True,
 #                     False, False, True, True]))
+
+"""Task: You have a list arrays of N arrays of positive integers, each of which is sorted in ascending order.
+Your taks is to return the median value all of the elements of the combined lists.
+Example
+arrays =[[1,2,3],[4,5,6],[7,8,9]] In this case the median is 5
+arrays =[[1,2,3],[4,5],[100,101,102]] In this case the median is 4.5
+Some of the arrays may be empty, but there will always be at least one non-empty array in the list"""
+
+
+# def median_from_n_arrays(arrays):
+# lst = []
+# for x in arrays:
+#     for y in x:
+#         lst.append(y)
+# lst = sorted([y for x in arrays for y in x])
+# return (lst[(len(lst)-1)//2] + lst[(len(lst))//2])/2 if len(lst) % 2 == 0 else lst[len(lst)//2]
+# if len(lst) % 2 == 0:
+#     return (lst[(len(lst)-1)//2] + lst[(len(lst))//2])/2
+# else:
+#     return lst[len(lst)//2]
+
+# still to slow...
+# def median_from_n_arrays(arrays):
+#     lst = ([y for x in arrays for y in x])
+#     return median(lst)
+
+# slightly faster but not fast enough
+
+# def median_from_n_arrays(arrays):
+#     lst = []
+#     for i in arrays:
+#         lst.extend(i)
+#     return median(lst)
+# slightly faster but stil... not enough
+
+# def median_from_n_arrays(arrays):
+#     lst = []
+#     for i in arrays:
+#         lst.extend(i)
+#     # lst.sort()
+#     mid = len(lst) // 2
+#     if len(lst) % 2 == 0:
+#         return ((heapq.nlargest(mid, lst))[-1] + heapq.nsmallest(mid, lst)[-1]) / 2
+#     else:
+#         return (heapq.nsmallest(mid+1, lst))[-1]
+
+
+"""Implement a function that adds two numbers together and returns their sum in binary. The conversion can be done before, or after the addition.
+The binary number returned should be a string.
+Examples:(Input1, Input2 --> Output (explanation)))
+1, 1 --> "10" (1 + 1 = 2 in decimal or 10 in binary)
+5, 9 --> "1110" (5 + 9 = 14 in decimal or 1110 in binary)"""
+
+def add_binary(a,b):
+    return str(bin(a+b))[2:]
+
+
+# print(add_binary(5,9))
