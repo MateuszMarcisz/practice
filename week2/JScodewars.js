@@ -98,3 +98,46 @@ function numberProperty(n)
 // const result1 = numberProperty(341);
 // console.log(result);
 // console.log(result1);
+
+// Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers.
+function evenOrOdd(number) {
+  if (number % 2 === 0) {
+      return 'Even'
+  } else {
+      return 'Odd'
+  }
+}
+
+// Return the number (count) of vowels in the given string.
+// We will consider a, e, i, o, u as vowels for this Kata (but not y).
+// The input string will only consist of lower case letters and/or spaces.
+
+function getCount(str) {
+    let count = 0
+    for (let vowel of str){
+        if (('aeiou').includes(vowel)) {
+        count += 1
+  }
+    }
+    return count
+}
+
+// Trolls are attacking your comment section!
+// A common way to deal with this situation is to remove all of the vowels from the trolls' comments, neutralizing the threat.
+// Your task is to write a function that takes a string and return a new string with all vowels removed.
+// For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".
+// Note: for this kata y isn't considered a vowel.
+function disemvowel(str) {
+    let words = "";
+    for (let letter of str){
+        if (('aeiouAEIOU').includes(letter)){
+            words += "";
+        } else {
+            words += letter;
+        }
+    }
+    return words;
+}
+
+// const result = disemvowel("This website is for losers LOL!");
+// console.log(result);
