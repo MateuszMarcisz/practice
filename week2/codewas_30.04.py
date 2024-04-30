@@ -125,3 +125,14 @@ def find_even_index(arr):
 
 # print(find_even_index([1, 2, 3, 4, 3, 2, 1]))
 # print(find_even_index([0, 0, 0, 0, 0, 0, 0]))
+
+def pig_it(text):
+    return " ".join([(i[1:]+i[:1]+'ay') if i.isalpha() else i for i in text.split()])
+    # pigs = []
+    # for i in text.split():
+    #     pigs.append(i[1:]+i[:1]+'ay') if i.isalpha() else pigs.append(i)
+    # return " ".join(pigs)
+
+
+# print(pig_it('Pig latin is cool'))
+# print(pig_it('Hello world !'))
