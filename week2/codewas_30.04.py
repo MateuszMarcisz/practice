@@ -136,3 +136,41 @@ def pig_it(text):
 
 # print(pig_it('Pig latin is cool'))
 # print(pig_it('Hello world !'))
+
+"""Create a function which answers the question "Are you playing banjo?".
+If your name starts with the letter "R" or lower case "r", you are playing banjo!
+The function takes a name as its only argument, and returns one of the following strings:
+name + " plays banjo" 
+name + " does not play banjo"
+Names given are always valid strings."""
+
+def are_you_playing_banjo(name):
+    return f"{name} plays banjo" if name[0] in 'rR' else f"{name} does not play banjo"
+    # if name[0] in 'rR':
+    #     return f"{name} plays banjo"
+    # else:
+    #     return f"{name} does not play banjo"
+
+# print(are_you_playing_banjo("Roman"))
+# print(are_you_playing_banjo(("roman")))
+# print(are_you_playing_banjo("NotRoman"))
+
+"""You might know some pretty large perfect squares. But what about the NEXT one?
+Complete the findNextSquare method that finds the next integral perfect square after the one passed as a parameter. Recall that an integral perfect square is an integer n such that sqrt(n) is also an integer.
+If the argument is itself not a perfect square then return either -1 or an empty value like None or null, depending on your language. You may assume the argument is non-negative.
+Examples:(Input --> Output)
+121 --> 144
+625 --> 676
+114 --> -1 since 114 is not a perfect square"""
+
+def find_next_square(sq):
+    if sq**0.5 == int(sq**0.5):
+        while True:
+            sq += 1
+            if sq**0.5 == int(sq**0.5):
+                return sq
+    return -1
+
+# print(find_next_square(121))
+# print(find_next_square(625))
+# print(find_next_square(114))
