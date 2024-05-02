@@ -183,3 +183,36 @@ function countSheeps(sheep) {
 //   true,  true,  true,  true ,
 //   false, false, true,  true]);
 // console.log(result);
+
+
+function squareDigits(num){
+    let numberz = [];
+    for (let i of num.toString()) {
+      numberz.push(i**2);
+    }
+    return Number(numberz.join(''));
+}
+
+// let result = squareDigits(3212)
+// console.log(result)
+// let result1 = squareDigits(2112)
+// console.log((result1))
+
+function highAndLow(numbers){
+    let numberz = numbers.split(' ').map(Number);
+    let nums = numberz.sort((a,b) => a -b);
+    let num1 = nums[0];
+    let num2 = nums[nums.length -1];
+    return `${num2} ${num1}`
+}
+
+
+function descendingOrder(n){
+    const nums = n.toString().split('')
+    return Number(nums.sort((a,b) => b-a).join(''))
+}
+
+
+let result = descendingOrder(123456789)
+let result1 = descendingOrder(105654)
+console.log((result1))
