@@ -74,7 +74,7 @@ def is_triangle(a, b, c):
 
 def binary_array_to_number(arr):
     a = "".join(str(num) for num in arr)
-    return int('0b'+a, 2)
+    return int('0b' + a, 2)
 
 
 # print(binary_array_to_number([1, 0, 1, 1]))
@@ -83,6 +83,7 @@ def binary_array_to_number(arr):
 
 def reverse_words(text):
     return ' '.join([i[::-1] for i in text.split(' ')])
+
 
 # print(reverse_words("This is    an example!"))
 
@@ -112,7 +113,8 @@ and then take 3, which leads to [1,2,3,1,2,3].
 With list [20,37,20,21] and number 1, the result would be [20,37,21].
 """
 
-def delete_nth(order,max_e):
+
+def delete_nth(order, max_e):
     lst = []
     for i in order:
         if lst.count(i) < max_e:
@@ -120,4 +122,93 @@ def delete_nth(order,max_e):
     return lst
 
 
-print(delete_nth([1, 1, 3, 3, 7, 2, 2, 2, 2], 3))
+# print(delete_nth([1, 1, 3, 3, 7, 2, 2, 2, 2], 3))
+
+"""Define a function that takes an integer argument and returns a logical value true or false depending on if the integer is a prime.
+Per Wikipedia, a prime number ( or a prime ) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
+Requirements
+    You can assume you will be given an integer input.
+    You can not assume that the integer will be only positive. You may be given negative numbers as well ( or 0 ).
+    NOTE on performance: There are no fancy optimizations required, but still the most trivial solutions might time out. Numbers go up to 2^31 ( or similar, depending on language ). Looping all the way up to n, or n/2, will be too slow.
+Example
+is_prime(1)  /* false */
+is_prime(2)  /* true  */
+is_prime(-1) /* false */
+"""
+
+
+def is_prime(num):
+    if num < 2:
+        return False
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+    # lst = [i for i in range(1, num+1) if num % i == 0]
+    # return True if len(lst) < 3 else False
+
+
+# print(is_prime(9))
+# print(is_prime(2))
+# print(is_prime(-1))
+# print(is_prime(73))
+# print(is_prime(75))
+# print(is_prime(41))
+# print(is_prime(5099))
+"""ROT13 is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the alphabet. 
+ROT13 is an example of the Caesar cipher.
+Create a function that takes a string and returns the string ciphered with Rot13. 
+If there are numbers or special characters included in the string, they should be returned as they are. 
+Only letters from the latin/english alphabet should be shifted, like in the original Rot13 "implementation".
+Please note that using encode is considered cheating.
+"""
+
+
+def rot13(message):
+    trans_alphabet = str.maketrans('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                   'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM')
+    return message.translate(trans_alphabet)
+
+
+# print(rot13("Test"))
+
+"""The main idea is to count all the occurring characters in a string.
+If you have a string like aba, then the result should be {'a': 2, 'b': 1}.
+What if the string is empty? Then the result should be empty object literal, {}.
+"""
+
+
+def count(s):
+    counting = {}
+    for i in s:
+        if i not in counting:
+            counting[i] = s.count(i)
+    return counting
+
+# print(count('aba'))
+# print(count('abc'))
+# print(count('abcaaab'))
+# print(count(''))
+
+"""The marketing team is spending way too much time typing in hashtags.
+Let's help them with our own Hashtag Generator!
+Here's the deal:
+    It must start with a hashtag (#).
+    All words must have their first letter capitalized.
+    If the final result is longer than 140 chars it must return false.
+    If the input or the result is an empty string it must return false.
+Examples
+" Hello there thanks for trying my Kata"  =>  "#HelloThereThanksForTryingMyKata"
+"    Hello     World   "                  =>  "#HelloWorld"
+""                                        =>  false
+"""
+def generate_hashtag(s):
+    if not s:
+        return False
+    lst = ''.join(s.title().split())
+    return '#'+lst if len(lst) < 140 else False
+
+print(generate_hashtag("Hello there thanks for trying my Kata"))
+print(generate_hashtag('cokolwiek'))
+print(generate_hashtag(''))
+
