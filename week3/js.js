@@ -87,3 +87,57 @@ function arrayPlusArray(arr1, arr2) {
 
 // x1 = arrayPlusArray([1, 2, 3], [4, 5, 6]);
 // console.log(x1);
+
+// Find the difference between two collections. The difference means that either the character is present in one collection or it is present in other,
+// but not in both. Return a sorted list with the difference.
+// The collections can contain any character and can contain duplicates.
+// Example
+// A = [a, a, t, e, f, i, j]
+// B = [t, g, g, i, k, f]
+// difference = [a, e, g, j, k]
+
+function diff(a, b){
+    let difference = [];
+    for (let i of a){
+        if(!(b.includes(i)) && !(difference.includes(i))){
+            difference.push(i)
+        }
+    } for (let i of b) {
+        if (!(a.includes(i)) && !(difference.includes(i))) {
+            difference.push(i)
+        }
+    }
+  return difference
+}
+
+// x1 = diff(['a', 'a', 't', 'e', 'f', 'i', 'j'], ['t', 'g', 'g', 'i', 'k', 'f']);
+// console.log(x1);
+
+// Task
+// Given a string, return if all occurrences of a given letter are always immediately followed by the other given letter.
+// Worked Example
+// ("he headed to the store", "h", "e") ➞ True
+// # All occurences of "h": ["he", "headed", "the"]
+// # All occurences of "h" have an "e" after it.
+// # Return True
+// ('abcdee', 'e', 'e') ➞ False
+// # For first "e" we can get "ee"
+// # For second "e" we cannot have "ee"
+// # Return False
+// Examples
+// ("i found an ounce with my hound", "o", "u") ➞ True
+// ("we found your dynamite", "d", "y") ➞ False
+
+function bestFriend(txt, a, b) {
+    for (let i = 0; i <txt.length;i++){
+        if (txt[i] === a && txt[i+1] !== b){
+            return false
+        }
+    }
+return true
+}
+
+// x1 = bestFriend("we found your dynamite", "d", "y");
+// x2 = bestFriend("i found an ounce with my hound", "o", "u");
+// console.log(x1);
+// console.log(x2);
