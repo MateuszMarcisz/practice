@@ -3,7 +3,7 @@
 ## Challenge:
 Make a box that would change the color as you type the color name in the input below. 
 
-## How it looks like:
+## How it looks:
 
 ![ColoredBox](src/papayawhip.png)
 
