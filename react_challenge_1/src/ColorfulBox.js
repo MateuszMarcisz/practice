@@ -1,13 +1,15 @@
 import React from 'react'
 
-const ColorfulBox = ({color, setColor}) => {
+const ColorfulBox = ({color, hexColor, isDark}) => {
     const boxColor = {
-        backgroundColor: color
+        backgroundColor: color,
+        color: isDark ? '#000' : '#FFF'
     }
     return (
-        <main style={boxColor} >
-            {color ? color : 'EmptyValue'}
-        </main>
+        <section className="colorful_box" style={boxColor} >
+            <p>{color ? color : 'EmptyValue'}</p>
+            <p>{hexColor ? hexColor : null}</p>
+        </section>
     )
 }
 export default ColorfulBox

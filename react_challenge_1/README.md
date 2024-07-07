@@ -5,7 +5,10 @@ Make a box that would change the color as you type the color name in the input b
 
 ## How it looks like:
 
-![ColoredBox](src/challenge1.png)
+![ColoredBox](src/papayawhip.png)
+
+One can toggle color to white so it is visible with dark background.
+![ColoredBox](src/darkslateblue.png)
 
 
 
