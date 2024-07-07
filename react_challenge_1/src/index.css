@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid mediumblue;
+    margin: auto;
+}
+
+main {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.6);
+    font-size: 2rem;
+}
+
+.changeColorForm {
+    width: 400px;
+    display: flex;
+    justify-content: flex-start;
+    margin: 2rem 0 0;
+    padding: 0 0.5rem 0.25rem;
+    /*border-bottom: 1px solid #eee;*/
+}
+
+.changeColorForm input[type='text'] {
+    flex-grow: 1;
+    max-width: 100%;
+    min-height: 48px;
+    font-size: 1rem;
+    padding: 0.25rem;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.6);
+    outline: none;
+}
