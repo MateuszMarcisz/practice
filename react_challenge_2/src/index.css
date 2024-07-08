@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    flex: 1; /* Makes all buttons take equal space */
+    height: 48px; /* Ensures the buttons are at least 48px in height */
+    font-size: 1.5rem; /* makes the text larger for better readability */
+    cursor: pointer; /* Adds a pointer cursor on hover */
+}
+
+button.active {
+    background-color: black;
+    color: white;
+}
