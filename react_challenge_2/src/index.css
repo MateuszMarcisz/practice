@@ -18,19 +18,71 @@ code {
     monospace;
 }
 
+main {
+    margin-top: 48px;
+}
+
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8f8f8;
+    z-index: 1000; /* Ensure the header is above other content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: add shadow for visual separation */
     display: flex;
-    justify-content: space-between;
 }
 
 button {
-    flex: 1; /* Makes all buttons take equal space */
-    height: 48px; /* Ensures the buttons are at least 48px in height */
-    font-size: 1.5rem; /* makes the text larger for better readability */
-    cursor: pointer; /* Adds a pointer cursor on hover */
+    flex: 1;
+    min-height: 48px;
+    background-color: white;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    width: 100%;
+    font-size: 1.5rem;
 }
 
 button.active {
     background-color: black;
     color: white;
+}
+
+button.active {
+    background-color: black;
+    color: white;
+}
+
+button:hover {
+    background-color: lightgray;
+}
+
+button.active:hover {
+    background-color: gray;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #ddd;
 }

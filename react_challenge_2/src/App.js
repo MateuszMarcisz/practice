@@ -16,8 +16,8 @@ function App() {
             try {
                 const response = await fetch(API_URL + resource);
                 if (!response.ok) throw Error('Did not received expected data');
-                const contentList = await response.json();
-                setList(contentList);
+                const data = await response.json();
+                setList(data);
                 setFetchError(null);
             } catch (err) {
                 setFetchError(err.message);
