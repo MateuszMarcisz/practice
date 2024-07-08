@@ -2,3 +2,6 @@
 
 ## Challenge:
 Display a list of Users/Posts/Comments from [Fake Data JSON Server](https://jsonplaceholder.typicode.com/).
+
+## How it looks:
+![example](src/example.png)
