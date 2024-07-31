@@ -1,10 +1,10 @@
 from datetime import datetime, timedelta
 from statistics import median
 
+
 # Zadanie
 # Wyznacz medianę wydatków do pierwszej niedzieli (włącznie) każdego miesiąca (np. dla 2023-09 i 2023-10 są to dni 1, 2, 3 wrz i 1 paź).
 # Należy zastosować rozwiązanie zgodnie z poniższym pseudokodem.
-
 
 
 # expenses = {
@@ -129,3 +129,5 @@ def solution(expenses):
 
 
 # print(solution(expenses))
+
+# print(sorted(['01', '02', '003']))
