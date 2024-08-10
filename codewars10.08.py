@@ -50,3 +50,69 @@ def stray(arr):
 # print(stray([17, 17, 3, 17, 17, 17, 17]))
 # print(stray([122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 622633, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848, 122848]))
 
+
+"""Don't give me five!
+
+In this kata you get the start number and the end number of a region and should return the count of all numbers except numbers with a 5 in it. The start and the end number are both inclusive!
+
+Examples:
+
+1,9 -> 1,2,3,4,6,7,8,9 -> Result 8
+4,17 -> 4,6,7,8,9,10,11,12,13,14,16,17 -> Result 12
+
+The result may contain fives. ;-)
+The start number will always be smaller than the end number. Both numbers can be also negative!
+
+I'm very curious for your solutions and the way you solve it. Maybe someone of you will find an easy pure mathematics solution.
+
+Have fun coding it and please don't forget to vote and rank this kata! :-)
+
+I have also created other katas. Take a look if you enjoyed this kata!
+"""
+
+
+def dont_give_me_five(start, end):
+    return len([i for i in range(start, end + 1) if '5' not in str(i)])
+
+
+# print(dont_give_me_five(1, 9))
+# print(dont_give_me_five(4, 17))
+# print(dont_give_me_five(91, 163))
+
+"""The number 898989 is the first integer with more than one digit that fulfills the property partially introduced in the title of this kata. What's the use of saying "Eureka"? Because this sum gives the same number: 89=81+9289 = 8^1 + 9^289=81+92
+
+The next number in having this property is 135135135:
+
+See this property again: 135=11+32+53135 = 1^1 + 3^2 + 5^3135=11+32+53
+Task
+
+We need a function to collect these numbers, that may receive two integers aaa, bbb that defines the range [a,b][a, b][a,b] (inclusive) and outputs a list of the sorted numbers in the range that fulfills the property described above.
+Examples
+
+Let's see some cases (input -> output):
+
+1, 10  --> [1, 2, 3, 4, 5, 6, 7, 8, 9]
+1, 100 --> [1, 2, 3, 4, 5, 6, 7, 8, 9, 89]
+
+If there are no numbers of this kind in the range [a,b][a, b][a,b] the function should output an empty list.
+
+90, 100 --> []
+
+Enjoy it!!
+"""
+
+
+def sum_dig_pow(a, b):
+    lst = []
+    for i in range(a, b + 1):
+        compare = []
+        for j in range(1, len(str(i)) + 1):
+            compare.append(int(str(i)[j - 1]) ** j)
+            if i == sum(compare):
+                lst.append(i)
+    return lst
+
+# print(sum_dig_pow(1, 10))
+# print(sum_dig_pow(2, 10))
+# print(sum_dig_pow(2, 100))
+# print(sum_dig_pow(95, 1000))
