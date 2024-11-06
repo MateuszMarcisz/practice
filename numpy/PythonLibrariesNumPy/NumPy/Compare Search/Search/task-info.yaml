@@ -1,0 +1,58 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 201
+        length: 47
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 194
+        initialized_from_dependency: false
+        encrypted_possible_answer: 8chLWOtVahIiVq9LeCfLHg==
+        selected: false
+        status: Solved
+      - offset: 249
+        length: 59
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 207
+        initialized_from_dependency: false
+        encrypted_possible_answer: AZ8fp1xYNtpXhsvUWwYt2Q==
+        selected: false
+        status: Solved
+      - offset: 318
+        length: 42
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 223
+        initialized_from_dependency: false
+        encrypted_possible_answer: 4SBOtxFE+/dXCQgw3eATq3tMby7KnD7PNcauCkxiODVDshP7WI9opb5wcgw/ubxc
+        selected: false
+        status: Solved
+      - offset: 373
+        length: 24
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 242
+        initialized_from_dependency: false
+        encrypted_possible_answer: 8Y+4GL3/qauOvuKG0RUDDTs8P6up79/7JV9rWuI8rcI=
+        selected: false
+        status: Solved
+    learner_created: false
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Compare+Search+/+Search
+status: Solved
+record: -1

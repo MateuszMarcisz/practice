@@ -1,0 +1,68 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 63
+        length: 28
+        placeholder_text: "# TODO: use a 1-D numpy array for indexing"
+        initial_state:
+          length: 42
+          offset: 63
+        initialized_from_dependency: false
+        encrypted_possible_answer: RdieXdkOlUI2yGllARaV9ZLgYoaNbioZZokMMb8Hs9k=
+        selected: false
+        status: Solved
+      - offset: 96
+        length: 57
+        placeholder_text: "# TODO: use a 2-D numpy array for indexing"
+        initial_state:
+          length: 42
+          offset: 110
+        initialized_from_dependency: false
+        encrypted_possible_answer: Fan4xryrRzy2d490L/AB7tRXNsLRWiFG5p0W4/ma1gJgDCwW+RtgF38cDlo0Qih5DMOVNXldSkaKNJMx33bF5g==
+        selected: false
+        status: Solved
+      - offset: 159
+        length: 66
+        placeholder_text: "# TODO: use a 1-D numpy array for indexing"
+        initial_state:
+          length: 42
+          offset: 159
+        initialized_from_dependency: false
+        encrypted_possible_answer: ilUMfH50JXmPBHDMDbftdc9FefYKaZYlWGpWamVcdQM=
+        selected: false
+        status: Solved
+      - offset: 230
+        length: 84
+        placeholder_text: "# TODO: use two 1-D arrays for indexing"
+        initial_state:
+          length: 39
+          offset: 206
+        initialized_from_dependency: false
+        encrypted_possible_answer: ilUMfH50JXmPBHDMDbftdZ04Gx/YlVQ8s3Rh5a+wIDD8+aVHCXyeDsAgDdRIBqwp
+        selected: false
+        status: Solved
+      - offset: 319
+        length: 80
+        placeholder_text: "# TODO: use a 1-D numpy array and a scalar for indexing"
+        initial_state:
+          length: 55
+          offset: 250
+        initialized_from_dependency: false
+        encrypted_possible_answer: ES9sWRG2VjVbi2Hn/MWmYgfCV4AaJ+CIsrJpuSOOCgw=
+        selected: false
+        status: Solved
+    learner_created: false
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Array+Indexing+and+Slicing+/+Integer+Array+Indexing
+status: Solved
+record: -1

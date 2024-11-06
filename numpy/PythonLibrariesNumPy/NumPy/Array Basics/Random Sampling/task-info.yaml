@@ -1,0 +1,48 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 58
+        length: 23
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 58
+        initialized_from_dependency: false
+        encrypted_possible_answer: 6ad3FOi4c6sBe04IkpMZDQKPPpJ36Aaf5stbFZMutsM=
+        selected: false
+        status: Solved
+      - offset: 95
+        length: 6
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 78
+        initialized_from_dependency: false
+        encrypted_possible_answer: PRKdLZqs/KbAgZetNP69HA==
+        selected: false
+        status: Solved
+      - offset: 137
+        length: 27
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 120
+        initialized_from_dependency: false
+        encrypted_possible_answer: jqxBXma5Ohs7UXlI2uBcsDOOjULaGnT3yJaZk4YGr38=
+        selected: false
+        status: Solved
+    learner_created: false
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Array+Basics+/+Random+Sampling
+status: Solved
+record: -1

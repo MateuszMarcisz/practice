@@ -1,0 +1,48 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 147
+        length: 17
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 147
+        initialized_from_dependency: false
+        encrypted_possible_answer: h7bACT/WIrr+o6sogOJdRg==
+        selected: false
+        status: Solved
+      - offset: 214
+        length: 17
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 203
+        initialized_from_dependency: false
+        encrypted_possible_answer: bCzybKpENYdR9olXiBlegS8r7xBGj4Fomsq5hySOTpM=
+        selected: false
+        status: Solved
+      - offset: 233
+        length: 46
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 215
+        initialized_from_dependency: false
+        encrypted_possible_answer: ru8YcBFg7OdS834qFR9tr6K4b60N2CnXNzD0huqEKhpNqsbhLAiXadI3caO7i2vX
+        selected: false
+        status: Solved
+    learner_created: false
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Transposing+Sorting+Concatenating+/+Transpose
+status: Solved
+record: -1

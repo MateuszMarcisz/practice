@@ -1,0 +1,38 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 170
+        length: 14
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 170
+        initialized_from_dependency: false
+        encrypted_possible_answer: G/wK5WkGlODD7ulymsvgog==
+        selected: false
+        status: Solved
+      - offset: 288
+        length: 29
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 280
+        initialized_from_dependency: false
+        encrypted_possible_answer: 0Du4j+8Zxh9HZjOsbESDnfcp68JdzXZO8OrnA68qCfo=
+        selected: false
+        status: Solved
+    learner_created: false
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Transposing+Sorting+Concatenating+/+Split
+status: Solved
+record: -1

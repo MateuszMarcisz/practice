@@ -1,0 +1,48 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 157
+        length: 29
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 157
+        initialized_from_dependency: false
+        encrypted_possible_answer: fcRV0hpRYJEc8QGIGkQWruDFfilbj892y8VQBCkH02M=
+        selected: false
+        status: Solved
+      - offset: 213
+        length: 34
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 190
+        initialized_from_dependency: false
+        encrypted_possible_answer: UflNIcggqQT0eFVPjfsorQ==
+        selected: false
+        status: Solved
+      - offset: 260
+        length: 27
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 209
+        initialized_from_dependency: false
+        encrypted_possible_answer: LL+dlmMQriq8XF2gPYdEwlDew5ogb4aw1RGY0WEPhh0=
+        selected: false
+        status: Solved
+    learner_created: false
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Transposing+Sorting+Concatenating+/+Partial+Sort
+status: Solved
+record: -1

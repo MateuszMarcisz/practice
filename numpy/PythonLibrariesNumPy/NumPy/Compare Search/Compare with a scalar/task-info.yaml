@@ -1,0 +1,39 @@
+type: edu
+custom_name: Compare with a Scalar
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 51
+        length: 45
+        placeholder_text: "# TODO: create a boolean array"
+        initial_state:
+          length: 30
+          offset: 52
+        initialized_from_dependency: false
+        encrypted_possible_answer: ig1mPv5gGkijBPi0X5j+5w==
+        selected: false
+        status: Solved
+      - offset: 126
+        length: 31
+        placeholder_text: "# TODO: use it as a filter/mask"
+        initial_state:
+          length: 31
+          offset: 98
+        initialized_from_dependency: false
+        encrypted_possible_answer: dQDfPZ2/X4G3jHBt0o2qRQ==
+        selected: false
+        status: Solved
+    learner_created: false
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Compare+Search+/+Compare+with+scalar
+status: Solved
+record: -1

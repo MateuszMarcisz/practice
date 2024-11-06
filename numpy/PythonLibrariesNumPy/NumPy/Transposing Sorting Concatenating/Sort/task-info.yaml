@@ -1,0 +1,48 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 92
+        length: 18
+        placeholder_text: "# Sort columns"
+        initial_state:
+          length: 14
+          offset: 92
+        initialized_from_dependency: false
+        encrypted_possible_answer: +U9L3HNsq/cSv7XyP4Omo+n2kjC9wm1/xP9YbtERw4I=
+        selected: false
+        status: Solved
+      - offset: 117
+        length: 21
+        placeholder_text: "# Indices to sort rows"
+        initial_state:
+          length: 22
+          offset: 113
+        initialized_from_dependency: false
+        encrypted_possible_answer: G5yEVWtPx6ioW7h2O/iJ+ar3bNsA6uIrcKNBXu/JXTo=
+        selected: false
+        status: Solved
+      - offset: 180
+        length: 29
+        placeholder_text: "# Sort rows using indices ind"
+        initial_state:
+          length: 29
+          offset: 140
+        initialized_from_dependency: false
+        encrypted_possible_answer: bSgffy3M7HlSwooY+Q26dA6QeOWktJaRy+78qzjMlRDxi10uHtbfMnKiabaJ/8RT
+        selected: false
+        status: Solved
+    learner_created: false
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Transposing+Sorting+Concatenating+/+Sort
+status: Solved
+record: -1

@@ -1,0 +1,60 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 155
+        length: 40
+        placeholder_text: '''Use slicing to extract the red channel'''
+        initial_state:
+          length: 40
+          offset: 155
+        initialized_from_dependency: false
+        encrypted_possible_answer: AGCG7mRYhSJalmFG5ZHuFTLHVZPtQqrMJCCIKkcoOlU=
+        selected: false
+        status: Unchecked
+      - offset: 212
+        length: 42
+        placeholder_text: '''Use slicing to extract the green channel'''
+        initial_state:
+          length: 42
+          offset: 212
+        initialized_from_dependency: false
+        encrypted_possible_answer: AGCG7mRYhSJalmFG5ZHuFSRp7lOROPp7isoi3Ec1NJU=
+        selected: false
+        status: Unchecked
+      - offset: 270
+        length: 41
+        placeholder_text: '''Use slicing to extract the blue channel'''
+        initial_state:
+          length: 41
+          offset: 270
+        initialized_from_dependency: false
+        encrypted_possible_answer: AGCG7mRYhSJalmFG5ZHuFZcKpIsqFxhPWClkVz9dV0o=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+  - name: horse.jpg
+    visible: true
+    is_binary: true
+    learner_created: false
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+  - name: image_array.png
+    visible: false
+    is_binary: true
+    learner_created: false
+  - name: image_array_dark.png
+    visible: false
+    is_binary: true
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Projects+/+SVD+/+Split+Color+Channels
+status: Unchecked
+record: -1

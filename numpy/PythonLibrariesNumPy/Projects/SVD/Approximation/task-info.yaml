@@ -1,0 +1,36 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 307
+        length: 25
+        placeholder_text: '''Build the approximation'''
+        initial_state:
+          length: 25
+          offset: 307
+        initialized_from_dependency: false
+        encrypted_possible_answer: Kq/YtHe3uuhhWcPOBar2am/vV0mJV4XsX/AfpPJnqxU=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+  - name: horse.jpg
+    visible: true
+    is_binary: true
+    learner_created: false
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+  - name: s_values.png
+    visible: false
+    is_binary: true
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Projects+/+SVD+/+Approximation
+status: Unchecked
+record: -1

@@ -1,0 +1,52 @@
+type: edu
+custom_name: Find Maxima
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 27
+        length: 53
+        placeholder_text: "# Import data"
+        initial_state:
+          length: 13
+          offset: 27
+        initialized_from_dependency: false
+        encrypted_possible_answer: CFThRxP5x2InEuS9xYh/+7fWxrtWU2rX/GCOXzZq87dbJ29WTXJmuaCdqSoCzYqhDfS/N0+Bt8Cs8YqsioqqOg==
+        selected: false
+        status: Solved
+      - offset: 90
+        length: 69
+        placeholder_text: "# Find indices of maximum values in each row"
+        initial_state:
+          length: 44
+          offset: 50
+        initialized_from_dependency: false
+        encrypted_possible_answer: +ep0YEe+OyhN5WvId1cOdXAkmUHptFiu0/xWpDgxvZRoekGCBzyfhCO7PcRJq8umypCErbNOE4ulYfiuGp99GA==
+        selected: false
+        status: Solved
+      - offset: 210
+        length: 45
+        placeholder_text: "# Extract the maximum elements from each row"
+        initial_state:
+          length: 44
+          offset: 104
+        initialized_from_dependency: false
+        encrypted_possible_answer: bSgffy3M7HlSwooY+Q26dL3c9/IUgA/VbZi86AXF0vTN8ly/uirkqaXzYNtWl3VB
+        selected: false
+        status: Solved
+    learner_created: false
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+  - name: data.csv
+    visible: true
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Compare+Search+/+Find+Maxima
+status: Solved
+record: -1

@@ -1,0 +1,48 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 201
+        length: 29
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 201
+        initialized_from_dependency: false
+        encrypted_possible_answer: xrOiceaE2Mp3Et+2v5y3YlOeslg5vPhFmg/b5xj7O0Y=
+        selected: false
+        status: Solved
+      - offset: 239
+        length: 9
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 216
+        initialized_from_dependency: false
+        encrypted_possible_answer: 0t6WdoJvv2Ceiab2DEbHWw==
+        selected: false
+        status: Solved
+      - offset: 316
+        length: 14
+        placeholder_text: ???
+        initial_state:
+          length: 3
+          offset: 290
+        initialized_from_dependency: false
+        encrypted_possible_answer: KIM7pgqY6aQ2EDSsFu7Qvw==
+        selected: false
+        status: Solved
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Array+Basics+/+linspace
+status: Solved
+record: -1

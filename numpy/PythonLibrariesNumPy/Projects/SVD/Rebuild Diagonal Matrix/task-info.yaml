@@ -1,0 +1,42 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 227
+        length: 26
+        placeholder_text: '''Create a matrix of zeros'''
+        initial_state:
+          length: 26
+          offset: 227
+        initialized_from_dependency: false
+        encrypted_possible_answer: +kkR74fejr/V9bhHZVsTsYHdIp5Z3Y73j/GVA4Lw/wY50mKwij1nv2QvxQAY9aQ5
+        selected: false
+        status: Unchecked
+      - offset: 254
+        length: 46
+        placeholder_text: '''Add singular values to the diagonal of Sigma'''
+        initial_state:
+          length: 46
+          offset: 254
+        initialized_from_dependency: false
+        encrypted_possible_answer: AtMf4gxswX8FsIxcVMcOe9it7NdDA9u/NFUIF6m36bQ=
+        selected: false
+        status: Unchecked
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+  - name: horse.jpg
+    visible: true
+    is_binary: true
+    learner_created: false
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Projects+/+SVD+/+Rebuild+Diagonal+Matrix
+status: Unchecked
+record: -1

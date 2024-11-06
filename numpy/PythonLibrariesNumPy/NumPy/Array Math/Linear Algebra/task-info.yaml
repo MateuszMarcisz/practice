@@ -1,0 +1,55 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 84
+        length: 43
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 84
+        initialized_from_dependency: false
+        encrypted_possible_answer: KIfD+EBmnTCAgXdhXf3BsTFfjT7HuRBLq4s76C5JFwOQQdDu8QhQon9rqUsEhmteRgYYXC8rEYR0BuBbmsi2sLsVzmwJoMvpsoakfhgGDmA=
+        selected: false
+        status: Solved
+      - offset: 654
+        length: 40
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 617
+        initialized_from_dependency: false
+        encrypted_possible_answer: dafOjQDXRBFo2i/F62zK0eadUPwb+VEentdgP/2f0JzJYJI+3X8YFaZofPO9TnK2
+        selected: false
+        status: Solved
+      - offset: 715
+        length: 49
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 644
+        initialized_from_dependency: false
+        encrypted_possible_answer: dafOjQDXRBFo2i/F62zK0TrW4TTSvkgKcyygpte9WDHPMRTfY8dhhcuOVnlJSfAZ8m9BzM3wL8MFPXf2UvoGoQ==
+        selected: false
+        status: Solved
+    learner_created: false
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+  - name: img.png
+    visible: false
+    is_binary: true
+    learner_created: false
+  - name: data.csv
+    visible: true
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Array+Math+/+Linear+Algebra
+status: Solved
+record: -1

@@ -1,0 +1,48 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 87
+        length: 16
+        placeholder_text: "# TODO: shuffle rows of `arr` in place"
+        initial_state:
+          length: 38
+          offset: 87
+        initialized_from_dependency: false
+        encrypted_possible_answer: hviIfrnxSP/VlaN4vnJCZkVcXhHyNkN1KbeVAhcXfh4=
+        selected: false
+        status: Solved
+      - offset: 118
+        length: 28
+        placeholder_text: "# TODO: now permute the elements within rows of `arr`"
+        initial_state:
+          length: 53
+          offset: 140
+        initialized_from_dependency: false
+        encrypted_possible_answer: o/yGb+PDaqDZBNpNLyGsFpcr3OKN+2FLfcjRMMmTwsw=
+        selected: false
+        status: Solved
+      - offset: 162
+        length: 45
+        placeholder_text: "# TODO: fully randomize the array"
+        initial_state:
+          length: 33
+          offset: 209
+        initialized_from_dependency: false
+        encrypted_possible_answer: o/yGb+PDaqDZBNpNLyGsFn7Jh0MvW7lO3yd6G+IeDi+DVVLsVBKDmdWak3e261q1
+        selected: false
+        status: Solved
+    learner_created: false
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Array+Basics+/+Random+Shuffle
+status: Solved
+record: -1

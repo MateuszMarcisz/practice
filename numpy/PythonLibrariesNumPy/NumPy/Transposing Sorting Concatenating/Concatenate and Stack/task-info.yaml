@@ -1,0 +1,48 @@
+type: edu
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 99
+        length: 26
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 62
+        initialized_from_dependency: false
+        encrypted_possible_answer: JXoiesDp3B+ixwcsdKDNZSjoYoJAWD/Jz6Q0EMXzhzo=
+        selected: false
+        status: Solved
+      - offset: 130
+        length: 27
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 73
+        initialized_from_dependency: false
+        encrypted_possible_answer: 0DreZE9xzio5DTk6rq3k/Pxay5YZSWw8iapJnnLrcsM=
+        selected: false
+        status: Solved
+      - offset: 169
+        length: 66
+        placeholder_text: "# TODO"
+        initial_state:
+          length: 6
+          offset: 91
+        initialized_from_dependency: false
+        encrypted_possible_answer: oIOBGwisrkKOrca5bqd1UT+T3BclusPOeTPeGSGtQvl486Fu1OvB1H9OZVcr0heiIe4NxiTGmOyYQBAA+YbjEkXj2v1V3sZkPhxafAl30+w=
+        selected: false
+        status: Solved
+    learner_created: false
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Transposing+Sorting+Concatenating+/+Concatenate+and+Stack
+status: Solved
+record: -1
