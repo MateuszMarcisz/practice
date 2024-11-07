@@ -1,9 +1,19 @@
-import numpy as np
+import matplotlib.pyplot as plt
 
-# An example of SVD matrix decomposition,
-# the procedure you will be using in this lesson.
-a = np.random.randn(9, 6) + 1j*np.random.randn(9, 6)
-u, s, vh = np.linalg.svd(a, full_matrices=True)
+img = plt.imread('horse.jpg')  # Read image and transform it into a NumPy array.
 
-if __name__ == "__main__":
-    print(u.shape, s.shape, vh.shape)
+img_rescaled = img / 255
+
+red_channel = 'Use slicing to extract the red channel'
+green_channel = 'Use slicing to extract the green channel'
+blue_channel = 'Use slicing to extract the blue channel'
+
+if __name__ == '__main__':
+    print('Green channel: ')
+    print(red_channel)
+    print('\nRed channel: ')
+    print(green_channel)
+    print('\nBlue channel: ')
+    print(blue_channel)
+
+
