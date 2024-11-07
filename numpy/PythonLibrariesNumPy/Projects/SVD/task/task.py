@@ -1,19 +1,23 @@
+from numpy import linalg
+import numpy as np
 import matplotlib.pyplot as plt
 
-img = plt.imread('horse.jpg')  # Read image and transform it into a NumPy array.
+img = plt.imread('horse.jpg')
 
 img_rescaled = img / 255
 
-red_channel = 'Use slicing to extract the red channel'
-green_channel = 'Use slicing to extract the green channel'
-blue_channel = 'Use slicing to extract the blue channel'
+img_gray = img_rescaled @ [0.2126, 0.7152, 0.0722]
+
+U, s, Vt = linalg.svd(img_gray)
+
+Sigma = 'Create a matrix of zeros'
+'Add singular values to the diagonal of Sigma'
 
 if __name__ == '__main__':
-    print('Green channel: ')
-    print(red_channel)
-    print('\nRed channel: ')
-    print(green_channel)
-    print('\nBlue channel: ')
-    print(blue_channel)
-
+    # Print shape of the diagonal matrix:
+    print(Sigma.shape)
+    # Print the norm of the difference between img_gray and the reconstructed SVD product:
+    print(linalg.norm(img_gray - U @ Sigma @ Vt))
+    # Check if the reconstructed product is close to the original matrix
+    print(np.allclose(img_gray, U @ Sigma @ Vt))
 

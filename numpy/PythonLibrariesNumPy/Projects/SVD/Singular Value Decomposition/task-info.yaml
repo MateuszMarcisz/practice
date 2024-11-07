@@ -11,6 +11,6 @@ files:
     is_binary: true
     learner_created: false
 feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Projects+/+SVD+/+Singular+Value+Decomposition
-status: Unchecked
-record: -1
+status: Solved
+record: 6
 post_submission_on_open: true

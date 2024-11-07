@@ -1,18 +1,16 @@
 import unittest
 import numpy as np
-
-from task import img_rescaled, red_channel, green_channel, blue_channel
+from task import U, s, Vt, Sigma
 
 
 class TestCase(unittest.TestCase):
-    def test_red(self):
-        np.testing.assert_array_equal(red_channel, img_rescaled[:, :, 0],
-                                      'Red slice looks incorrect.')
+    def test_shape(self):
+        test_sigma = np.zeros((U.shape[1], Vt.shape[0]))
+        np.fill_diagonal(test_sigma, s)
+        self.assertEqual(test_sigma.shape, Sigma.shape, 'Wrong shape of Sigma array.')
 
-    def test_green(self):
-        np.testing.assert_array_equal(green_channel, img_rescaled[:, :, 1],
-                                      'Green slice looks incorrect.')
-
-    def test_blue(self):
-        np.testing.assert_array_equal(blue_channel, img_rescaled[:, :, 2],
-                                      'Blue channel slice looks incorrect.')
+    def test_sigma(self):
+        test_sigma = np.zeros((U.shape[1], Vt.shape[0]))
+        np.fill_diagonal(test_sigma, s)
+        np.testing.assert_array_equal(Sigma, test_sigma,
+                                      'The values in the resulting Sigma array do not match the expected.')

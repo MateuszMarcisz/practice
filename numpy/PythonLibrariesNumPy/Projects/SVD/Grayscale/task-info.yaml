@@ -3,16 +3,17 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 126
-        length: 26
+      - offset: 167
+        length: 28
         placeholder_text: '''Approximate to grayscale'''
         initial_state:
           length: 26
           offset: 126
         initialized_from_dependency: false
         encrypted_possible_answer: SFuctY32936AR4BrPfWwGTl4HUWts3QvLozTPONXm7aYl907rdQrZ/eruCV8QTlz
-        selected: false
-        status: Unchecked
+        selected: true
+        status: Solved
+        student_answer: "# 'Approximate to grayscale'"
     learner_created: false
   - name: __init__.py
     visible: false
@@ -28,5 +29,8 @@ files:
     visible: false
     learner_created: false
 feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Projects+/+SVD+/+Grayscale
-status: Unchecked
-record: -1
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Thu, 07 Nov 2024 10:57:20 UTC"
+record: 7
