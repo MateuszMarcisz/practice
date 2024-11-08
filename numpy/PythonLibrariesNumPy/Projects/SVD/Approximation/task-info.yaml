@@ -3,16 +3,17 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 307
-        length: 25
+      - offset: 337
+        length: 27
         placeholder_text: '''Build the approximation'''
         initial_state:
           length: 25
           offset: 307
         initialized_from_dependency: false
         encrypted_possible_answer: Kq/YtHe3uuhhWcPOBar2am/vV0mJV4XsX/AfpPJnqxU=
-        selected: false
-        status: Unchecked
+        selected: true
+        status: Solved
+        student_answer: "# 'Build the approximation'"
     learner_created: false
   - name: __init__.py
     visible: false
@@ -32,5 +33,8 @@ files:
     is_binary: true
     learner_created: false
 feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Projects+/+SVD+/+Approximation
-status: Unchecked
-record: -1
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 08 Nov 2024 09:02:47 UTC"
+record: 10

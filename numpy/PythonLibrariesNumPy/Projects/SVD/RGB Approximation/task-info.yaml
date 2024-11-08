@@ -4,25 +4,27 @@ files:
     visible: true
     placeholders:
       - offset: 436
-        length: 29
+        length: 118
         placeholder_text: '''Calculate the approximation'''
         initial_state:
           length: 29
           offset: 436
         initialized_from_dependency: false
         encrypted_possible_answer: ERI5sDHQLgP9RHmFTZXs2Rw8iqDhDAhhjmTc8EeV/wKoB7atvf899gqL+lUzp639
-        selected: false
-        status: Unchecked
-      - offset: 478
-        length: 18
+        selected: true
+        status: Solved
+        student_answer: "U @ Sigma[:k, :, :] @ Vt[:, :k]  #'Calculate the approximation'"
+      - offset: 567
+        length: 34
         placeholder_text: '''Reorder the axes'''
         initial_state:
           length: 18
           offset: 478
         initialized_from_dependency: false
         encrypted_possible_answer: yD9mbiUdG4zIXW+z/RwKGKJF9LtgJPj7wa5dnrM2gqY8F2/2mfcZqxX4u7MgxYQi
-        selected: false
-        status: Unchecked
+        selected: true
+        status: Solved
+        student_answer: '''Reorder the axes'''
     learner_created: false
   - name: __init__.py
     visible: false
@@ -38,5 +40,8 @@ files:
     visible: false
     learner_created: false
 feedback_link: https://docs.google.com/forms/d/e/1FAIpQLSfVgS9Eri_kV2y3xKnSqKW2zNssakK8ilXQfpetV_ZNh9rioA/viewform?usp=pp_url&entry.2103429047=Projects+/+SVD+/+RGB+Approximation
-status: Unchecked
-record: -1
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 08 Nov 2024 10:08:55 UTC"
+record: 13

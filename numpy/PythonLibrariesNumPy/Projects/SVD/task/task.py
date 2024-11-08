@@ -6,18 +6,23 @@ img = plt.imread('horse.jpg')
 
 img_rescaled = img / 255
 
-img_gray = img_rescaled @ [0.2126, 0.7152, 0.0722]
+img_array_transposed = np.transpose(img_rescaled, (2, 0, 1))
+U, s, Vt = linalg.svd(img_array_transposed)
 
-U, s, Vt = linalg.svd(img_gray)
+Sigma = np.zeros((3, 408, 612))
+for j in range(3):
+    np.fill_diagonal(Sigma[j, :, :], s[j, :])
 
-Sigma = 'Create a matrix of zeros'
-'Add singular values to the diagonal of Sigma'
+reconstructed = U @ Sigma @ Vt
+
+reconstructed = np.clip(reconstructed, 0, 1)
+
+k = 10
+approx_img = U @ Sigma[:, :, :k] @ Vt[:, :k, :]  # 'Calculate the approximation'
+# approx_img = U @ Sigma[..., :k] @ Vt[..., :k, :]
+
+plt.imshow(np.transpose(approx_img, (1, 2, 0)))
 
 if __name__ == '__main__':
-    # Print shape of the diagonal matrix:
-    print(Sigma.shape)
-    # Print the norm of the difference between img_gray and the reconstructed SVD product:
-    print(linalg.norm(img_gray - U @ Sigma @ Vt))
-    # Check if the reconstructed product is close to the original matrix
-    print(np.allclose(img_gray, U @ Sigma @ Vt))
-
+    print(approx_img.shape)
+    plt.show()
