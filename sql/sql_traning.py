@@ -28,12 +28,34 @@ def connect_and_query(query):
 
 
 if __name__ == "__main__":
-    query = """
-    CREATE TABLE users (
-        id SERIAL PRIMARY KEY,
-        username VARCHAR(50) NOT NULL,
-        email VARCHAR(100) NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
-    """
+
+    # query = """
+    # CREATE TABLE users (
+    #     id SERIAL PRIMARY KEY,
+    #     username VARCHAR(50) NOT NULL,
+    #     email VARCHAR(100) NOT NULL,
+    #     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    # );
+    # """
+    # connect_and_query(query)
+
+# show all public tables
+#     query = "SELECT * FROM information_schema.tables WHERE table_schema = 'public';"
+#     connect_and_query(query)
+
+# create some users for testing
+#     query = """
+#     INSERT INTO users (username, email)
+#     VALUES
+#         ('alice', 'alice@example.com'),
+#         ('bob', 'bob@example.com'),
+#         ('carol', 'carol@example.com'),
+#         ('mati', 'mati@example.com'),
+#         ('aga', 'aga@example.com');
+#     """
+#     connect_and_query(query)
+
+# show all users
+    query = "SELECT * FROM users;"
     connect_and_query(query)
+
