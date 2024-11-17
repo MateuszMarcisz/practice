@@ -96,22 +96,68 @@ if __name__ == "__main__":
     # )
     # """
     # connect_and_query(query)
-    # TODO: 1. List all users who have placed at least one order.
-    query = '''SELECT DISTINCT user_id from orders'''
-    connect_and_query(query)
-    query = '''
-    SELECT DISTINCT username from users
-    JOIN orders ON orders.user_id = users.id
-    '''
-    connect_and_query(query)
-
-# TODO: 2. Retrieve all orders placed by a user with a specific user_id (e.g., user_id = 13).
-
-# TODO: 3. Display the total quantity ordered for each product by product_id.
-
+#     # TODO: 1. List all users who have placed at least one order.
+#     query = '''SELECT DISTINCT user_id from orders'''
+#     connect_and_query(query)
+#     query = '''
+#     SELECT DISTINCT username from users
+#     JOIN orders ON orders.user_id = users.id
+#     '''
+#     connect_and_query(query)
+#
+# # TODO: 2. Retrieve all orders placed by a user with a specific user_id (e.g., user_id = 13).
+#     query = '''
+#     SELECT * FROM orders WHERE user_id = 13;
+#     '''
+#     connect_and_query(query)
+#
+# # TODO: 3. Display the total quantity ordered for each product by product_id.
+#     query = '''
+# SELECT product_id, SUM(quantity)
+# FROM order_details
+# GROUP BY product_id
+# ORDER BY product_id
+#     '''
+#     connect_and_query(query)
 # TODO: 4. Find the total amount spent per user (sum of price * quantity for each order).
+#     query = '''
+#     SELECT
+# 	-- order_details.order_id,
+# 	STRING_AGG(DISTINCT orders.id::TEXT, ', ') AS order_ids,
+# 	orders.user_id,
+# 	users.username,
+# 	SUM(order_details.quantity * order_details.price) as total_amount_spent
+# FROM
+# 	order_details
+# JOIN
+# 	orders
+# ON
+# 	order_details.order_id = orders.id
+# JOIN
+# 	users
+# ON
+# 	orders.user_id = users.id
+# GROUP BY
+# 	-- order_details.order_id,
+# 	orders.user_id,
+# 	users.username
+# ORDER BY username
+#     '''
+#     connect_and_query(query)
 
 # TODO: 5. Identify the most purchased product by quantity (highest total quantity across all orders).
+    query = '''
+    SELECT
+	products.name,
+	SUM(order_details.quantity) as total_quantity
+FROM order_details
+JOIN products
+ON order_details.product_id = products.id
+GROUP BY products.name
+ORDER BY total_quantity DESC
+LIMIT 1
+    '''
+    connect_and_query(query)
 
 # TODO: 6. List the total number of orders placed on a specific date (e.g., '2023-01-01').
 
