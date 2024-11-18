@@ -146,28 +146,68 @@ if __name__ == "__main__":
 #     connect_and_query(query)
 
 # TODO: 5. Identify the most purchased product by quantity (highest total quantity across all orders).
-    query = '''
-    SELECT
-	products.name,
-	SUM(order_details.quantity) as total_quantity
-FROM order_details
-JOIN products
-ON order_details.product_id = products.id
-GROUP BY products.name
-ORDER BY total_quantity DESC
-LIMIT 1
-    '''
-    connect_and_query(query)
+#     query = '''
+#     SELECT
+# 	products.name,
+# 	SUM(order_details.quantity) as total_quantity
+# FROM order_details
+# JOIN products
+# ON order_details.product_id = products.id
+# GROUP BY products.name
+# ORDER BY total_quantity DESC
+# LIMIT 1
+#     '''
+#     connect_and_query(query)
 
 # TODO: 6. List the total number of orders placed on a specific date (e.g., '2023-01-01').
 
+#     query = '''
+# SELECT COUNT(*)
+# FROM orders
+# WHERE DATE(order_date) = '2024-11-15';
+#     '''
+#     connect_and_query(query)
+
 # TODO: 7. Join users and orders to display each user's name alongside their order_id.
+#     query = '''
+#     SELECT orders.id, users.username
+# FROM orders
+# JOIN users
+# ON orders.user_id = users.id;
+#     '''
+#     connect_and_query(query)
 
 # TODO: 8. Find the details of all products ordered by a specific user (e.g., user_id = 29).
+#     query = '''
+# SELECT order_details.*, orders.user_id
+# FROM order_details
+# JOIN
+# orders
+# ON order_details.order_id = orders.id
+# WHERE orders.user_id = 29;
+#     '''
+#     connect_and_query(query)
 
 # TODO: 9. Retrieve the total spending per order, including the order_id and user_id (sum of price * quantity).
+#     query = '''
+# SELECT order_id, orders.user_id, SUM(price * quantity) AS total_per_order
+# FROM order_details
+# JOIN orders ON order_details.order_id = orders.id
+# GROUP BY order_id, orders.user_id
+# ORDER BY order_id;
+#     '''
+#     connect_and_query(query)
 
-# TODO: 10. Identify users who have placed more than 3 orders.
+# TODO: 10. Identify users who have placed more than 2 orders.
+
+    query = '''
+    SELECT user_id, users.username, COUNT(orders.id) as number_of_orders
+FROM orders
+JOIN users ON user_id = users.id
+GROUP BY user_id, users.username
+HAVING COUNT(orders.id) > 2;
+    '''
+    connect_and_query(query)
 
 # TODO: 11. Find users who have never placed an order (i.e., no order_id associated with them).
 
