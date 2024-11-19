@@ -12,8 +12,11 @@ def connect_and_query(query):
         # Fetch and print results if it's a SELECT query
         if query.strip().lower().startswith("select"):
             results = cursor.fetchall()
-            for row in results:
-                print(row)
+            if results:
+                for row in results:
+                    print(row)
+            else:
+                print("No results found.")
 
         # Commit changes for modifying queries
         connection.commit()
@@ -200,20 +203,95 @@ if __name__ == "__main__":
 
 # TODO: 10. Identify users who have placed more than 2 orders.
 
-    query = '''
-    SELECT user_id, users.username, COUNT(orders.id) as number_of_orders
-FROM orders
-JOIN users ON user_id = users.id
-GROUP BY user_id, users.username
-HAVING COUNT(orders.id) > 2;
-    '''
-    connect_and_query(query)
+#     query = '''
+#     SELECT user_id, users.username, COUNT(orders.id) as number_of_orders
+# FROM orders
+# JOIN users ON user_id = users.id
+# GROUP BY user_id, users.username
+# HAVING COUNT(orders.id) > 2;
+#     '''
+#     connect_and_query(query)
 
 # TODO: 11. Find users who have never placed an order (i.e., no order_id associated with them).
 
+# '''    -- SELECT users.id, username
+# -- FROM users
+# -- WHERE users.id NOT IN (
+# -- SELECT user_id FROM orders
+# -- )
+# '''
+#
+# '''
+# -- SELECT users.id, username
+# -- FROM users
+# -- LEFT JOIN orders ON users.id = orders.user_id
+# -- WHERE orders.user_id IS NULL;'''
+
+#     query = '''
+# SELECT users.id, username
+# FROM users
+# WHERE NOT EXISTS (
+#     SELECT 1
+#     FROM orders
+#     WHERE orders.user_id = users.id
+# );'''
+#     connect_and_query(query)
+
 # TODO: 12. List all products purchased by users who have ordered products with a price greater than $300.
+#     query = '''
+#     WITH users_high_value AS (
+#     SELECT DISTINCT orders.user_id
+#     FROM order_details
+#     JOIN orders ON order_details.order_id = orders.id
+#     WHERE order_details.price > 300)
+#
+#     SELECT DISTINCT products.id, products.name, products.price
+#     FROM products
+#     JOIN order_details ON products.id = order_details.product_id
+#     JOIN orders ON order_details.order_id = orders.id
+#     WHERE orders.user_id IN (
+#     SELECT user_id FROM users_high_value);'''
+
+
+#     query = '''
+#     SELECT DISTINCT products.id, products.name, products.price
+# FROM products
+# JOIN order_details ON products.id = order_details.product_id
+# JOIN orders ON order_details.order_id = orders.id
+# WHERE orders.user_id IN (
+#     SELECT DISTINCT orders.user_id
+#     FROM order_details
+#     JOIN orders ON order_details.order_id = orders.id
+#     WHERE order_details.price > 300
+# );
+#     '''
+
+    # connect_and_query(query)
 
 # TODO: 13. Retrieve the top 5 users by total spending (sum of price * quantity).
+
+#     query = '''
+#     SELECT users.username AS user, SUM(price*quantity) AS total
+# FROM order_details
+# JOIN orders ON order_details.order_id = orders.id
+# JOIN users ON orders.user_id = users.id
+# GROUP BY users.username
+# ORDER BY total DESC
+# LIMIT 5
+#     '''
+    query = '''
+    SELECT users.username AS user, 
+       SUM(COALESCE(order_details.price, 0) * COALESCE(order_details.quantity, 0)) AS total
+FROM order_details
+JOIN orders ON order_details.order_id = orders.id
+JOIN users ON orders.user_id = users.id 
+GROUP BY users.username
+ORDER BY total DESC
+LIMIT 5;
+    '''
+
+    connect_and_query(query)
+
 
 # TODO: 14. Find all orders where the total spending exceeds the average order total.
 
