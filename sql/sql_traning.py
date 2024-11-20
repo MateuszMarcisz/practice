@@ -10,13 +10,13 @@ def connect_and_query(query):
         cursor.execute(query)
 
         # Fetch and print results if it's a SELECT query
-        if query.strip().lower().startswith("select"):
-            results = cursor.fetchall()
-            if results:
-                for row in results:
-                    print(row)
-            else:
-                print("No results found.")
+        # if query.strip().lower().startswith("select"):
+        results = cursor.fetchall()
+        if results:
+            for row in results:
+                print(row)
+        else:
+            print("No results found.")
 
         # Commit changes for modifying queries
         connection.commit()
@@ -279,25 +279,91 @@ if __name__ == "__main__":
 # ORDER BY total DESC
 # LIMIT 5
 #     '''
-    query = '''
-    SELECT users.username AS user, 
-       SUM(COALESCE(order_details.price, 0) * COALESCE(order_details.quantity, 0)) AS total
-FROM order_details
-JOIN orders ON order_details.order_id = orders.id
-JOIN users ON orders.user_id = users.id 
-GROUP BY users.username
-ORDER BY total DESC
-LIMIT 5;
-    '''
-
-    connect_and_query(query)
+#     query = '''
+#     SELECT users.username AS user,
+#        SUM(COALESCE(order_details.price, 0) * COALESCE(order_details.quantity, 0)) AS total
+# FROM order_details
+# JOIN orders ON order_details.order_id = orders.id
+# JOIN users ON orders.user_id = users.id
+# GROUP BY users.username
+# ORDER BY total DESC
+# LIMIT 5;
+#     '''
+#
+    # connect_and_query(query)
 
 
 # TODO: 14. Find all orders where the total spending exceeds the average order total.
 
+#     query = '''
+#     SELECT order_id, SUM(quantity * price) AS total
+# FROM order_details
+# GROUP BY order_id
+# HAVING SUM(quantity * price) > (
+#     SELECT AVG(quantity * price)
+#     FROM order_details
+# )
+# ORDER BY total;
+#     '''
+#     connect_and_query(query)
+
 # TODO: 15. Identify the product(s) with the highest total revenue (sum of price * quantity for each product).
 
+#     query = '''
+# SELECT product_id, products.name, SUM(order_details.price * order_details.quantity) AS total
+# FROM order_details
+# JOIN products ON product_id = products.id
+# GROUP BY product_id, products.name
+# ORDER BY total DESC
+# LIMIT 1
+#     '''
+
+#     query = '''
+#     WITH revenue_table AS (
+#     SELECT product_id, products.name, SUM(order_details.price * order_details.quantity) AS total
+#     FROM order_details
+#     JOIN products ON product_id = products.id
+#     GROUP BY product_id, products.name
+# )
+# SELECT *
+# FROM revenue_table
+# WHERE total = (SELECT MAX(total) FROM revenue_table);
+#     '''
+
+#     query = '''
+#     SELECT product_id, products.name, SUM(order_details.price * order_details.quantity) AS total
+# FROM order_details
+# JOIN products ON product_id = products.id
+# GROUP BY product_id, products.name
+# HAVING SUM(order_details.price * order_details.quantity) = (
+#     SELECT MAX(total)
+#     FROM (
+#         SELECT product_id, SUM(price * quantity) AS total
+#         FROM order_details
+#         GROUP BY product_id
+#     ) AS subquery
+# );
+#     '''
+#
+#     connect_and_query(query)
+
 # TODO: 16. Update the order_date for a specific order (e.g., order_id = 5) to a new date.
+
+# specific date:
+#     query = '''UPDATE orders
+# SET order_date = '2024-07-29 15:45:30.123456'
+# WHERE id = 5;
+# '''
+#     current time
+
+    query = '''UPDATE orders
+SET order_date = CURRENT_TIMESTAMP
+WHERE id = 5;
+
+SELECT * FROM orders
+WHERE id = 5;
+'''
+    connect_and_query(query)
 
 # TODO: 17. Increase the price of all products by 10% for orders placed by a specific user_id (e.g., user_id = 50).
 
