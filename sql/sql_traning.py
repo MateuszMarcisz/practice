@@ -356,17 +356,46 @@ if __name__ == "__main__":
 # '''
 #     current time
 
-    query = '''UPDATE orders
-SET order_date = CURRENT_TIMESTAMP
-WHERE id = 5;
-
-SELECT * FROM orders
-WHERE id = 5;
-'''
-    connect_and_query(query)
+#     query = '''UPDATE orders
+# SET order_date = CURRENT_TIMESTAMP
+# WHERE id = 5;
+#
+# SELECT * FROM orders
+# WHERE id = 5;
+# '''
+#     connect_and_query(query)
 
 # TODO: 17. Increase the price of all products by 10% for orders placed by a specific user_id (e.g., user_id = 50).
 
+#     query = '''
+# UPDATE order_details
+# SET price = price * 1.1
+# FROM orders
+# WHERE order_details.order_id = orders.id
+# AND orders.user_id = 11;
+# SELECT *
+# FROM orders
+# JOIN order_details
+# ON order_details.order_id = orders.id
+# WHERE user_id = 11
+#
+#     '''
+#     connect_and_query(query)
+
+
 # TODO: 18. Delete all orders placed by a specific user (e.g., user_id = 32).
 
+#     query = '''
+# DELETE
+# FROM orders
+# WHERE user_id = 32
+#     '''
+#     connect_and_query(query)
+
 # TODO: 19. Remove all products from order_details where the quantity is less than 2.
+#     query = '''
+# DELETE
+# FROM order_details
+# WHERE quantity < 2
+#     '''
+#     connect_and_query(query)
