@@ -399,3 +399,64 @@ if __name__ == "__main__":
 # WHERE quantity < 2
 #     '''
 #     connect_and_query(query)
+
+# more tasks:
+# TODO: 1. Find the User with Most Orders
+# Retrieve the user who has placed the highest number of orders and the total number of orders they placed.
+
+# TODO: 2. List All Products with No Stock Left
+# Display the products where the `stock` is 0.
+
+# TODO: 3. Orders with Only One Product
+# Retrieve all orders that contain only one product in the `order_details` table.
+
+# TODO: 4. Top-Selling Product
+# Identify the product that has been ordered the most times (by total quantity).
+
+# TODO: 5. Users Who Haven’t Placed Any Orders
+# Retrieve all users who have not placed any orders yet.
+
+# TODO: 6. Average Order Value Per User
+# Calculate the average total value of all orders for each user.
+
+# TODO: 7. Orders Above Average Price
+# Retrieve orders where the total value (sum of `price * quantity` in `order_details`) is above the average order value.
+
+# TODO: 8. Products Ordered by a Specific User
+# For a given `user_id` (e.g., `user_id = 5`), retrieve all the products they have ordered, along with the total quantity.
+
+# TODO: 9. Restock Alert
+# List all products with a stock level below a certain threshold (e.g., `stock < 5`).
+
+# TODO: 10. Find Duplicate User Emails
+# Check if there are any duplicate email addresses in the `users` table.
+
+# TODO: 11. Most Recent Order for Each User
+# Retrieve the most recent order (by `order_date`) for each user.
+
+# TODO: 12. Total Spending Per User
+# For each user, calculate their total spending (sum of `price * quantity`).
+
+# TODO: 13. Highest Revenue Products
+# Identify the top 3 products that have generated the most revenue (sum of `price * quantity`).
+
+# TODO: 14. Delete Old Orders
+# Remove all orders that are older than a certain date (e.g., orders placed more than a year ago).
+
+# TODO: 15. Find Orders with Missing Details
+# Identify all `orders` that have no corresponding records in `order_details`.
+
+# TODO: 16. Products Never Ordered
+# List all products that have never been ordered (i.e., products with no corresponding entry in `order_details`).
+
+# TODO: 17. Users with Orders Over $1000
+# Retrieve all users who have placed orders with a total value exceeding $1000.
+
+# TODO: 18. Count Orders by Month
+# Count the number of orders placed in each month of a given year.
+
+# TODO: 19. Find Order-Product Pairs
+# For each order, list the names of the products it includes and the total price for each product.
+
+# TODO: 20. Revenue Trends by Month
+# Calculate the total revenue (sum of `price * quantity`) generated in each month.
