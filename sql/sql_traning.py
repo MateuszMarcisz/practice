@@ -404,6 +404,34 @@ if __name__ == "__main__":
 # TODO: 1. Find the User with Most Orders
 # Retrieve the user who has placed the highest number of orders and the total number of orders they placed.
 
+# The one below sucks, as you know how many are tied for first in order to use LIMIT to only get the users with most orders
+#     query = '''
+#
+# SELECT users.username, COUNT(users.username) AS number_of_orders
+# FROM orders
+# JOIN users
+# ON users.id = orders.user_id
+# GROUP BY users.username
+# ORDER BY number_of_orders DESC
+#     '''
+#     connect_and_query(query)
+
+    query = '''
+    WITH order_count_table AS (
+	SELECT users.username, COUNT(users.username) AS number_of_orders --COUNT(*) should be more efficient
+	FROM orders
+	JOIN users
+	ON users.id = orders.user_id
+	GROUP BY users.username
+)
+
+SELECT *
+FROM order_count_table
+WHERE number_of_orders = (SELECT MAX(number_of_orders) FROM order_count_table)
+    '''
+    connect_and_query(query)
+
+
 # TODO: 2. List All Products with No Stock Left
 # Display the products where the `stock` is 0.
 
