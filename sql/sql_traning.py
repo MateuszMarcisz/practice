@@ -416,30 +416,71 @@ if __name__ == "__main__":
 #     '''
 #     connect_and_query(query)
 
-    query = '''
-    WITH order_count_table AS (
-	SELECT users.username, COUNT(users.username) AS number_of_orders --COUNT(*) should be more efficient
-	FROM orders
-	JOIN users
-	ON users.id = orders.user_id
-	GROUP BY users.username
-)
-
-SELECT *
-FROM order_count_table
-WHERE number_of_orders = (SELECT MAX(number_of_orders) FROM order_count_table)
-    '''
-    connect_and_query(query)
+#     query = '''
+#     WITH order_count_table AS (
+# 	SELECT users.username, COUNT(users.username) AS number_of_orders --COUNT(*) should be more efficient
+# 	FROM orders
+# 	JOIN users
+# 	ON users.id = orders.user_id
+# 	GROUP BY users.username
+# )
+#
+# SELECT *
+# FROM order_count_table
+# WHERE number_of_orders = (SELECT MAX(number_of_orders) FROM order_count_table)
+#     '''
+#     connect_and_query(query)
 
 
 # TODO: 2. List All Products with No Stock Left
 # Display the products where the `stock` is 0.
 
+#     query = '''
+#     SELECT * FROM public.products
+# WHERE stock = 0
+#     '''
+#     connect_and_query(query)
+
 # TODO: 3. Orders with Only One Product
 # Retrieve all orders that contain only one product in the `order_details` table.
-
-# TODO: 4. Top-Selling Product
+#     query = '''
+# SELECT order_id, COUNT(order_id) AS number_of_products
+# FROM order_details
+# GROUP BY order_id
+# HAVING COUNT(order_id) = 1
+#     '''
+#     connect_and_query(query)
+#
+# # TODO: 4. Top-Selling Product
 # Identify the product that has been ordered the most times (by total quantity).
+#     but this one is lame as this doesnt account for ties
+#     query = '''
+#     SELECT SUM(quantity) AS number_of_products, product_id
+# FROM order_details
+# JOIN products
+# ON product_id = products.id
+# GROUP BY product_id
+# ORDER BY number_of_products DESC
+# LIMIT 1
+#     '''
+
+    # this one here is much better:
+
+    query = '''
+    WITH product_quantities_table AS
+(SELECT SUM(quantity) AS number_of_products, product_id
+FROM order_details
+JOIN products
+ON product_id = products.id
+GROUP BY product_id
+)
+
+SELECT *
+FROM product_quantities_table
+WHERE number_of_products = (SELECT MAX(number_of_products) FROM product_quantities_table)
+    '''
+
+    connect_and_query(query)
 
 # TODO: 5. Users Who Haven’t Placed Any Orders
 # Retrieve all users who have not placed any orders yet.
