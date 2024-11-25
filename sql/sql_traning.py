@@ -466,27 +466,61 @@ if __name__ == "__main__":
 
     # this one here is much better:
 
-    query = '''
-    WITH product_quantities_table AS
-(SELECT SUM(quantity) AS number_of_products, product_id
-FROM order_details
-JOIN products
-ON product_id = products.id
-GROUP BY product_id
-)
-
-SELECT *
-FROM product_quantities_table
-WHERE number_of_products = (SELECT MAX(number_of_products) FROM product_quantities_table)
-    '''
-
-    connect_and_query(query)
+#     query = '''
+#     WITH product_quantities_table AS
+# (SELECT SUM(quantity) AS number_of_products, product_id
+# FROM order_details
+# JOIN products
+# ON product_id = products.id
+# GROUP BY product_id
+# )
+#
+# SELECT *
+# FROM product_quantities_table
+# WHERE number_of_products = (SELECT MAX(number_of_products) FROM product_quantities_table)
+#     '''
+#
+#     connect_and_query(query)
 
 # TODO: 5. Users Who Haven’t Placed Any Orders
 # Retrieve all users who have not placed any orders yet.
 
+#     query = '''
+#     SELECT users.username
+# FROM users
+# LEFT JOIN orders
+# ON users.id = orders.user_id
+# WHERE orders.user_id IS NULL
+#     '''
+#     query = '''
+#     SELECT users.username
+# FROM users
+# WHERE users.id NOT IN (
+# 	SELECT user_id
+# 	FROM orders
+# );
+#     '''
+#
+#     connect_and_query(query)
+
 # TODO: 6. Average Order Value Per User
 # Calculate the average total value of all orders for each user.
+
+    query = '''
+WITH total_per_order AS (
+	SELECT order_details.order_id, SUM(quantity*price) AS order_total
+FROM order_details
+GROUP BY order_id
+	)
+
+SELECT AVG(total_per_order.order_total) as average_order_value, orders.user_id  
+FROM total_per_order
+JOIN orders
+ON total_per_order.order_id = orders.id
+GROUP BY orders.user_id
+ORDER BY user_id;
+'''
+    connect_and_query(query)
 
 # TODO: 7. Orders Above Average Price
 # Retrieve orders where the total value (sum of `price * quantity` in `order_details`) is above the average order value.
