@@ -506,27 +506,52 @@ if __name__ == "__main__":
 # TODO: 6. Average Order Value Per User
 # Calculate the average total value of all orders for each user.
 
-    query = '''
-WITH total_per_order AS (
-	SELECT order_details.order_id, SUM(quantity*price) AS order_total
-FROM order_details
-GROUP BY order_id
-	)
-
-SELECT AVG(total_per_order.order_total) as average_order_value, orders.user_id  
-FROM total_per_order
-JOIN orders
-ON total_per_order.order_id = orders.id
-GROUP BY orders.user_id
-ORDER BY user_id;
-'''
-    connect_and_query(query)
+#     query = '''
+# WITH total_per_order AS (
+# 	SELECT order_details.order_id, SUM(quantity*price) AS order_total
+# FROM order_details
+# GROUP BY order_id
+# 	)
+#
+# SELECT AVG(total_per_order.order_total) as average_order_value, orders.user_id
+# FROM total_per_order
+# JOIN orders
+# ON total_per_order.order_id = orders.id
+# GROUP BY orders.user_id
+# ORDER BY user_id;
+# '''
+#     connect_and_query(query)
 
 # TODO: 7. Orders Above Average Price
 # Retrieve orders where the total value (sum of `price * quantity` in `order_details`) is above the average order value.
 
+#     query = '''
+# SELECT order_id, SUM(price * quantity) AS total
+# FROM order_details
+# GROUP BY order_id
+# HAVING SUM(price * quantity) > (
+#     SELECT AVG(total_per_order)
+#     FROM (
+#         SELECT SUM(price * quantity) AS total_per_order
+#         FROM order_details
+#         GROUP BY order_id
+#     ) AS subquery
+# )
+# ORDER BY total DESC;
+#     '''
+#     connect_and_query(query)
+
 # TODO: 8. Products Ordered by a Specific User
-# For a given `user_id` (e.g., `user_id = 5`), retrieve all the products they have ordered, along with the total quantity.
+# For a given `user_id` (e.g., `user_id = 6`), retrieve all the products they have ordered, along with the total quantity.
+#     query = '''
+#     SELECT product_id, SUM(quantity), orders.user_id
+# FROM order_details
+# JOIN orders
+# ON order_details.order_id = orders.id
+# WHERE orders.user_id = 6
+# GROUP BY product_id, orders.user_id
+#     '''
+#     connect_and_query(query)
 
 # TODO: 9. Restock Alert
 # List all products with a stock level below a certain threshold (e.g., `stock < 5`).
