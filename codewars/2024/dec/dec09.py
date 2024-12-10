@@ -60,4 +60,13 @@ def declare_winner(fighter1, fighter2, first_attacker):
 
 
 
-print(declare_winner(Fighter("Lew", 10, 2), Fighter("Harry", 5, 4), "Lew"))
+# print(declare_winner(Fighter("Lew", 10, 2), Fighter("Harry", 5, 4), "Lew"))
+
+def missing_no(nums):
+    sum1_to_100 = 5050  # 100*(100+1)/2
+    return sum1_to_100 - sum(nums)
+
+
+nums = list(range(0, 101))
+nums.remove(5)
+print(missing_no(nums))
