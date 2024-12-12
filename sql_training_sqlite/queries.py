@@ -124,29 +124,85 @@ if __name__ == '__main__':
     # TODO: 10. JOIN Two Tables
     # Write a query to get the names of products along with their corresponding order details, by joining the `products` and `order_products` tables.
 
-    query = '''
-    SELECT name, order_products.*
-FROM products
-LEFT JOIN order_products
-ON products.id = order_products.product_id
-    '''
-    execute_query(query)
+#     query = '''
+#     SELECT name, order_products.*
+# FROM products
+# LEFT JOIN order_products
+# ON products.id = order_products.product_id
+#     '''
+#     execute_query(query)
 
     # TODO: 11. INNER JOIN with Multiple Conditions
     # Write a query to get a list of products ordered by a customer, where the order total exceeds 100.
 
+    # query = '''
+    # SELECT SUM(order_products.quantity*main.order_products.price) as total,
+    #    order_products.product_id,
+    #    customers.first_name,
+    #    customers.last_name
+    # FROM order_products
+    # JOIN orders ON order_products.order_id = orders.id
+    # JOIN customers ON orders.customer_id = customers.id
+    # GROUP BY orders.id, customers.first_name, customers.last_name
+    # HAVING total > 100
+    # ORDER BY total
+    # '''
+    # execute_query(query)
+
     # TODO: 12. LEFT JOIN
     # Write a query to get all customers and their corresponding orders (if any) by using a left join between `customers` and `orders`.
+
+#     query = '''
+#     SELECT customers.first_name, customers.last_name, GROUP_CONCAT(orders.id) AS order_ids
+# FROM customers
+# LEFT JOIN orders ON customers.id = orders.customer_id
+# GROUP BY customers.first_name, customers.last_name
+#     '''
+#     execute_query(query)
 
     # TODO: 13. GROUP BY Clause
     # Write a query to calculate the total quantity of each product ordered, grouping by `product_id`.
 
+#     query = '''
+#     SELECT products.name, SUM(order_products.quantity) AS total_quantity_ordered
+# FROM products
+# LEFT JOIN order_products ON products.id = order_products.product_id
+# GROUP BY products.name
+#     '''
+#     execute_query(query)
+
     # TODO: 14. HAVING Clause
     # Write a query to find products that have been ordered more than 50 times, using the `HAVING` clause.
 
+#     query = '''
+#     SELECT products.name, SUM(order_products.quantity) AS total_quantity_ordered
+# FROM products
+# JOIN order_products ON products.id = order_products.product_id
+# GROUP BY products.name
+# HAVING SUM(order_products.quantity) > 10
+#     '''
+#     execute_query(query)
+
     # TODO: 15. Subquery in SELECT
     # Write a query to list all products along with the name of the customer who placed the largest order.
-
+    query = '''
+    WITH largest_order AS (
+    SELECT orders.id AS order_id, customers.first_name, customers.last_name, SUM(order_products.price * order_products.quantity) AS total_order_value
+    FROM orders
+    JOIN customers ON orders.customer_id = customers.id
+    JOIN order_products ON orders.id = order_products.order_id
+    JOIN products ON order_products.product_id = products.id
+    GROUP BY orders.id, customers.id
+    ORDER BY total_order_value DESC
+    LIMIT 1
+)
+SELECT products.name, largest_order.first_name, largest_order.last_name, largest_order.order_id
+FROM order_products
+JOIN products ON order_products.product_id = products.id
+JOIN largest_order ON order_products.order_id = largest_order.order_id
+ORDER BY products.name;
+    '''
+    execute_query(query)
     # TODO: 16. Subquery in WHERE
     # Write a query to find all orders that have products with a price greater than 100.
 
