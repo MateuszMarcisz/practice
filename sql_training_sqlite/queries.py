@@ -37,36 +37,100 @@ if __name__ == '__main__':
 
     # TODO: 1. Retrieve All Records from a Table
     # Write a query to fetch all records from the `products` table.
-    query = "SELECT * FROM products"
-    execute_query(query)
+
+    # query = "SELECT * FROM products"
+    # execute_query(query)
 
     # TODO: 2. Retrieve Specific Columns
     # Write a query to get only the `name` and `price` columns from the `products` table.
 
+#     query = '''
+#     SELECT name, price
+# FROM products
+#     '''
+#     execute_query(query)
 
     # TODO: 3. Filter Results with WHERE Clause
     # Write a query to find all products with a `price` greater than 50.
 
+#     query = '''
+#     SELECT name, price
+# FROM products
+# WHERE price > 50
+#     '''
+#     execute_query(query)
+
     # TODO: 4. Sorting Results
     # Write a query to get all products ordered by `price` in descending order.
+
+#     query = '''
+#     SELECT name, price
+# FROM products
+# ORDER BY price DESC
+#     '''
+#     execute_query(query)
 
     # TODO: 5. Use of AND/OR Operators
     # Write a query to find products with a `price` greater than 50 and a `stock_quantity` less than 100.
 
+#     query = '''
+#     SELECT name, price, stock_quantity
+# FROM products
+# WHERE price > 50 and stock_quantity < 100
+#     '''
+#     execute_query(query)
+
     # TODO: 6. COUNT Function
     # Write a query to count how many products are available in the `products` table.
+
+#     query = '''
+#     SELECT COUNT(*)
+# FROM products
+# WHERE stock_quantity > 0
+#     '''
+#     execute_query(query)
 
     # TODO: 7. DISTINCT Keyword
     # Write a query to get a list of unique product prices from the `products` table.
 
+#     query = '''
+#     SELECT DISTINCT price
+# FROM products
+#     '''
+#     execute_query(query)
+
     # TODO: 8. LIKE Operator
     # Write a query to search for products whose names start with the letter 'A'.
+
+#     query = '''
+# SELECT name
+# FROM products
+# WHERE name LIKE 'A%'
+#     '''
+#     execute_query(query)
 
     # TODO: 9. LIMIT and OFFSET
     # Write a query to retrieve the first 5 products from the `products` table.
 
+#     query = '''
+#     SELECT name
+# FROM products
+# ORDER BY id
+# LIMIT 5
+#     '''
+#     execute_query(query)
+
+
     # TODO: 10. JOIN Two Tables
     # Write a query to get the names of products along with their corresponding order details, by joining the `products` and `order_products` tables.
+
+    query = '''
+    SELECT name, order_products.*
+FROM products
+LEFT JOIN order_products
+ON products.id = order_products.product_id
+    '''
+    execute_query(query)
 
     # TODO: 11. INNER JOIN with Multiple Conditions
     # Write a query to get a list of products ordered by a customer, where the order total exceeds 100.
