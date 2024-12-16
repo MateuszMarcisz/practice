@@ -185,38 +185,76 @@ if __name__ == '__main__':
 
     # TODO: 15. Subquery in SELECT
     # Write a query to list all products along with the name of the customer who placed the largest order.
-    query = '''
-    WITH largest_order AS (
-    SELECT orders.id AS order_id, customers.first_name, customers.last_name, SUM(order_products.price * order_products.quantity) AS total_order_value
-    FROM orders
-    JOIN customers ON orders.customer_id = customers.id
-    JOIN order_products ON orders.id = order_products.order_id
-    JOIN products ON order_products.product_id = products.id
-    GROUP BY orders.id, customers.id
-    ORDER BY total_order_value DESC
-    LIMIT 1
-)
-SELECT products.name, largest_order.first_name, largest_order.last_name, largest_order.order_id
-FROM order_products
-JOIN products ON order_products.product_id = products.id
-JOIN largest_order ON order_products.order_id = largest_order.order_id
-ORDER BY products.name;
-    '''
-    execute_query(query)
+#     query = '''
+#     WITH largest_order AS (
+#     SELECT orders.id AS order_id, customers.first_name, customers.last_name, SUM(order_products.price * order_products.quantity) AS total_order_value
+#     FROM orders
+#     JOIN customers ON orders.customer_id = customers.id
+#     JOIN order_products ON orders.id = order_products.order_id
+#     JOIN products ON order_products.product_id = products.id
+#     GROUP BY orders.id, customers.id
+#     ORDER BY total_order_value DESC
+#     LIMIT 1
+# )
+# SELECT products.name, largest_order.first_name, largest_order.last_name, largest_order.order_id
+# FROM order_products
+# JOIN products ON order_products.product_id = products.id
+# JOIN largest_order ON order_products.order_id = largest_order.order_id
+# ORDER BY products.name;
+#     '''
+#     execute_query(query)
     # TODO: 16. Subquery in WHERE
     # Write a query to find all orders that have products with a price greater than 100.
+
+#     query = '''
+#     SELECT DISTINCT orders.id
+# FROM orders
+# JOIN order_products ON orders.id = order_products.order_id
+# WHERE order_products.price > 100
+#     '''
+#     execute_query()
 
     # TODO: 17. UPDATE Records
     # Write a query to update the `price` of a product with a specific `id` to 35.99.
 
+#     query = '''
+#     UPDATE products
+# SET price = 35.99
+# WHERE id = 2
+#     '''
+#     execute_query(query)
+
     # TODO: 18. DELETE Records
     # Write a query to delete a product with a specific `id` from the `products` table.
+
+#     query = '''
+#     DELETE FROM products
+# WHERE id = 666
+#     '''
+#     execute_query(query)
 
     # TODO: 19. INSERT Multiple Records
     # Write a query to insert multiple products into the `products` table in a single query.
 
+    # query = '''
+    # INSERT INTO products(name, description, price, stock_quantity)
+    # VALUES ('pump', 'best pump ever', 666, 42),
+    #        ('hehe', 'very funny', 6.9, 420)
+    # '''
+    # execute_query(query)
+
     # TODO: 20. Complex Query with JOIN, GROUP BY, and HAVING
     # Write a query to find the total number of products ordered by each customer, but only show customers who have ordered more than 5 products in total.
+
+#     query = '''
+# SELECT customers.first_name, customers.last_name, SUM(op.quantity) as number_of_products_ordered
+# FROM customers
+# JOIN orders ON customers.id = orders.customer_id
+# JOIN order_products AS op ON orders.id = op.order_id
+# GROUP BY customers.first_name, customers.last_name
+# HAVING number_of_products_ordered > 5
+#     '''
+#     execute_query(query)
 
     # TODO: 21. Bonus - Find the Most Expensive Product
     # Write a query to find the most expensive product in the `products` table.
