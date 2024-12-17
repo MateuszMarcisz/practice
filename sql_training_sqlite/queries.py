@@ -280,17 +280,91 @@ if __name__ == '__main__':
     # TODO: 23. Bonus - Create a View for Order Details
     # Create a view to show the `order_id`, `product_name`, and `quantity` for each product in an order.
 
-    query = '''
-    CREATE VIEW order_info AS
-SELECT order_id, quantity, p.name
-FROM order_products
-JOIN products AS p ON order_products.product_id = p.id
-    '''
-    execute_query(query)
+#     query = '''
+#     CREATE VIEW order_info AS
+# SELECT order_id, quantity, p.name
+# FROM order_products
+# JOIN products AS p ON order_products.product_id = p.id
+#     '''
+#     execute_query(query)
 
     # TODO: 24. Bonus - Find Products That Have Not Been Ordered Yet
     # Write a query to find all products that have not been ordered yet.
 
+#     query = '''
+#     SELECT name
+# FROM products
+# LEFT JOIN order_products AS op ON products.id = op.product_id
+# WHERE op.quantity IS NULL
+#     '''
+#     execute_query(query)
+
+    # this might be more efficient in big db:
+#     query = '''
+#     SELECT name
+# FROM products p
+# WHERE NOT EXISTS (
+#     SELECT 1
+#     FROM order_products op
+#     WHERE op.product_id = p.id
+# );
+#     '''
+
     # TODO: 25. Bonus - Find Customers Who Ordered More Than Once
     # Write a query to list customers who have ordered products more than once.
+
+    # query = '''
+    # SELECT first_name, last_name, COUNT(o.id) AS number_of_orders
+    # FROM customers
+    # JOIN orders o ON customers.id = o.customer_id
+    # GROUP BY first_name, last_name
+    # HAVING number_of_orders > 1
+    # '''
+    # execute_query(query)
+
+    # TODO: 26. INNER JOIN with Multiple Tables
+    # Write a query to get the names of customers who have ordered products with a price greater than 500.
+
+    # TODO: 27. LEFT JOIN with Condition
+    # Write a query to get all products and their corresponding warehouse quantities, including products that are not in the warehouse.
+
+    # TODO: 28. JOIN with Aggregate Function
+    # Write a query to find the total quantity of products ordered by each customer.
+
+    # TODO: 29. JOIN with HAVING Clause
+    # Write a query to find customers who have ordered more than 10 products in total.
+
+    # TODO: 30. RIGHT JOIN with Condition
+    # Write a query to get all customers and the total amount they have spent on products, including those who have not made any orders.
+
+    # TODO: 31. JOIN with Subquery
+    # Write a query to find products that have been ordered by more than 5 different customers.
+
+    # TODO: 32. Self JOIN
+    # Write a query to find employees who have the same manager as another employee.
+
+    # TODO: 33. FULL OUTER JOIN (Simulated with UNION)
+    # Write a query to find all products and their orders, including products with no orders and orders with no products.
+
+    # TODO: 34. INNER JOIN with Multiple Conditions
+    # Write a query to get customers who have ordered products from a specific category and have spent more than $100.
+
+    # TODO: 35. Cross Join
+    # Write a query to get a list of all possible combinations of customers and products.
+
+    # TODO: 36. JOIN with DISTINCT
+    # Write a query to find distinct customers who have ordered products from multiple categories.
+
+    # TODO: 37. JOIN with LIKE Condition
+    # Write a query to find customers whose names start with a specific letter and have ordered products from a specific category.
+
+    # TODO: 38. JOIN with IS NULL
+    # Write a query to find products that have never been ordered.
+
+    # TODO: 39. JOIN with Date Condition
+    # Write a query to find orders that were placed within the last 30 days.
+
+    # TODO: 40. JOIN with EXISTS
+    # Write a query to find products that have been ordered by customers who live in a specific city.
+
 
