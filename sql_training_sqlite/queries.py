@@ -259,11 +259,34 @@ if __name__ == '__main__':
     # TODO: 21. Bonus - Find the Most Expensive Product
     # Write a query to find the most expensive product in the `products` table.
 
+#     query = '''
+#     SELECT *
+# FROM products
+# WHERE price = (SELECT MAX(price) FROM products)
+#     '''
+#     execute_query(query)
+
     # TODO: 22. Bonus - Find All Orders for a Specific Customer
     # Write a query to find all orders made by a specific customer, ordered by order date.
 
+#     query = '''
+#     SELECT *
+# FROM orders
+# WHERE customer_id = 7
+# ORDER BY order_date
+#     '''
+#     execute_query(query)
+
     # TODO: 23. Bonus - Create a View for Order Details
     # Create a view to show the `order_id`, `product_name`, and `quantity` for each product in an order.
+
+    query = '''
+    CREATE VIEW order_info AS
+SELECT order_id, quantity, p.name
+FROM order_products
+JOIN products AS p ON order_products.product_id = p.id
+    '''
+    execute_query(query)
 
     # TODO: 24. Bonus - Find Products That Have Not Been Ordered Yet
     # Write a query to find all products that have not been ordered yet.
