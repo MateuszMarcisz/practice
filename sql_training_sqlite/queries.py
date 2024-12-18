@@ -325,17 +325,62 @@ if __name__ == '__main__':
     # TODO: 26. INNER JOIN with Multiple Tables
     # Write a query to get the names of customers who have ordered products with a price greater than 500.
 
+#     query = '''
+#     SELECT DISTINCT first_name, last_name
+# FROM customers
+# JOIN orders ON customers.id = orders.customer_id
+# JOIN order_products AS op ON orders.id = op.order_id
+# WHERE op.price > 500
+#     '''
+#     execute_query(query)
+
     # TODO: 27. LEFT JOIN with Condition
     # Write a query to get all products and their corresponding warehouse quantities, including products that are not in the warehouse.
+
+#     query = '''
+#     SELECT name, COALESCE(warehouse.quantity, 0) as quantity
+# FROM products
+# LEFT JOIN warehouse ON products.id = warehouse.product_id
+#     '''
+#     execute_query(query)
 
     # TODO: 28. JOIN with Aggregate Function
     # Write a query to find the total quantity of products ordered by each customer.
 
+    # query = '''
+    # SELECT c.first_name, c.last_name, SUM(COALESCE(op.quantity, 0)) AS total_quantity_of_products
+    # FROM customers AS c
+    # LEFT JOIN orders AS o ON c.id = o.customer_id
+    # LEFT JOIN order_products AS op ON o.id = op.order_id
+    # GROUP BY c.id, first_name, last_name
+    # '''
+    # execute_query(query)
+
     # TODO: 29. JOIN with HAVING Clause
     # Write a query to find customers who have ordered more than 10 products in total.
 
+    # query = '''
+    # SELECT c.first_name, c.last_name, SUM(COALESCE(op.quantity, 0)) AS total_quantity_of_products
+    # FROM customers AS c
+    # LEFT JOIN orders AS o ON c.id = o.customer_id
+    # LEFT JOIN order_products AS op ON o.id = op.order_id
+    # GROUP BY c.id, first_name, last_name
+    # HAVING SUM(COALESCE(op.quantity, 0)) > 10
+    # '''
+    # execute_query(query)
+
+
     # TODO: 30. RIGHT JOIN with Condition
     # Write a query to get all customers and the total amount they have spent on products, including those who have not made any orders.
+
+    # query = '''
+    # SELECT c.first_name, c.last_name, COALESCE(SUM(op.quantity * op.price), 0) AS total
+    # FROM customers c
+    # LEFT JOIN orders o ON c.id = o.customer_id
+    # LEFT JOIN order_products op ON o.id = op.order_id
+    # GROUP BY c.id, c.first_name, c.last_name
+    # '''
+    # execute_query(query)
 
     # TODO: 31. JOIN with Subquery
     # Write a query to find products that have been ordered by more than 5 different customers.
