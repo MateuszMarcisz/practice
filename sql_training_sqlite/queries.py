@@ -385,17 +385,75 @@ if __name__ == '__main__':
     # TODO: 31. JOIN with Subquery
     # Write a query to find products that have been ordered by more than 5 different customers.
 
+    # querry = '''
+    # SELECT name, COUNT(DISTINCT o.customer_id) AS number_of_clients_that_ordered
+    # FROM products p
+    # JOIN order_products op ON p.id = op.product_id
+    # JOIN orders o ON op.order_id = o.id
+    # GROUP BY p.id
+    # HAVING COUNT(DISTINCT o.customer_id) > 5
+    # '''
+    # execute_query(querry)
+
     # TODO: 32. Self JOIN
-    # Write a query to find employees who have the same manager as another employee.
+    # Find all customers who have ordered the same product.
+
+    # query = '''
+    # SELECT DISTINCT o.customer_id, p.name AS product_name
+    # FROM orders o
+    # JOIN order_products op ON o.id = op.order_id
+    # JOIN products p ON op.product_id = p.id
+    # WHERE op.product_id IN (
+    #     SELECT op.product_id
+    #     FROM order_products op
+    #     JOIN orders o ON op.order_id = o.id
+    #     GROUP BY op.product_id
+    #     HAVING COUNT(DISTINCT o.customer_id) > 1
+    # )
+    # ORDER BY o.customer_id;
+    # '''
+    # execute_query(query)
 
     # TODO: 33. FULL OUTER JOIN (Simulated with UNION)
     # Write a query to find all products and their orders, including products with no orders and orders with no products.
 
+    # query = '''
+    # SELECT p.name, op.order_id
+    # FROM products p
+    # LEFT JOIN order_products op ON p.id = op.product_id
+    # UNION
+    # SELECT p.name, op.order_id
+    # FROM order_products op
+    # LEFT JOIN products p ON op.product_id = p.id
+    # ORDER BY name
+    # '''
+    # execute_query(query)
+
     # TODO: 34. INNER JOIN with Multiple Conditions
     # Write a query to get customers who have ordered products from a specific category and have spent more than $100.
 
+    # query = '''
+    # SELECT c.first_name, c.last_name,
+    #    SUM(op.price * op.quantity) AS total_per_order,
+    #    COUNT(DISTINCT op.product_id) AS unique_items
+    # FROM customers c
+    # JOIN orders o ON c.id = o.customer_id
+    # JOIN order_products op ON o.id = op.order_id
+    # GROUP BY c.id, c.first_name, c.last_name, op.order_id
+    # HAVING SUM(op.price * op.quantity) > 1000 AND COUNT(DISTINCT op.product_id) > 1
+    # '''
+    # execute_query(query)
+
     # TODO: 35. Cross Join
     # Write a query to get a list of all possible combinations of customers and products.
+
+    # what is the point of this bs
+    # query = '''
+    # SELECT c.id AS customer_id, c.first_name, c.last_name, p.name AS product_name
+    # FROM customers c
+    # CROSS JOIN products p;
+    # '''
+    # execute_query(query)
 
     # TODO: 36. JOIN with DISTINCT
     # Write a query to find distinct customers who have ordered products from multiple categories.
