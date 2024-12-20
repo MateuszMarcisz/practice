@@ -456,7 +456,16 @@ if __name__ == '__main__':
     # execute_query(query)
 
     # TODO: 36. JOIN with DISTINCT
-    # Write a query to find distinct customers who have ordered products from multiple categories.
+    # Write a query that will fetch all the location with mulitple of items assigned to them
+
+    # query = '''
+    # SELECT l.name, COUNT(DISTINCT w.product_id) AS number_of_stored_items
+    # FROM locations l
+    # JOIN warehouse w on l.id = w.location_id
+    # GROUP BY l.name
+    # HAVING COUNT(DISTINCT w.product_id) > 1
+    # '''
+    # execute_query(query)
 
     # TODO: 37. JOIN with LIKE Condition
     # Write a query to find customers whose names start with a specific letter and have ordered products from a specific category.
@@ -464,10 +473,33 @@ if __name__ == '__main__':
     # TODO: 38. JOIN with IS NULL
     # Write a query to find products that have never been ordered.
 
+    # query = '''
+    # SELECT p.name
+    # FROM products p
+    # LEFT JOIN order_products op ON p.id = op.product_id
+    # WHERE op.product_id IS NULL
+    # '''
+    # execute_query(query)
+    #
     # TODO: 39. JOIN with Date Condition
     # Write a query to find orders that were placed within the last 30 days.
 
+    # query = '''
+    # SELECT id, order_date
+    # FROM orders
+    # WHERE order_date >= DATE('now', '-30 days')
+    # '''
+    # execute_query(query)
+
     # TODO: 40. JOIN with EXISTS
-    # Write a query to find products that have been ordered by customers who live in a specific city.
+    # Write a query to find products that have been ordered by customers with specific name.
 
-
+    # query = '''
+    # SELECT p.name, c.first_name, c.last_name
+    # FROM products p
+    # JOIN main.order_products op on p.id = op.product_id
+    # JOIN orders ON op.order_id = orders.id
+    # JOIN customers c ON orders.customer_id = c.id
+    # WHERE c.first_name = 'Charles'
+    # '''
+    # execute_query(query)
