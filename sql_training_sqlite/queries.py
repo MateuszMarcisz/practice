@@ -503,3 +503,45 @@ if __name__ == '__main__':
     # WHERE c.first_name = 'Charles'
     # '''
     # execute_query(query)
+
+    # TODO 41: Write a Python script to calculate the average price of all products in the `products` table.
+    # TODO 42: Find the top 5 most expensive products along with their descriptions using a Python query.
+    # TODO 43: Perform an INNER JOIN between `products` and `warehouse` to get the total quantity of each product.
+    # TODO 44: Write a query to find the total stock quantity of each product, grouped by location.
+    # TODO 45: Perform a LEFT JOIN to find products that are not stored in any warehouse location.
+    # TODO 46: Perform a RIGHT JOIN (simulated using LEFT JOIN) to find all locations that have no products.
+    # TODO 47: Create a function that accepts a product ID and returns its details, location, and stock using Python and JOINs.
+    # TODO 48: Use a CROSS JOIN between `products` and `locations` to generate every possible product-location combination.
+    # TODO 49: Write a query to find orders that contain more than 3 unique products.
+    # TODO 50: Write a Python function to update the stock of a product in the `warehouse` table based on order fulfillment.
+    # TODO 51: Perform a query to find customers who have placed orders but have not purchased a specific product.
+    # TODO 52: Use a FULL OUTER JOIN (simulated using UNION) to find all products and their warehouse locations, including mismatches.
+    # TODO 53: Write a query to calculate the total revenue generated from all orders using `order_products`.
+    # TODO 54: Find the most frequently ordered product and the total number of times it has been ordered.
+    # TODO 55: Perform a JOIN query to get customer details along with their order status.
+    # TODO 56: Write a script to find customers who haven’t placed any orders (use a LEFT JOIN).
+    # TODO 57: Write a query to find products that appear in more than 10 different orders.
+    # TODO 58: Create a function that returns the 3 most recent orders for a given customer.
+    # TODO 59: Perform a JOIN query to find all products in the `products` table that are priced above the average price.
+    # TODO 60: Write a query to identify customers who have placed orders containing products from multiple categories (if categories exist or can be derived from data).
+    # TODO 61: Write a Python script to delete all products from the database with a stock quantity of zero.
+    # TODO 62: Perform a query to get the names of customers who placed orders on the same day as a specific customer.
+    # TODO 63: Write a Python script to find the total quantity of all products stored in warehouses and compare it to the `products` table stock quantity.
+    # TODO 64: Perform a JOIN query to find orders containing products that are out of stock in the `warehouse` table.
+    # TODO 65: Write a query to find the total number of products stored at each location.
+    # TODO 66: Create a function that returns order details, including customer name and product names, for a given order ID.
+    # TODO 67: Perform a query to get the customer who has spent the most money on orders.
+    # TODO 68: Write a script to find and delete duplicate customer entries based on email addresses.
+    # TODO 69: Perform a JOIN query to find orders that contain products with a specific word in their description.
+    # TODO 70: Write a query to calculate the total quantity and value of products sold for each product ID.
+    # TODO 71: Use a nested query to find the customer who placed the most orders in the past 30 days.
+    # TODO 72: Write a script to automatically restock products in the warehouse with a stock quantity below a threshold.
+    # TODO 73: Perform a query to find the customer who has ordered the largest variety of products.
+    # TODO 74: Write a query to find orders containing products priced significantly higher than their average price.
+    # TODO 75: Create a function to calculate and return the reorder rate for a specific product (times it has been ordered vs. total stock).
+    # TODO 76: Perform a JOIN query to find orders with quantities exceeding the available stock at the time of order.
+    # TODO 77: Write a query to calculate the revenue generated per customer and rank them by revenue.
+    # TODO 78: Write a Python script to export the `orders` and `order_products` data as a CSV file, including JOINed details.
+    # TODO 79: Perform a query to find customers who have placed orders with both `Delivered` and `Processing` statuses.
+    # TODO 80: Write a Python script to detect and resolve foreign key constraint violations between `orders` and `customers`.
+
