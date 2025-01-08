@@ -552,10 +552,58 @@ if __name__ == '__main__':
 #     execute_query(query)
 
     # TODO 46: Perform a RIGHT JOIN (simulated using LEFT JOIN) to find all locations that have no products.
-    # TODO 47: Create a function that accepts a product ID and returns its details, location, and stock using Python and JOINs.
+
+    # query = '''
+    # SELECT l.name
+    # FROM locations l
+    # LEFT JOIN warehouse w ON l.id = w.location_id
+    # WHERE w.product_id IS NULL
+    # '''
+    # execute_query(query)
+
+    # TODO 47: fetch product's (id 6) name, desc,, price, location's name, and quantity.
+
+    # query = '''SELECT p.name, p.description, p.price, w.quantity, l.name
+    # FROM products p
+    # JOIN warehouse w ON p.id = w.product_id
+    # JOIN locations l ON w.location_id = l.id
+    # WHERE p.id = 6'''
+    # execute_query(query)
+
+
     # TODO 48: Use a CROSS JOIN between `products` and `locations` to generate every possible product-location combination.
+
+    # query = '''
+    # SELECT p.name, l.name AS location_name
+    # FROM products p
+    # CROSS JOIN locations l
+    # '''
+    # execute_query(query)
+
+
     # TODO 49: Write a query to find orders that contain more than 3 unique products.
+
+    # query = '''
+    # SELECT o.id,
+    #    COUNT(DISTINCT op.product_id) AS number_of_unique_products,
+    #    GROUP_CONCAT(DISTINCT p.name) AS producs
+    # FROM orders o
+    # JOIN order_products op ON o.id = op.order_id
+    # JOIN products p ON op.product_id = p.id
+    # GROUP BY o.id
+    # HAVING COUNT(DISTINCT op.product_id) > 3
+    # '''
+    # execute_query(query)
+
     # TODO 50: Write a Python function to update the stock of a product in the `warehouse` table based on order fulfillment.
+
+    # query = '''
+    # UPDATE warehouse
+    # SET quantity = quantity + 2
+    # WHERE product_id = 1 and location_id = 82
+    # '''
+    # execute_query(query)
+
     # TODO 51: Perform a query to find customers who have placed orders but have not purchased a specific product.
     # TODO 52: Use a FULL OUTER JOIN (simulated using UNION) to find all products and their warehouse locations, including mismatches.
     # TODO 53: Write a query to calculate the total revenue generated from all orders using `order_products`.
