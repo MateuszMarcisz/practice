@@ -505,10 +505,52 @@ if __name__ == '__main__':
     # execute_query(query)
 
     # TODO 41: Write a Python script to calculate the average price of all products in the `products` table.
+
+    # query = '''
+    # SELECT AVG(price) AS average_price
+    # FROM products
+    # '''
+    # execute_query(query)
+
     # TODO 42: Find the top 5 most expensive products along with their descriptions using a Python query.
+
+    # query = '''
+    # SELECT *
+    # FROM products
+    # ORDER BY price DESC
+    # LIMIT 5
+    # '''
+    # execute_query(query)
+
     # TODO 43: Perform an INNER JOIN between `products` and `warehouse` to get the total quantity of each product.
+
+#     query = '''
+#     SELECT p.name, w.quantity
+# FROM products p
+# JOIN warehouse w ON p.id = w.product_id
+#     '''
+#     execute_query(query)
+
     # TODO 44: Write a query to find the total stock quantity of each product, grouped by location.
+
+#     query = '''
+#     SELECT p.name, w.location_id, SUM(w.quantity) AS total_quantity
+# FROM products p
+# JOIN warehouse w ON p.id = w.product_id
+# GROUP BY p.name, w.location_id
+#     '''
+#     execute_query(query)
+
     # TODO 45: Perform a LEFT JOIN to find products that are not stored in any warehouse location.
+
+#     query = '''
+#     SELECT p.name, w.location_id
+# FROM products p
+# LEFT JOIN warehouse w ON p.id = w.product_id
+# WHERE w.location_id IS NULL
+#     '''
+#     execute_query(query)
+
     # TODO 46: Perform a RIGHT JOIN (simulated using LEFT JOIN) to find all locations that have no products.
     # TODO 47: Create a function that accepts a product ID and returns its details, location, and stock using Python and JOINs.
     # TODO 48: Use a CROSS JOIN between `products` and `locations` to generate every possible product-location combination.
