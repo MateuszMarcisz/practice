@@ -595,7 +595,7 @@ if __name__ == '__main__':
     # '''
     # execute_query(query)
 
-    # TODO 50: Write a Python function to update the stock of a product in the `warehouse` table based on order fulfillment.
+    # TODO 50: update the stock of a product in the `warehouse` table
 
     # query = '''
     # UPDATE warehouse
@@ -605,10 +605,76 @@ if __name__ == '__main__':
     # execute_query(query)
 
     # TODO 51: Perform a query to find customers who have placed orders but have not purchased a specific product.
+
+#     query = '''
+#     SELECT c.first_name, c.last_name, GROUP_CONCAT(DISTINCT op.product_id)
+# FROM customers c
+# JOIN orders o ON c.id = o.customer_id
+# JOIN order_products op ON o.id = op.order_id
+# WHERE c.id NOT IN (
+#     SELECT DISTINCT o.customer_id
+#     FROM orders o
+#     JOIN order_products op ON o.id = op.order_id
+#     WHERE op.product_id = 1
+#     )
+# GROUP BY c.id
+#     '''
+#     execute_query(query)
+
+
     # TODO 52: Use a FULL OUTER JOIN (simulated using UNION) to find all products and their warehouse locations, including mismatches.
+
+    # query = '''
+    # SELECT p.name, l.name
+    # FROM products p
+    # LEFT JOIN warehouse w ON p.id = w.product_id
+    # LEFT JOIN main.locations l on w.location_id = l.id
+    # UNION
+    # SELECT p.name, l.name
+    # FROM locations l
+    # LEFT JOIN warehouse w ON l.id = w.location_id
+    # LEFT JOIN products p ON w.product_id = p.id
+    # '''
+    # execute_query(query)
+
+
+
     # TODO 53: Write a query to calculate the total revenue generated from all orders using `order_products`.
+
+    # query = '''
+    # SELECT SUM(op.quantity * op.price) AS revenue
+    # FROM order_products op
+    # '''
+    # execute_query(query)
+
     # TODO 54: Find the most frequently ordered product and the total number of times it has been ordered.
+
+#     query = '''
+#     WITH product_counting AS (
+#     SELECT p.name, COUNT(op.product_id) AS order_count
+# FROM products p
+# JOIN order_products op ON p.id = op.product_id
+# GROUP BY op.product_id
+# )
+#
+# SELECT name, order_count
+# FROM product_counting
+# WHERE order_count = (
+#     SELECT MAX(order_count)
+#     FROM product_counting
+#     )
+#     '''
+#     execute_query(query)
+
     # TODO 55: Perform a JOIN query to get customer details along with their order status.
+
+    # query = '''
+    # SELECT c.first_name, c.last_name, o.id, o.status
+    # FROM customers c
+    # JOIN orders o ON c.id = o.customer_id
+    # '''
+    # execute_query(query)
+
     # TODO 56: Write a script to find customers who haven’t placed any orders (use a LEFT JOIN).
     # TODO 57: Write a query to find products that appear in more than 10 different orders.
     # TODO 58: Create a function that returns the 3 most recent orders for a given customer.
