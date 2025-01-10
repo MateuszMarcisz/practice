@@ -696,27 +696,56 @@ if __name__ == '__main__':
     # '''
     # execute_query(query)
 
-    # TODO 58: Create a function that returns the 3 most recent orders for a given customer.
-    # TODO 59: Perform a JOIN query to find all products in the `products` table that are priced above the average price.
-    # TODO 60: Write a query to identify customers who have placed orders containing products from multiple categories (if categories exist or can be derived from data).
-    # TODO 61: Write a Python script to delete all products from the database with a stock quantity of zero.
-    # TODO 62: Perform a query to get the names of customers who placed orders on the same day as a specific customer.
-    # TODO 63: Write a Python script to find the total quantity of all products stored in warehouses and compare it to the `products` table stock quantity.
-    # TODO 64: Perform a JOIN query to find orders containing products that are out of stock in the `warehouse` table.
-    # TODO 65: Write a query to find the total number of products stored at each location.
-    # TODO 66: Create a function that returns order details, including customer name and product names, for a given order ID.
-    # TODO 67: Perform a query to get the customer who has spent the most money on orders.
-    # TODO 68: Write a script to find and delete duplicate customer entries based on email addresses.
-    # TODO 69: Perform a JOIN query to find orders that contain products with a specific word in their description.
-    # TODO 70: Write a query to calculate the total quantity and value of products sold for each product ID.
-    # TODO 71: Use a nested query to find the customer who placed the most orders in the past 30 days.
-    # TODO 72: Write a script to automatically restock products in the warehouse with a stock quantity below a threshold.
-    # TODO 73: Perform a query to find the customer who has ordered the largest variety of products.
-    # TODO 74: Write a query to find orders containing products priced significantly higher than their average price.
-    # TODO 75: Create a function to calculate and return the reorder rate for a specific product (times it has been ordered vs. total stock).
-    # TODO 76: Perform a JOIN query to find orders with quantities exceeding the available stock at the time of order.
-    # TODO 77: Write a query to calculate the revenue generated per customer and rank them by revenue.
-    # TODO 78: Write a Python script to export the `orders` and `order_products` data as a CSV file, including JOINed details.
-    # TODO 79: Perform a query to find customers who have placed orders with both `Delivered` and `Processing` statuses.
-    # TODO 80: Write a Python script to detect and resolve foreign key constraint violations between `orders` and `customers`.
+# TODO 58: Write a query using a CTE to calculate the total stock quantity for each product and filter only the products with a total stock greater than 100.
 
+# TODO 59: Use a CTE to find the average price of all products and list products that are above the average price.
+
+# TODO 60: Use a CTE to rank products by total quantity in the warehouse and fetch the top 5 products by rank.
+
+# TODO 61: Create a query that calculates the total revenue per customer using a CTE, then filter only customers who have generated more than $500 in revenue.
+
+# TODO 62: Write a query using a window function to calculate the cumulative quantity of products in the warehouse table, ordered by product_id.
+
+# TODO 63: Use a window function to calculate the running total of revenue for each product in the order_products table.
+
+# TODO 64: Use a window function to assign a rank to customers based on the number of orders they have placed.
+
+# TODO 65: Use a query with both CTEs and window functions to find the top 3 customers based on revenue generated, along with their rank.
+
+# TODO 66: Transform the order_products table by calculating the average quantity ordered per product and filter products with an average greater than 2 using a CTE.
+
+# TODO 67: Use a CTE to fetch all products along with the percentage contribution of their quantity to the total stock in the warehouse.
+
+# TODO 68: Use a window function to calculate the difference between the highest and lowest prices of a product ordered in the order_products table.
+
+# TODO 69: Write a query using a CTE to group orders by status and calculate the total number of orders for each status.
+
+# TODO 70: Use a query with a window function to calculate the lag of revenue per order, showing the difference in revenue between consecutive orders.
+
+# TODO 71: Write a query to generate a ranking of products based on the frequency of orders, using a window function.
+
+# TODO 72: Transform the warehouse table by calculating the ratio of the stock quantity at each location to the total stock of the respective product.
+
+# TODO 73: Use a CTE to normalize product prices by subtracting the average price from each product's price.
+
+# TODO 74: Write a query using a window function to calculate the percentage of total revenue contributed by each order.
+
+# TODO 75: Use a CTE to fetch products and their respective revenue per product, filtering products with revenue above the 75th percentile.
+
+# TODO 76: Write a query using a window function to calculate the rank of products based on their average price in descending order.
+
+# TODO 77: Use a CTE to find the products whose price is above the median price of all products.
+
+# TODO 78: Write a query using a window function to partition the data by location_id and calculate the total quantity of products per location.
+
+# TODO 79: Use a CTE to create a summary table of customers, including their total orders, total revenue, and the average revenue per order.
+
+# TODO 80: Write a query using a CTE and a window function to calculate the difference between a product's price and the average price of all products in the same warehouse location.
+
+# TODO 81: Combine a CTE with window functions to create a report showing each customer’s total revenue, average order value, and their rank based on revenue.
+
+# TODO 82: Write a query to transform the order_products table by calculating the z-score (standard score) for each product's price.
+
+# TODO 83: Use a CTE to split orders into "High Value" and "Low Value" groups based on whether their total revenue is above or below the average order value.
+
+# TODO 84: Write a query using a window function to assign a dense rank to warehouse locations based on the total stock they hold.
