@@ -676,7 +676,26 @@ if __name__ == '__main__':
     # execute_query(query)
 
     # TODO 56: Write a script to find customers who haven’t placed any orders (use a LEFT JOIN).
+
+    # query = '''
+    # SELECT c.first_name, c.last_name
+    # FROM customers c
+    # LEFT JOIN orders o ON c.id = o.customer_id
+    # WHERE o.id IS NULL
+    # '''
+    # execute_query(query)
+
     # TODO 57: Write a query to find products that appear in more than 10 different orders.
+
+    # query = '''
+    # SELECT p.name, COUNT(DISTINCT op.order_id) AS number_of_orders
+    # FROM products p
+    # JOIN order_products op ON p.id = op.product_id
+    # GROUP BY p.name
+    # HAVING COUNT(DISTINCT op.order_id) > 10
+    # '''
+    # execute_query(query)
+
     # TODO 58: Create a function that returns the 3 most recent orders for a given customer.
     # TODO 59: Perform a JOIN query to find all products in the `products` table that are priced above the average price.
     # TODO 60: Write a query to identify customers who have placed orders containing products from multiple categories (if categories exist or can be derived from data).
