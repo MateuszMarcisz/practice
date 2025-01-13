@@ -698,9 +698,46 @@ if __name__ == '__main__':
 
 # TODO 58: Write a query using a CTE to calculate the total stock quantity for each product and filter only the products with a total stock greater than 100.
 
+#     query = '''
+#     WITH product_stock AS (
+#     SELECT p.name, SUM(w.quantity) AS stock
+#     FROM products p
+#     JOIN warehouse w ON p.id = w.product_id
+#     GROUP BY p.name
+#     )
+# SELECT ps.name, ps.stock
+# FROM product_stock ps
+# WHERE stock > 100
+#     '''
+#     execute_query(query)
+
 # TODO 59: Use a CTE to find the average price of all products and list products that are above the average price.
 
+#     query = '''
+#     WITH products_average AS (
+#     SELECT AVG(price) AS avg_price
+#     FROM products
+# )
+# SELECT p.name, p.price
+# FROM products p
+# JOIN products_average pa ON p.price > pa.avg_price
+#     '''
+#     execute_query(query)
+
 # TODO 60: Use a CTE to rank products by total quantity in the warehouse and fetch the top 5 products by rank.
+
+#     query = '''
+#     WITH quantity_rank AS (
+#     SELECT p.name,
+#            p.stock_quantity AS quantity,
+#            RANK() OVER (ORDER BY p.stock_quantity) AS quantity_rank
+#     FROM products p
+# )
+# SELECT qr.name, qr.quantity, qr.quantity_rank
+# FROM quantity_rank qr
+# WHERE qr.quantity_rank <=5
+#     '''
+#     execute_query(query)
 
 # TODO 61: Create a query that calculates the total revenue per customer using a CTE, then filter only customers who have generated more than $500 in revenue.
 
