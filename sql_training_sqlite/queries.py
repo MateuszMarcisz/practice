@@ -809,9 +809,61 @@ if __name__ == '__main__':
 
 # TODO 65: Use a query with both CTEs and window functions to find the top 3 customers based on revenue generated, along with their rank.
 
+    # query = '''
+    # WITH revenue_per_customer AS (
+    # SELECT c.first_name,
+    #        c.last_name,
+    #        SUM(op.quantity * op.price) AS total
+    # FROM customers c
+    # JOIN orders o on c.id = o.customer_id
+    # JOIN order_products op on o.id = op.order_id
+    # GROUP BY c.first_name, c.last_name
+    # )
+    # SELECT first_name,
+    #        last_name,
+    #        total,
+    #        RANK() OVER (ORDER BY total DESC) AS rank
+    # FROM revenue_per_customer
+    # LIMIT 3
+    # '''
+    # execute_query(query)
+
 # TODO 66: Transform the order_products table by calculating the average quantity ordered per product and filter products with an average greater than 2 using a CTE.
 
+#     query = '''
+# WITH average_quantity AS (
+#     SELECT p.name,
+#            AVG(op.quantity) AS avg_quant_per_product
+#     FROM products p
+#     JOIN order_products op ON p.id = op.product_id
+#     GROUP BY p.id, p.name
+# )
+# SELECT *
+# FROM average_quantity aq
+# WHERE aq.avg_quant_per_product > 2
+#     '''
+#     execute_query(query)
+
 # TODO 67: Use a CTE to fetch all products along with the percentage contribution of their quantity to the total stock in the warehouse.
+
+    # query = '''
+    # WITH total_stock AS (
+    # SELECT SUM(quantity) AS total
+    # FROM warehouse
+    # ),
+    # product_stock AS (
+    # SELECT product_id,
+    #        SUM(quantity) AS product_quantity
+    # FROM warehouse
+    # GROUP BY product_id
+    # )
+    # SELECT ps.product_id,
+    #    ps.product_quantity,
+    #    ROUND((ps.product_quantity * 100.0) / ts.total, 2) AS percentage_contribution
+    # FROM product_stock ps
+    # CROSS JOIN total_stock ts
+    # '''
+    # execute_query(query)
 
 # TODO 68: Use a window function to calculate the difference between the highest and lowest prices of a product ordered in the order_products table.
 
