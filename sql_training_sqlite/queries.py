@@ -796,6 +796,17 @@ if __name__ == '__main__':
 
 # TODO 64: Use a window function to assign a rank to customers based on the number of orders they have placed.
 
+    #     query = '''
+    # SELECT c.first_name,
+    #    c.last_name,
+    #    COUNT(o.id) AS number_of_orders,
+    #    RANK() OVER (ORDER BY COUNT(o.id) DESC) AS rank
+    # FROM customers c
+    # LEFT JOIN orders o ON c.id = o.customer_id
+    # GROUP BY c.first_name, c.last_name
+    # '''
+    # execute_query(query)
+
 # TODO 65: Use a query with both CTEs and window functions to find the top 3 customers based on revenue generated, along with their rank.
 
 # TODO 66: Transform the order_products table by calculating the average quantity ordered per product and filter products with an average greater than 2 using a CTE.
