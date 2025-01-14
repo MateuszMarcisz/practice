@@ -741,9 +741,58 @@ if __name__ == '__main__':
 
 # TODO 61: Create a query that calculates the total revenue per customer using a CTE, then filter only customers who have generated more than $500 in revenue.
 
+    # query = '''
+    #     WITH total_per_customer AS (
+    #     SELECT
+    #         o.customer_id,
+    #         SUM(op.quantity * op.price) AS revenue_per_customer
+    #     FROM orders o
+    #     JOIN order_products op ON o.id = op.order_id
+    #     GROUP BY o.customer_id
+    #     )
+    #
+    #     SELECT
+    #         c.first_name,
+    #         c.last_name,
+    #         tpc.revenue_per_customer
+    #     FROM customers c
+    #     JOIN total_per_customer tpc ON c.id = tpc.customer_id
+    #     WHERE tpc.revenue_per_customer > 500
+    # '''
+    # execute_query(query)
+
 # TODO 62: Write a query using a window function to calculate the cumulative quantity of products in the warehouse table, ordered by product_id.
 
+    # query = '''
+    # SELECT p.name,
+    #    w.product_id,
+    #    w.quantity,
+    #    SUM(w.quantity) OVER (ORDER BY w.product_id) AS cumulative_quantity
+    # FROM warehouse w
+    # JOIN products p ON w.product_id = p.id
+    # '''
+    # execute_query(query)
+
 # TODO 63: Use a window function to calculate the running total of revenue for each product in the order_products table.
+
+#     query = '''
+#     WITH product_revenue AS (
+#     SELECT
+#         p.name,
+#         op.product_id,
+#         SUM(op.quantity * op.price) AS total_revenue
+#     FROM products p
+#     JOIN order_products op ON p.id = op.product_id
+#     GROUP BY p.name, op.product_id
+# )
+# SELECT
+#     pr.name,
+#     pr.product_id,
+#     pr.total_revenue,
+#     SUM(pr.total_revenue) OVER (ORDER BY pr.product_id) AS cumulative_revenue
+# FROM product_revenue pr
+#     '''
+#     execute_query(query)
 
 # TODO 64: Use a window function to assign a rank to customers based on the number of orders they have placed.
 
