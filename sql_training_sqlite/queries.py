@@ -1,4 +1,5 @@
 import sqlite3
+from idlelib import query
 
 
 def execute_query(query, params=None):
@@ -866,10 +867,48 @@ if __name__ == '__main__':
     # execute_query(query)
 
 # TODO 68: Use a window function to calculate the difference between the highest and lowest prices of a product ordered in the order_products table.
+#
+#     query '''
+# WITH product_price_range AS (
+#     SELECT
+#         product_id,
+#         MIN(price) OVER (PARTITION BY product_id) AS min_price,
+#         MAX(price) OVER (PARTITION BY product_id) AS max_price
+#     FROM order_products
+# )
+# SELECT
+#     product_id,
+#     max_price - min_price AS price_range
+# FROM product_price_range
+# GROUP BY product_id
+#     '''
+#     execute_query(query)
 
 # TODO 69: Write a query using a CTE to group orders by status and calculate the total number of orders for each status.
+#
+#     query = '''
+#     SELECT status,
+#        GROUP_CONCAT(DISTINCT id) AS ids,
+#        COUNT(id) AS number_of_orders
+# FROM orders
+# GROUP BY status
+#     '''
+#     execute_query(query)
 
 # TODO 70: Use a query with a window function to calculate the lag of revenue per order, showing the difference in revenue between consecutive orders.
+
+#     query = '''
+#     SELECT
+#     o.id AS order_id,
+#     SUM(op.quantity * op.price) AS order_revenue,
+#     LAG(SUM(op.quantity * op.price)) OVER (ORDER BY o.id) AS previous_revenue,
+#     SUM(op.quantity * op.price) - LAG(SUM(op.quantity * op.price)) OVER (ORDER BY o.id) AS revenue_difference
+# FROM orders o
+# JOIN order_products op ON o.id = op.order_id
+# GROUP BY o.id
+# ORDER BY o.id
+#     '''
+#     execute_query(query)
 
 # TODO 71: Write a query to generate a ranking of products based on the frequency of orders, using a window function.
 
