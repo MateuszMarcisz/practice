@@ -912,9 +912,46 @@ if __name__ == '__main__':
 
 # TODO 71: Write a query to generate a ranking of products based on the frequency of orders, using a window function.
 
+    # query = '''
+    # SELECT product_id,
+    #    COUNT(order_id) AS number_of_orders,
+    #    RANK() OVER (ORDER BY COUNT(order_id) DESC) AS rank
+    # FROM order_products
+    # GROUP BY product_id
+    # '''
+    # execute_query(query)
+
 # TODO 72: Transform the warehouse table by calculating the ratio of the stock quantity at each location to the total stock of the respective product.
 
+    # query = '''
+    # WITH total_stock AS (
+    # SELECT product_id,
+    #        SUM(quantity) AS total
+    # FROM warehouse
+    # GROUP BY product_id
+    # )
+    # SELECT w.product_id,
+    #        w.location_id,
+    #        (w.quantity / ts.total * 100) AS stock_percentage
+    # FROM warehouse w
+    # JOIN total_stock ts ON w.product_id = ts.product_id
+    # '''
+    # execute_query(query)
+
 # TODO 73: Use a CTE to normalize product prices by subtracting the average price from each product's price.
+
+    # query = '''
+    # WITH average_price AS (
+    # SELECT AVG(price) AS average
+    # FROM products
+    # )
+    # SELECT p.id,
+    #        p.name,
+    #        p.price - ap.average AS normalized_price
+    # FROM products p
+    # CROSS JOIN average_price ap
+    # '''
+    # execute_query(query)
 
 # TODO 74: Write a query using a window function to calculate the percentage of total revenue contributed by each order.
 
