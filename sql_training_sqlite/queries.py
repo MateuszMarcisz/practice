@@ -955,13 +955,115 @@ if __name__ == '__main__':
 
 # TODO 74: Write a query using a window function to calculate the percentage of total revenue contributed by each order.
 
+    # query = '''
+    # WITH total_revenue AS (
+    # SELECT SUM(quantity * price) AS total
+    # FROM order_products
+    # )
+    #
+    # SELECT op.order_id,
+    #        ROUND(SUM(op.quantity * op.price) / tr.total * 100, 2) AS percentage_of_revenue
+    # FROM order_products op
+    # CROSS JOIN total_revenue tr
+    # GROUP BY op.order_id
+    # '''
+    # execute_query(query)
+
 # TODO 75: Use a CTE to fetch products and their respective revenue per product, filtering products with revenue above the 75th percentile.
+
+#     query = '''
+#     WITH revenue_per_product AS (
+#         SELECT p.name,
+#                SUM(op.quantity * op.price) AS product_revenue
+#         FROM products p
+#         JOIN order_products op ON p.id = op.product_id
+#         GROUP BY p.id
+#     ),
+#         percentile AS (
+#         SELECT name,
+#                product_revenue,
+#                NTILE(4) OVER (ORDER BY product_revenue DESC) AS quartile
+#         FROM revenue_per_product
+#         )
+#     SELECT name,
+#            product_revenue
+#     FROM percentile
+#     WHERE quartile = 1
+#
+# --One can use PERCENTILE_CONT() if it is supported by the engine
+#     '''
+#     execute_query(query)
 
 # TODO 76: Write a query using a window function to calculate the rank of products based on their average price in descending order.
 
+    # query = '''
+    # WITH avg_price AS(
+    #     SELECT p.name,
+    #            AVG(op.price) AS average_sell_price
+    #     FROM products p
+    #     JOIN order_products op ON p.id = op.product_id
+    #     GROUP BY p.id, p.name
+    #        )
+    # SELECT name,
+    #        average_sell_price,
+    #        RANK() OVER (ORDER BY average_sell_price DESC) AS rank
+    # FROM avg_price
+    # '''
+    # execute_query(query)
+
 # TODO 77: Use a CTE to find the products whose price is above the median price of all products.
 
+    # query = '''
+    # -- If percentile_cont is supported one can use just this: PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY price) instead of abomination below
+    # WITH ordered_prices AS (
+    #     SELECT price,
+    #            ROW_NUMBER() OVER (ORDER BY price) AS row_num,
+    #            COUNT(*) OVER () AS total_rows
+    #     FROM products
+    # ), median_price AS (
+    #     SELECT
+    #         CASE
+    #             WHEN total_rows % 2 = 1 THEN
+    #                 MAX(price) FILTER (WHERE row_num = (total_rows + 1) / 2)
+    #             ELSE
+    #                 AVG(price) FILTER (WHERE row_num IN (total_rows / 2, (total_rows / 2) + 1))
+    #         END AS median
+    #     FROM ordered_prices
+    # )
+    # SELECT p.name,
+    #        p.price,
+    #        p.price - mp.median AS above_median
+    # FROM products p
+    # CROSS JOIN median_price mp
+    # WHERE p.price > mp.median
+    # ORDER BY p.price DESC
+    # '''
+    # execute_query(query)
+
+    # apparenly sqlite version in my pycharm have median function so it can be used as this:
+    # query = '''
+    # WITH median_price AS (
+    #     SELECT median(price) AS median_price_
+    #     FROM products
+    # )
+    # SELECT p.name,
+    #        p.price
+    # FROM products p
+    # CROSS JOIN median_price mp
+    # WHERE p.price > mp.median_price_
+    # '''
+
+
 # TODO 78: Write a query using a window function to partition the data by location_id and calculate the total quantity of products per location.
+
+    # query = '''
+    # SELECT w.location_id,
+    #        GROUP_CONCAT(DISTINCT product_id) AS produts_in_location,
+    #        SUM(w.quantity) OVER (PARTITION BY w.location_id) AS total_per_location
+    # FROM warehouse w
+    # GROUP BY location_id
+    # '''
+    # execute_query(query)
 
 # TODO 79: Use a CTE to create a summary table of customers, including their total orders, total revenue, and the average revenue per order.
 
