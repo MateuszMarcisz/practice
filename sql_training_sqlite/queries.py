@@ -1067,9 +1067,69 @@ if __name__ == '__main__':
 
 # TODO 79: Use a CTE to create a summary table of customers, including their total orders, total revenue, and the average revenue per order.
 
+    # query = '''
+    # WITH customer_orders AS (
+    #     SELECT customer_id,
+    #            COUNT(*) AS number_of_orders
+    #     FROM orders
+    #     GROUP BY customer_id
+    # ), customer_total AS (
+    #     SELECT o.customer_id,
+    #            SUM(op.quantity * op.price) AS total_per_customer,
+    #            AVG(op.quantity * op.price) AS average_per_customer
+    #     FROM order_products op
+    #     JOIN orders o ON op.order_id = o.id
+    #     GROUP BY o.customer_id
+    # )
+    # SELECT c.id,
+    #        CONCAT(c.first_name, ' ', c.last_name) AS name,
+    #        co.number_of_orders,
+    #        ct.total_per_customer,
+    #        ct.average_per_customer
+    # FROM customers c
+    # JOIN customer_orders co ON c.id = co.customer_id
+    # JOIN customer_total ct ON c.id = ct.customer_id
+    # '''
+    # execute_query()
+
 # TODO 80: Write a query using a CTE and a window function to calculate the difference between a product's price and the average price of all products in the same warehouse location.
 
+    # query = '''
+    # WITH average AS (
+    #     SELECT w.location_id,
+    #            AVG(p.price) AS average_per_location
+    #     FROM warehouse w
+    #     JOIN products p ON w.product_id = p.id
+    #     GROUP BY location_id
+    # )
+    # SELECT p.name,
+    #        w.location_id,
+    #        a.average_per_location,
+    #        ROUND(p.price - a.average_per_location, 2) AS price_diff
+    # FROM products p
+    # JOIN warehouse w ON p.id = w.product_id
+    # JOIN average a ON w.location_id = a.location_id
+    # ORDER BY p.name, w.location_id
+    # '''
+    # execute_query(query)
+
 # TODO 81: Combine a CTE with window functions to create a report showing each customer’s total revenue, average order value, and their rank based on revenue.
+
+    # query = '''
+    # WITH customer_revenue AS (
+    #     SELECT CONCAT(c.first_name, ' ',c.last_name) AS customer,
+    #            SUM(op.price * op.quantity) AS total_revenue,
+    #            AVG(op.price * op.quantity) AS average_order_value
+    #     FROM customers c
+    #     JOIN orders o ON c.id = o.customer_id
+    #     JOIN order_products op ON o.id = op.order_id
+    #     GROUP BY c.id
+    # )
+    # SELECT *,
+    #        RANK() OVER (ORDER BY total_revenue DESC) AS rank
+    # FROM customer_revenue
+    # '''
+    # execute_query(query)
 
 # TODO 82: Write a query to transform the order_products table by calculating the z-score (standard score) for each product's price.
 
