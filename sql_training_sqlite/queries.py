@@ -1133,6 +1133,56 @@ if __name__ == '__main__':
 
 # TODO 82: Write a query to transform the order_products table by calculating the z-score (standard score) for each product's price.
 
+    # query = '''
+    # WITH statistics AS (
+    #     SELECT AVG(price) AS mean,
+    #            STDEV(price) AS std_dev
+    #     FROM order_products
+    # )
+    # SELECT op.id,
+    #        p.name AS product,
+    #        op.price,
+    #        (op.price - s.mean) / s.std_dev AS z_score
+    # FROM order_products op
+    # JOIN products p ON op.product_id = p.id
+    # CROSS JOIN statistics s
+    # '''
+    # execute_query(query)
+
 # TODO 83: Use a CTE to split orders into "High Value" and "Low Value" groups based on whether their total revenue is above or below the average order value.
 
+    # query = '''
+    # WITH order_revenue AS (
+    #     SELECT order_id,
+    #            SUM(price * quantity) AS total_revenue
+    #     FROM order_products
+    #     GROUP BY order_id
+    # ),
+    # average_revenue AS (
+    #     SELECT AVG(total_revenue) AS average
+    #     FROM order_revenue
+    # )
+    # SELECT op.order_id,
+    #        ROUND(SUM(op.quantity * op.price), 2) AS order_revenue,
+    #        CASE
+    #            WHEN SUM(op.quantity * op.price) > ar.average THEN 'High Value'
+    #            ELSE 'Low Value'
+    #            END AS Value_Category,
+    #     ROUND(ar.average, 2) AS average
+    # FROM order_products op
+    # CROSS JOIN average_revenue ar
+    # GROUP BY op.order_id
+    # '''
+    # execute_query(query)
+
 # TODO 84: Write a query using a window function to assign a dense rank to warehouse locations based on the total stock they hold.
+
+    # query = '''
+    # SELECT w.location_id,
+    #        l.name,
+    #        DENSE_RANK() OVER(ORDER BY SUM(w.quantity) DESC) AS Rank
+    # FROM warehouse w
+    # JOIN locations l ON w.location_id = l.id
+    # GROUP BY w.location_id, l.name
+    # '''
+    # execute_query(query)
