@@ -1189,11 +1189,56 @@ if __name__ == '__main__':
 
 # TODO 85: Write a query to find the total stock quantity across all locations.
 
+    # query = '''
+    # SELECT SUM(quantity) AS total_stock
+    # FROM warehouse
+    # '''
+    # execute_query(query)
+
 # TODO 86: Calculate the average price of products per warehouse location.
+
+    # query = '''
+    # SELECT w.location_id,
+    #        l.name,
+    #        GROUP_CONCAT(p.name),
+    #        AVG(p.price)
+    # FROM warehouse w
+    # JOIN locations l ON w.location_id = l.id
+    # JOIN products p ON w.product_id = p.id
+    # GROUP BY w.location_id, l.name
+    # '''
+    # execute_query(query)
 
 # TODO 87: Retrieve the top 5 most expensive products and their descriptions.
 
+    # query = '''
+    # WITH ranked_products AS (
+    # SELECT name,
+    #        description,
+    #        price,
+    #        RANK() OVER (ORDER BY price DESC) AS Rank
+    # FROM products)
+    # SELECT *
+    # FROM ranked_products
+    # WHERE Rank <= 5
+    # '''
+    # execute_query(query)
+
 # TODO 88: Find the customers who placed the highest number of orders.
+
+    # query = '''
+    # WITH customer_ranking AS (
+    # SELECT CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #        COUNT(o.id) AS number_of_orders,
+    #        RANK() OVER(ORDER BY COUNT(o.id) DESC) AS Ranking
+    # FROM customers c
+    #     JOIN orders o ON c.id = o.customer_id
+    # GROUP BY o.customer_id)
+    # SELECT *
+    # FROM customer_ranking
+    # WHERE Ranking = 1
+    # '''
+    # execute_query(query)
 
 # TODO 89: List all locations with their total stock value (price × quantity).
 
