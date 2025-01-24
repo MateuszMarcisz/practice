@@ -1186,3 +1186,103 @@ if __name__ == '__main__':
     # GROUP BY w.location_id, l.name
     # '''
     # execute_query(query)
+
+# TODO 85: Write a query to find the total stock quantity across all locations.
+
+# TODO 86: Calculate the average price of products per warehouse location.
+
+# TODO 87: Retrieve the top 5 most expensive products and their descriptions.
+
+# TODO 88: Find the customers who placed the highest number of orders.
+
+# TODO 89: List all locations with their total stock value (price × quantity).
+
+# TODO 90: Use a CTE to list all products priced above the average product price.
+
+# TODO 91: Create a CTE to calculate the total revenue per customer and display customers who contributed at least 5% of the total revenue.
+
+# TODO 92: Use a CTE to calculate the monthly order count and average order value.
+
+# TODO 93: With a CTE, generate a report showing warehouse locations with their total stock and highlight locations with above-average stock.
+
+# TODO 94: Create a CTE to rank products based on total quantity sold.
+
+# TODO 95: Write a query using a window function to rank customers by total revenue.
+
+# TODO 96: Use a window function to assign a dense rank to products based on their price.
+
+# TODO 97: Calculate a running total of revenue from all orders, sorted by date.
+
+# TODO 98: Assign a rank to orders based on the number of items in each order.
+
+# TODO 99: For each customer, calculate the average price of products they purchased and compare each product's price to this average.
+
+# TODO 100: Identify the products that are stored in more than one location.
+
+# TODO 101: Find the customers whose orders include at least 3 different products.
+
+# TODO 102: Write a query to list products that have never been ordered.
+
+# TODO 103: Identify orders that include products from multiple locations.
+
+# TODO 104: Generate a list of customers who have purchased products worth over $500.
+
+# TODO 105: Write a query to group products into price ranges (e.g., <$100, $100-$500, >$500).
+
+# TODO 106: Transform the order_products table to show the percentage of each product's price relative to the total price in that order.
+
+# TODO 107: Create a report showing customers' first and last orders using window functions.
+
+# TODO 108: Use a query to split customers into quartiles based on their total revenue.
+
+# TODO 109: For each order, calculate the z-score of the total revenue compared to all orders.
+
+# TODO 110: Write a query to find locations where the stock quantity of any product exceeds the average stock across all locations.
+
+# TODO 111: Identify orders that have the highest total revenue among all orders placed by the same customer.
+
+# TODO 112: Find products that have a price higher than the average price of all products in their location.
+
+# TODO 113: List customers who spent more than the average revenue of all customers.
+
+# TODO 114: Retrieve the top 3 products with the highest quantity sold per location.
+
+# TODO 115: Use a CTE to calculate the total revenue per product, then assign a rank to each product within its price range using window functions.
+
+# TODO 116: Create a report that calculates the moving average of order quantities over time.
+
+# TODO 117: Use a window function to calculate the percentage of total revenue each customer contributes to the company.
+
+# TODO 118: Write a query to rank locations based on the number of unique products they store.
+
+# TODO 119: Combine a CTE and a window function to identify the top-selling product per location.
+
+# TODO 120: Transform the customers table to show the count of orders in "Processing," "Shipped," and "Delivered" statuses for each customer.
+
+# TODO 121: Create a report showing the total revenue from orders grouped by month and customer.
+
+# TODO 122: Pivot the warehouse table to show the total stock quantity of products for each location in separate columns.
+
+# TODO 123: Unpivot the order_products table to list each product and its respective quantity and price as separate rows.
+
+# TODO 124: Generate a pivot table showing the number of products in different price ranges per location.
+
+# TODO 125: Write a query to calculate the median price of products per location.
+
+# TODO 126: Use a window function to calculate the 75th percentile of product prices across all locations.
+
+# TODO 127: Calculate the standard deviation of order values per customer.
+
+# TODO 128: For each product, determine how its price compares to the average price of all products.
+
+# TODO 129: Identify locations where the z-score of total stock is above 2.0.
+
+# TODO 130: Find the product that generates the highest revenue in each location.
+
+# TODO 131: Write a query to calculate the reorder point (quantity below which restocking is needed) for each product.
+
+# TODO 132: Generate a report showing the order trends (e.g., increasing or decreasing) over the last 6 months.
+
+# TODO 133: For each customer, calculate the time difference between their first and last orders.
+
+# TODO 134: Write a query to calculate the Gini coefficient of revenue distribution among customers.
