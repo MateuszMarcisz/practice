@@ -1272,9 +1272,57 @@ if __name__ == '__main__':
 
 # TODO 91: Create a CTE to calculate the total revenue per customer and display customers who contributed at least 5% of the total revenue.
 
+    # query = '''
+    # WITH total_company_revenue AS (
+    #     SELECT SUM(price * quantity) AS total_revenue
+    #     FROM order_products
+    # ),
+    #     customer_revenue AS (
+    #         SELECT CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #                SUM(op.price * op.quantity) AS customers_revenue
+    #         FROM order_products op
+    #         JOIN orders o ON op.order_id = o.id
+    #         JOIN customers c ON o.customer_id = c.id
+    #         GROUP BY c.id
+    #     )
+    # SELECT * FROM customer_revenue cr
+    #          JOIN total_company_revenue tcr
+    # WHERE cr.customers_revenue > 0.05 * tcr.total_revenue
+    # '''
+    # execute_query(query)
+
+
 # TODO 92: Use a CTE to calculate the monthly order count and average order value.
 
+    # query = '''
+    # SELECT STRFTIME('%Y-%m', o.order_date) AS month,
+    #     ROUND(AVG(op.quantity * op.price), 2) AS average_price,
+    #     COUNT(DISTINCT op.order_id) AS number_of_orders
+    # FROM order_products op
+    # JOIN orders o ON op.order_id = o.id
+    # GROUP BY month
+    # '''
+    # execute_query(query)
+
 # TODO 93: With a CTE, generate a report showing warehouse locations with their total stock and highlight locations with above-average stock.
+
+    # query = '''
+    # WITH average_stock AS (
+    #     SELECT SUM(quantity) / COUNT(DISTINCT location_id) AS stock_avg
+    #     FROM warehouse
+    # )
+    # SELECT l.name,
+    #        SUM(w.quantity) AS total_per_location,
+    #        CASE
+    #            WHEN SUM(w.quantity) > avgs.stock_avg THEN 'Above Average'
+    #            ELSE 'Below Average'
+    #        END AS stock_status
+    # FROM locations l
+    # JOIN warehouse w ON l.id = w.location_id
+    # JOIN average_stock avgs
+    # GROUP BY l.name
+    # '''
+    # execute_query(query)
 
 # TODO 94: Create a CTE to rank products based on total quantity sold.
 
