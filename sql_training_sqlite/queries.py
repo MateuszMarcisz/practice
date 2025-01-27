@@ -1242,7 +1242,33 @@ if __name__ == '__main__':
 
 # TODO 89: List all locations with their total stock value (price × quantity).
 
+    # query = '''
+    # SELECT w.location_id,
+    #        l.name AS location_name,
+    #        SUM(w.quantity * p.price) AS location_value
+    # FROM warehouse w
+    # JOIN products p ON p.id = w.product_id
+    # JOIN locations l ON w.location_id = l.id
+    # GROUP BY location_id
+    # ORDER BY location_id
+    # '''
+    # execute_query(query)
+
 # TODO 90: Use a CTE to list all products priced above the average product price.
+
+    # query = '''
+    # WITH product_avg_price AS (
+    #     SELECT AVG(price) AS price_average
+    #     FROM products
+    # )
+    # SELECT p.name,
+    #        p.price,
+    #        avp.price_average
+    # FROM products p
+    # JOIN product_avg_price avp
+    # WHERE p.price > avp.price_average
+    # '''
+    # execute_query(query)
 
 # TODO 91: Create a CTE to calculate the total revenue per customer and display customers who contributed at least 5% of the total revenue.
 
