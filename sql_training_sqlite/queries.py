@@ -1326,9 +1326,41 @@ if __name__ == '__main__':
 
 # TODO 94: Create a CTE to rank products based on total quantity sold.
 
+    # query = '''
+    # SELECT p.name,
+    #        SUM(op.quantity) AS total_quantity_sold,
+    #        RANK() OVER(ORDER BY SUM(op.quantity) DESC) AS Rank
+    # FROM products p
+    # JOIN order_products op ON p.id = op.product_id
+    # GROUP BY p.name
+    # ORDER BY Rank
+    # '''
+    # execute_query(query)
+
 # TODO 95: Write a query using a window function to rank customers by total revenue.
 
+    # query = '''
+    # SELECT CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #        ROUND(SUM(op.price * op.quantity), 2) AS total_revenue,
+    #        RANK() OVER (ORDER BY SUM(op.price * op.quantity) DESC) AS rank
+    # FROM customers c
+    #     JOIN orders o ON c.id = o.customer_id
+    #     JOIN order_products op ON o.id = op.order_id
+    # GROUP BY customer
+    # ORDER BY rank
+    # '''
+    # execute_query(query)
+
 # TODO 96: Use a window function to assign a dense rank to products based on their price.
+
+    # query = '''
+    # SELECT name,
+    #        price,
+    #        DENSE_RANK() OVER(ORDER BY price DESC) AS rank
+    # FROM products
+    # ORDER BY rank
+    # '''
+    # execute_query(query)
 
 # TODO 97: Calculate a running total of revenue from all orders, sorted by date.
 
