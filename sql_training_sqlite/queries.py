@@ -1364,9 +1364,58 @@ if __name__ == '__main__':
 
 # TODO 97: Calculate a running total of revenue from all orders, sorted by date.
 
+    # query = '''
+    # WITH order_totals AS (
+    #     SELECT op.order_id,
+    #            o.order_date,
+    #            ROUND(SUM(op.price * op.quantity), 2) AS order_total
+    #     FROM order_products op
+    #     JOIN orders o ON op.order_id = o.id
+    #     GROUP BY op.order_id
+    # )
+    # SELECT order_id,
+    #        order_total,
+    #        ROUND(SUM(order_total) OVER (ORDER BY order_date), 2) AS running_total,
+    #        order_date
+    # FROM order_totals
+    # '''
+    # execute_query(query)
+
 # TODO 98: Assign a rank to orders based on the number of items in each order.
 
+#     query = '''
+#     SELECT order_id,
+#        SUM(quantity) AS order_quantity,
+#        RANK() OVER(ORDER BY (SUM(quantity)) DESC) AS rank
+# FROM order_products
+# GROUP BY order_id
+#     '''
+#     execute_query(query)
+
 # TODO 99: For each customer, calculate the average price of products they purchased and compare each product's price to this average.
+
+    # query = '''
+    # WITH average_price_customer AS (
+    #     SELECT c.id AS customer_id,
+    #            CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #            AVG(op.price) AS average_price
+    #     FROM customers c
+    #     JOIN orders o ON c.id = o.customer_id
+    #     JOIN order_products op ON o.id = op.order_id
+    #     GROUP BY c.id
+    # )
+    # SELECT p.name,
+    #        customer,
+    #        op.price,
+    #        average_price,
+    #        op.price - average_price AS difference
+    #     FROM average_price_customer apc
+    #         JOIN orders o ON apc.customer_id = o.customer_id
+    #         JOIN order_products op ON o.id = op.order_id
+    #         JOIN products p ON op.product_id = p.id
+    #     ORDER BY customer
+    # '''
+    # execute_query(query)
 
 # TODO 100: Identify the products that are stored in more than one location.
 
