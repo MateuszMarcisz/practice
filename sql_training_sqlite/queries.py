@@ -1419,7 +1419,37 @@ if __name__ == '__main__':
 
 # TODO 100: Identify the products that are stored in more than one location.
 
-# TODO 101: Find the customers whose orders include at least 3 different products.
+#     query = '''
+#     WITH number_or_locations AS (
+#         SELECT p.name,
+#                COUNT(DISTINCT location_id) AS locations_number
+#         FROM products p
+#         JOIN warehouse w ON p.id = w.product_id
+#         GROUP BY p.name
+#     )
+#     SELECT *
+#     FROM number_or_locations
+#     WHERE locations_number > 1
+#     '''
+#     execute_query(query)
+
+# TODO 101: Find the customers whose orders include at least 3 different products in at least one single order.
+
+    # query = '''
+    # WITH products_per_customer AS (
+    #     SELECT CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #            COUNT(op.product_id) AS products_number,
+    #            o.id
+    #     FROM customers c
+    #     JOIN orders o ON c.id = o.customer_id
+    #     JOIN order_products op ON o.id = op.order_id
+    #     GROUP BY o.id
+    # )
+    # SELECT *
+    # FROM products_per_customer
+    # WHERE products_number > 2
+    # '''
+    # execute_query(query)
 
 # TODO 102: Write a query to list products that have never been ordered.
 
