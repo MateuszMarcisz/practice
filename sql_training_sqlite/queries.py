@@ -1453,11 +1453,57 @@ if __name__ == '__main__':
 
 # TODO 102: Write a query to list products that have never been ordered.
 
+    # query = '''
+    # SELECT p.name
+    # FROM products p
+    # LEFT JOIN order_products op ON p.id = op.product_id
+    # WHERE op.product_id IS NULL
+    # '''
+    # execute_query(query)
+
 # TODO 103: Identify orders that include products from multiple locations.
+
+    # query = '''
+    # SELECT op.order_id,
+    #        GROUP_CONCAT(DISTINCT op.product_id) AS product_ids,
+    #        GROUP_CONCAT(DISTINCT w.location_id) AS location_ids
+    # FROM order_products op
+    # JOIN warehouse w ON w.product_id = op.product_id
+    # GROUP BY op.order_id
+    # HAVING COUNT(DISTINCT w.location_id) > 1
+    # '''
+    # execute_query(query)
 
 # TODO 104: Generate a list of customers who have purchased products worth over $500.
 
+    # query = '''
+    # WITH customer_products AS (
+    #     SELECT CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #            SUM(op.quantity * op.price) AS total_per_customer
+    #     FROM order_products op
+    #     JOIN orders o ON op.order_id = o.id
+    #     JOIN customers c ON o.customer_id = c.id
+    #     GROUP BY c.id
+    # )
+    # SELECT *
+    # FROM customer_products cp
+    # WHERE cp.total_per_customer > 500
+    # '''
+    # execute_query(query)
+
 # TODO 105: Write a query to group products into price ranges (e.g., <$100, $100-$500, >$500).
+
+    # query = '''
+    # SELECT name,
+    #        price,
+    #        CASE
+    #            WHEN price < 100 THEN '<$100'
+    #            WHEN price BETWEEN 100 AND 500 THEN '$100-$500'
+    #            WHEN price > 500 THEN '>$500'
+    #            END AS prices
+    # FROM products
+    # '''
+    # execute_query(query)
 
 # TODO 106: Transform the order_products table to show the percentage of each product's price relative to the total price in that order.
 
