@@ -1507,9 +1507,48 @@ if __name__ == '__main__':
 
 # TODO 106: Transform the order_products table to show the percentage of each product's price relative to the total price in that order.
 
+    # query = '''
+    # WITH total_per_order AS (
+    #     SELECT order_id,
+    #            SUM(price * quantity) AS total
+    #     FROM order_products
+    #     GROUP BY order_id
+    # ) SELECT op.order_id,
+    #          op.product_id,
+    #          op.price,
+    #          ROUND((op.price * op.quantity) / tpo.total * 100, 2) AS percentage_of_order,
+    #          tpo.total
+    #   FROM order_products op
+    #   JOIN total_per_order tpo ON op.order_id = tpo.order_id
+    # '''
+    # execute_query(query)
+
 # TODO 107: Create a report showing customers' first and last orders using window functions.
 
+    # query = '''
+    # SELECT CONCAT(c.first_name, ' ', c.last_name) AS name,
+    #        MIN(o.order_date) AS first_order,
+    #        MAX(o.order_date) AS last_order
+    #        --FIRST_VALUE(o.order_date) OVER (PARTITION BY c.id ORDER BY o.order_date ASC) AS first_order,
+    #        --FIRST_VALUE(o.order_date) OVER (PARTITION BY c.id ORDER BY o.order_date DESC) AS last_order
+    # FROM customers c
+    # JOIN orders o ON c.id = o.customer_id
+    # GROUP BY c.id
+    # '''
+    # execute_query(query)
+
 # TODO 108: Use a query to split customers into quartiles based on their total revenue.
+
+    # query = '''
+    # SELECT CONCAT(c.first_name, ' ', c.last_name) AS name,
+    #        NTILE(4) OVER(ORDER BY SUM(op.quantity * op.price) DESC) AS quartile,
+    #        ROUND(SUM(op.quantity * op.price), 2) AS total_revenue
+    # FROM customers c
+    # JOIN orders o ON c.id = o.customer_id
+    # JOIN order_products op ON o.id = op.order_id
+    # GROUP BY c.id
+    # '''
+    # execute_query(query)
 
 # TODO 109: For each order, calculate the z-score of the total revenue compared to all orders.
 
