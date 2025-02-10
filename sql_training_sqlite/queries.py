@@ -1552,7 +1552,42 @@ if __name__ == '__main__':
 
 # TODO 109: For each order, calculate the z-score of the total revenue compared to all orders.
 
+    # query = '''
+    # WITH order_revenue AS (
+    #     SELECT op.order_id,
+    #            SUM(op.quantity * op.price) AS total_revenue
+    #     FROM order_products op
+    #     GROUP BY op.order_id
+    # ),
+    # stats AS (
+    #     SELECT AVG(total_revenue) AS mean_revenue,
+    #            STDEV(total_revenue) AS std_dev_revenue
+    #     FROM order_revenue
+    # )
+    # SELECT o.order_id,
+    #        o.total_revenue,
+    #        ROUND((o.total_revenue - s.mean_revenue) / NULLIF(s.std_dev_revenue, 0), 2) AS z_score
+    # FROM order_revenue o
+    # CROSS JOIN stats s
+    # '''
+    # execute_query(query)
+
 # TODO 110: Write a query to find locations where the stock quantity of any product exceeds the average stock across all locations.
+
+    # query = '''
+    # WITH avg_stock AS (
+    #     SELECT AVG(quantity) AS avg_quantity
+    #     FROM warehouse
+    # )
+    # SELECT location_id,
+    #        quantity,
+    #        avg_stock.avg_quantity
+    # FROM warehouse
+    # JOIN avg_stock
+    # WHERE quantity > avg_stock.avg_quantity
+    # GROUP BY location_id
+    # '''
+    # execute_query(query)
 
 # TODO 111: Identify orders that have the highest total revenue among all orders placed by the same customer.
 
