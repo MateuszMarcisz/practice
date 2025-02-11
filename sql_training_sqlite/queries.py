@@ -1591,7 +1591,46 @@ if __name__ == '__main__':
 
 # TODO 111: Identify orders that have the highest total revenue among all orders placed by the same customer.
 
+    # query = '''
+    # WITH ranked_orders AS (
+    #     SELECT
+    #         CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #         o.id AS order_id,
+    #         SUM(op.price * op.quantity) AS total,
+    #         RANK() OVER (PARTITION BY c.id ORDER BY SUM(op.price * op.quantity) DESC) AS ranking
+    #     FROM customers c
+    #     JOIN orders o ON c.id = o.customer_id
+    #     JOIN order_products op ON o.id = op.order_id
+    #     GROUP BY c.id, o.id
+    # )
+    # SELECT customer,
+    #        order_id,
+    #        total
+    # FROM ranked_orders
+    # WHERE ranking = 1
+    # '''
+    # execute_query(query)
+
 # TODO 112: Find products that have a price higher than the average price of all products in their location.
+
+    # query = '''
+    # WITH avg_price_per_location AS (
+    #     SELECT w.location_id,
+    #            ROUND(AVG(p.price), 2) AS avg_price
+    #     FROM warehouse w
+    #     JOIN products p ON w.product_id = p.id
+    #     GROUP BY w.location_id
+    # )
+    # SELECT w.product_id,
+    #        p.price,
+    #        w.location_id,
+    #        a.avg_price
+    # FROM warehouse w
+    # JOIN products p ON w.product_id = p.id
+    # JOIN avg_price_per_location a ON w.location_id = a.location_id
+    # WHERE p.price > a.avg_price
+    # '''
+    # execute_query(query)
 
 # TODO 113: List customers who spent more than the average revenue of all customers.
 
