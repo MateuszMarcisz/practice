@@ -1634,7 +1634,40 @@ if __name__ == '__main__':
 
 # TODO 113: List customers who spent more than the average revenue of all customers.
 
-# TODO 114: Retrieve the top 3 products with the highest quantity sold per location.
+    # query = '''
+    # WITH total_spending AS (
+    #     SELECT o.customer_id,
+    #            SUM(op.price * op.quantity) AS total_per_customer
+    #     FROM order_products op
+    #     JOIN orders o ON op.order_id = o.id
+    #     GROUP BY o.customer_id
+    # ), average AS (
+    #     SELECT AVG(ts.total_per_customer) AS average_per_customer
+    #     FROM total_spending ts
+    # ) SELECT CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #          ts.total_per_customer
+    # FROM customers c
+    # JOIN total_spending ts ON c.id = ts.customer_id
+    # JOIN average a
+    # WHERE ts.total_per_customer > a.average_per_customer
+    # '''
+    # execute_query(query)
+
+# TODO 114: Retrieve the top 3 products with the highest quantity sold.
+
+    # query = '''
+    # WITH product_ranking AS (
+    #     SELECT p.name,
+    #            SUM(op.quantity) AS quantity,
+    #            RANK() OVER(ORDER BY SUM(op.quantity) DESC) AS rank
+    #     FROM order_products op
+    #     JOIN products p ON op.product_id = p.id
+    #     GROUP BY p.id
+    # ) SELECT *
+    # FROM product_ranking
+    # WHERE rank <= 3
+    # '''
+    # execute_query(query)
 
 # TODO 115: Use a CTE to calculate the total revenue per product, then assign a rank to each product within its price range using window functions.
 
