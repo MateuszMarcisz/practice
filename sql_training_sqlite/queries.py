@@ -1671,7 +1671,46 @@ if __name__ == '__main__':
 
 # TODO 115: Use a CTE to calculate the total revenue per product, then assign a rank to each product within its price range using window functions.
 
+    # query = '''
+    # WITH product_revenue AS (
+    #     SELECT p.id,
+    #            p.name,
+    #            p.price,
+    #            COALESCE(ROUND(SUM(op.quantity * op.price), 2), 0) AS revenue
+    #     FROM products p
+    #     LEFT JOIN order_products op ON op.product_id = p.id
+    #     GROUP BY p.id, p.price
+    # ), price_ranges AS (
+    #     SELECT *,
+    #            NTILE(4) OVER(ORDER BY price) AS price_range
+    #     FROM product_revenue
+    # )
+    # SELECT *,
+    #        RANK() OVER(PARTITION BY price_range ORDER BY revenue DESC) AS rank
+    # FROM price_ranges
+    # '''
+
+
 # TODO 116: Create a report that calculates the moving average of order quantities over time.
+
+    # query = '''
+    # WITH order_quantities AS (
+    #     SELECT o.order_date,
+    #            SUM(op.quantity) AS total_quantity
+    #     FROM orders o
+    #     JOIN order_products op ON op.order_id = o.id
+    #     GROUP BY o.order_date
+    # )
+    # SELECT order_date,
+    #        total_quantity,
+    #        AVG(total_quantity) OVER (
+    #            ORDER BY order_date
+    #            ROWS BETWEEN 6 PRECEDING AND CURRENT ROW
+    #        ) AS moving_avg
+    # FROM order_quantities
+    # ORDER BY order_date
+    # '''
+    # execute_query(query)
 
 # TODO 117: Use a window function to calculate the percentage of total revenue each customer contributes to the company.
 
