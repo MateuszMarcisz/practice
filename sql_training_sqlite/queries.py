@@ -1714,7 +1714,32 @@ if __name__ == '__main__':
 
 # TODO 117: Use a window function to calculate the percentage of total revenue each customer contributes to the company.
 
+    # query = '''
+    # WITH customer_revenue AS (
+    #     SELECT CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #            COALESCE(SUM(op.quantity * op.price), 0) AS customer_revenue
+    #     FROM customers c
+    #         LEFT JOIN orders o ON c.id = o.customer_id
+    #         LEFT JOIN order_products op ON o.id = op.order_id
+    #     GROUP BY c.id
+    # )
+    # SELECT *,
+    #        ROUND(customer_revenue * 100 / SUM(customer_revenue) OVER(), 2) AS percentage_of_revenue
+    # FROM customer_revenue
+    # '''
+    # execute_query(query)
+
 # TODO 118: Write a query to rank locations based on the number of unique products they store.
+
+    # query = '''
+    # SELECT l.name,
+    #        COUNT(DISTINCT w.product_id) AS number_of_products,
+    #        RANK() OVER(ORDER BY COUNT(DISTINCT w.product_id) DESC) AS rank
+    # FROM locations l
+    # JOIn warehouse w ON l.id = w.location_id
+    # GROUP BY l.id
+    # '''
+    # execute_query(query)
 
 # TODO 119: Combine a CTE and a window function to identify the top-selling product per location.
 
