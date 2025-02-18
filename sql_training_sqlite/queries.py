@@ -1743,7 +1743,40 @@ if __name__ == '__main__':
 
 # TODO 119: Combine a CTE and a window function to identify the top-selling product per location.
 
+    # query = '''
+    # WITH sales_per_location AS (
+    #     SELECT l.name AS location,
+    #            w.location_id,
+    #            p.name AS product,
+    #            SUM(op.quantity) AS sales_per_product
+    #     FROM locations l
+    #     JOIN warehouse w ON l.id = w.location_id
+    #     JOIN products p ON p.id = w.product_id
+    #     JOIN order_products op ON p.id = op.product_id
+    #     GROUP BY w.location_id, p.name
+    # )
+    # SELECT *
+    # FROM (
+    #     SELECT *,
+    #            RANK() OVER(PARTITION BY location_id ORDER BY sales_per_product DESC) AS ranking
+    #     FROM sales_per_location
+    # ) ranked
+    # WHERE ranking = 1
+    # '''
+    # execute_query(query)
+
 # TODO 120: Transform the customers table to show the count of orders in "Processing," "Shipped," and "Delivered" statuses for each customer.
+
+    # query = '''
+    # SELECT c.*,
+    #        COUNT(CASE WHEN o.status = 'Processing' THEN 1 END) AS processing_orders,
+    #        COUNT(CASE WHEN o.status = 'Shipped' THEN 1 END) AS shipped_orders,
+    #        COUNT(CASE WHEN o.status = 'Delivered' THEN 1 END) AS delivered_orders
+    # FROM customers c
+    # LEFT JOIN orders o ON c.id = o.customer_id
+    # GROUP BY c.id
+    # '''
+    # execute_query(query)
 
 # TODO 121: Create a report showing the total revenue from orders grouped by month and customer.
 
