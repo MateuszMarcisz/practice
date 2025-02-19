@@ -1780,11 +1780,54 @@ if __name__ == '__main__':
 
 # TODO 121: Create a report showing the total revenue from orders grouped by month and customer.
 
+    # query = '''
+    # SELECT o.id,
+    #        CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #        strftime('%Y-%m', o.order_date) AS month,
+    #        ROUND(SUM(op.quantity * op.price), 2) AS revenue
+    # FROM orders o
+    # JOIN order_products op ON o.id = op.order_id
+    # JOIN customers c ON o.customer_id = c.id
+    # GROUP BY month, customer
+    # '''
+    # execute_query(query)
+
 # TODO 122: Pivot the warehouse table to show the total stock quantity of products for each location in separate columns.
+# pointless considering manual work for tens of locations
 
 # TODO 123: Unpivot the order_products table to list each product and its respective quantity and price as separate rows.
 
+#     query = '''
+#     SELECT order_id, product_id, 'quantity' AS attribute, quantity AS value
+#     FROM order_products
+#     UNION ALL
+#     SELECT order_id, product_id, 'price' AS attribute, price AS value
+#     FROM order_products
+#     ORDER BY order_id, product_id
+#     '''
+#     execute_query(query)
+
 # TODO 124: Generate a pivot table showing the number of products in different price ranges per location.
+
+    # query = '''
+    # WITH price_groups AS (
+    #     SELECT p.name,
+    #            p.price,
+    #            w.location_id,
+    #            NTILE(4) OVER (ORDER BY p.price) AS price_quartile
+    #     FROM products p
+    #     JOIN warehouse w ON p.id = w.product_id
+    # )
+    # SELECT l.name AS location,
+    #        SUM(CASE WHEN pg.price_quartile = 1 THEN 1 ELSE 0 END) AS "Q1",
+    #        SUM(CASE WHEN pg.price_quartile = 2 THEN 1 ELSE 0 END) AS "Q2",
+    #        SUM(CASE WHEN pg.price_quartile = 3 THEN 1 ELSE 0 END) AS "Q3",
+    #        SUM(CASE WHEN pg.price_quartile = 4 THEN 1 ELSE 0 END) AS "Q4"
+    # FROM locations l
+    # JOIN price_groups pg ON l.id = pg.location_id
+    # GROUP BY l.id
+    # '''
+    # execute_query(query)
 
 # TODO 125: Write a query to calculate the median price of products per location.
 
