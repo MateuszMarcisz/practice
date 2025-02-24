@@ -1831,7 +1831,33 @@ if __name__ == '__main__':
 
 # TODO 125: Write a query to calculate the median price of products per location.
 
+    # query = '''
+    # SELECT l.name,
+    #        MEDIAN(p.price) AS location_price_median
+    # FROM locations l
+    # JOIN warehouse w ON l.id = w.location_id
+    # JOIN products p ON w.product_id = p.id
+    # GROUP BY l.id
+    # '''
+    # execute_query(query)
+
 # TODO 126: Use a window function to calculate the 75th percentile of product prices across all locations.
+
+    # query = '''
+    # WITH prices AS (
+    #     SELECT l.name AS location,
+    #            p.price,
+    #            NTILE(4) OVER (PARTITION BY l.name ORDER BY p.price) AS quartile
+    #     FROM products p
+    #     JOIN warehouse w ON p.id = w.product_id
+    #     JOIN locations l ON w.location_id = l.id
+    # )
+    # SELECT location, MAX(price) AS percentile75th
+    # FROM prices
+    # WHERE quartile = 3
+    # GROUP BY location
+    # '''
+    # execute_query(query)
 
 # TODO 127: Calculate the standard deviation of order values per customer.
 
