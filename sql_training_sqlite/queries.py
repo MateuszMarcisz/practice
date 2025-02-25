@@ -1861,7 +1861,32 @@ if __name__ == '__main__':
 
 # TODO 127: Calculate the standard deviation of order values per customer.
 
+    # query = '''
+    #     SELECT c.id,
+    #        CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #        ROUND(SUM(op.price * op.quantity), 2) AS customer_revenue,
+    #        ROUND(STDEV(op.price * op.quantity), 2) AS customer_revenue_st_dev
+    # FROM order_products op
+    # JOIN orders o ON op.order_id = o.id
+    # JOIN customers c ON o.customer_id = c.id
+    # GROUP BY c.id
+    # '''
+    # execute_query(query)
+
 # TODO 128: For each product, determine how its price compares to the average price of all products.
+
+    # query = '''
+    # WITH avg_price AS (
+    #     SELECT ROUND(AVG(price), 2) AS average_price
+    #     FROM products
+    # ) SELECT p.name,
+    #          ap.average_price,
+    #          ROUND(p.price - ap.average_price, 2) AS price_difference,
+    #          ROUND((p.price / average_price) * 100 , 2) AS percentage_of_avg_price
+    # FROM products p
+    # CROSS JOIN avg_price ap
+    # '''
+    # execute_query(query)
 
 # TODO 129: Identify locations where the z-score of total stock is above 2.0.
 
