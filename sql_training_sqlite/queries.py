@@ -1890,7 +1890,53 @@ if __name__ == '__main__':
 
 # TODO 129: Identify locations where the z-score of total stock is above 2.0.
 
+    # query = '''
+    # WITH stock_stats AS (
+    #     SELECT location_id,
+    #            SUM(quantity) AS total_stock
+    #     FROM warehouse
+    #     GROUP BY location_id
+    # ),
+    # stats AS (
+    #     SELECT AVG(total_stock) AS mean_stock,
+    #            STDEV(total_stock) AS std_dev_stock
+    #     FROM stock_stats
+    # )
+    # SELECT l.name AS location_name,
+    #        s.total_stock,
+    #        (s.total_stock - st.mean_stock) / st.std_dev_stock AS z_score
+    # FROM stock_stats s
+    # JOIN stats st ON 1 = 1
+    # JOIN locations l ON s.location_id = l.id
+    # WHERE (s.total_stock - st.mean_stock) / st.std_dev_stock > 2.0
+    # '''
+    # execute_query(query)
+
 # TODO 130: Find the product that generates the highest revenue in each location.
+
+    # query = '''
+    # WITH revenue AS (
+    #     SELECT p.id,
+    #            p.name,
+    #            ROUND(op.price * op.quantity, 2) AS product_revenue
+    #     FROM order_products op
+    #     JOIN products p ON op.product_id = p.id
+    # ),
+    # ranked_products AS (
+    #     SELECT l.id AS location_id,
+    #            l.name AS location_name,
+    #            r.name AS product_name,
+    #            r.product_revenue,
+    #            RANK() OVER (PARTITION BY l.id ORDER BY r.product_revenue DESC) AS ranking
+    #     FROM locations l
+    #     JOIN warehouse w ON l.id = w.location_id
+    #     JOIN revenue r ON w.product_id = r.id
+    # )
+    # SELECT *
+    # FROM ranked_products
+    # WHERE ranking = 1
+    # '''
+    # execute_query(query)
 
 # TODO 131: Write a query to calculate the reorder point (quantity below which restocking is needed) for each product.
 
