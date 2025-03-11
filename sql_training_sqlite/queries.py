@@ -1939,8 +1939,38 @@ if __name__ == '__main__':
     # execute_query(query)
 
 # TODO 131: Write a query to calculate the reorder point (quantity below which restocking is needed) for each product.
+# impossible to do it in this kind of db setup.
 
 # TODO 132: Generate a report showing the order trends (e.g., increasing or decreasing) over the last 6 months.
+
+    # query = '''
+    #     WITH monthly_orders AS (
+    #     SELECT strftime('%Y-%m', o.order_date) AS month,
+    #            COUNT(o.id) AS total_orders
+    #     FROM orders o
+    #     WHERE o.order_date >= DATE('now', '-6 months')  -- Last 6 months
+    #     GROUP BY month
+    # ),
+    # order_trend AS (
+    #     SELECT month,
+    #            total_orders,
+    #            LAG(total_orders) OVER (ORDER BY month) AS prev_month_orders,
+    #            total_orders - LAG(total_orders) OVER (ORDER BY month) AS order_change,
+    #            ROUND(
+    #                (total_orders - LAG(total_orders) OVER (ORDER BY month)) * 100.0 /
+    #                NULLIF(LAG(total_orders) OVER (ORDER BY month), 0), 2
+    #            ) AS percent_change
+    #     FROM monthly_orders
+    # )
+    # SELECT *,
+    #        CASE
+    #            WHEN percent_change > 5 THEN 'Increasing'
+    #            WHEN percent_change < -5 THEN 'Decreasing'
+    #            ELSE 'Stable'
+    #        END AS trend
+    # FROM order_trend
+    # '''
+    # execute_query(query)
 
 # TODO 133: For each customer, calculate the time difference between their first and last orders.
 
