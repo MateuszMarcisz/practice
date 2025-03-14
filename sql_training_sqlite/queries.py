@@ -1974,4 +1974,15 @@ if __name__ == '__main__':
 
 # TODO 133: For each customer, calculate the time difference between their first and last orders.
 
+    # query = '''
+    # SELECT CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #        MIN(o.order_date) AS first_order,
+    #        MAX(o.order_date) AS last_order,
+    #        JULIANDAY(MAX(o.order_date)) - JULIANDAY(MIN(o.order_date)) AS time_between
+    # FROM customers c
+    # JOIN orders o ON c.id = o.customer_id
+    # GROUP BY c.id
+    # '''
+    # execute_query(query)
+
 # TODO 134: Write a query to calculate the Gini coefficient of revenue distribution among customers.
