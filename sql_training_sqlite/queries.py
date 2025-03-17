@@ -2009,3 +2009,95 @@ if __name__ == '__main__':
     # FROM absolute_diff ad, revenue_stats rs
     # '''
     # execute_query(query)
+
+# TODO 135: Retrieve the total number of orders and the total revenue per customer.
+
+# TODO 136: Find the average number of products per order.
+
+# TODO 137: Calculate the running total of orders per month using a window function.
+
+# TODO 138: Determine the most frequently ordered product per customer.
+
+# TODO 139: Create a report showing the total revenue contribution of each customer as a percentage of the total revenue.
+
+# TODO 140: Identify the top 3 locations with the highest stock levels for each product.
+
+# TODO 141: Generate a report that shows the month-over-month revenue growth rate.
+
+# TODO 142: Identify customers whose total spending is above the average customer spending.
+
+# TODO 143: Calculate the moving average of product sales over the last 3 months.
+
+# TODO 144: Determine the order in which products were added to the warehouse.
+
+# TODO 145: Find customers who placed consecutive orders within 7 days of each other.
+
+# TODO 146: Identify products that have never been ordered.
+
+# TODO 147: Create a pivot table showing the count of orders per status (Processing, Shipped, Delivered) by month.
+
+# TODO 148: Unpivot the warehouse stock levels so that each product-location stock is displayed as separate rows.
+
+# TODO 149: Rank locations based on their total revenue, and assign a quartile rank using NTILE.
+
+# TODO 150: Calculate the cumulative revenue per customer, sorted by order date.
+
+# CTEs, Aggregations, and Data Transformations
+# TODO 151: Use a CTE to calculate the total stock per location and filter locations where stock is below the average.
+# TODO 152: Compute the difference between the highest and lowest product prices in each category.
+# TODO 153: Generate a report showing the first and last order date per customer.
+# TODO 154: Calculate the percentage of total revenue contributed by each product.
+# TODO 155: Identify customers whose total spending in the last 6 months is greater than in the previous 6 months.
+# TODO 156: Find products that have been ordered at least once every month in the last year.
+# TODO 157: Identify customers who placed an order in every month of the last year.
+# TODO 158: Calculate the standard deviation of revenue per customer.
+# TODO 159: Determine the difference in total sales between the most and least sold products.
+# TODO 160: Find the maximum, minimum, and average order value for each customer.
+
+# Window Functions
+# TODO 161: Calculate the rank of each product within its category based on total sales.
+# TODO 162: Identify customers who have increased their order frequency over time.
+# TODO 163: Compute the cumulative number of orders per customer, sorted by order date.
+# TODO 164: Rank products based on their average monthly sales using DENSE_RANK().
+# TODO 165: Determine the median revenue per customer.
+# TODO 166: Use NTILE to divide customers into 4 revenue-based groups.
+# TODO 167: Calculate the revenue contribution of each product as a rolling percentage of total revenue.
+# TODO 168: Find the month-over-month percentage change in total revenue.
+# TODO 169: Compute the Z-score for each product's price relative to the overall average.
+# TODO 170: Identify the location with the most stable revenue (smallest standard deviation).
+
+# Advanced CTEs & Recursive Queries
+# TODO 171: Use a recursive CTE to generate a series of dates for the past year.
+# TODO 172: Find the longest sequence of consecutive months where a customer placed at least one order.
+# TODO 173: Calculate the compounded revenue growth rate over time.
+# TODO 174: Identify the top N products per location, where N is user-defined.
+# TODO 175: Rank customers based on the frequency of their orders.
+# TODO 176: Compute the difference between each customer's highest and lowest order values.
+# TODO 177: Calculate the lead time between orders per customer (time between consecutive orders).
+# TODO 178: Identify customers who have placed an order at least once in every season (Winter, Spring, Summer, Fall).
+# TODO 179: Determine the cumulative stock levels for each product across all locations.
+# TODO 180: Find products that have gone out of stock at least twice in the last year.
+
+# Pivoting, Unpivoting, and Data Reshaping
+# TODO 181: Create a pivot table showing the total revenue per customer per quarter.
+# TODO 182: Pivot the orders table to show total revenue per product category per month.
+# TODO 183: Unpivot the order_products table to show separate rows for quantity and price per product.
+# TODO 184: Generate a report showing stock levels for each product-location pair in a wide format.
+# TODO 185: Pivot the warehouse stock data so that each row represents a product with separate columns for stock levels at different locations.
+# TODO 186: Create a cross-tab report showing the total revenue per product for each order status (Processing, Shipped, Delivered).
+# TODO 187: Unpivot the revenue per product so that each row contains product ID, revenue type (monthly, yearly, total), and value.
+# TODO 188: Use a pivot table to display the count of orders per product category per location.
+# TODO 189: Create a dynamic pivot table that groups revenue into user-defined price ranges.
+# TODO 190: Unpivot stock data to show each product’s stock level as separate rows.
+
+# More Complex Analysis
+# TODO 191: Determine the correlation between product price and order quantity.
+# TODO 192: Identify locations where total revenue has decreased over the last 3 months.
+# TODO 193: Find customers who spent more in the second half of the year compared to the first half.
+# TODO 194: Compute the coefficient of variation for sales per product (standard deviation / mean).
+# TODO 195: Rank months based on total revenue and determine seasonal trends.
+# TODO 196: Identify outlier products with unusually high or low revenue using the IQR method.
+# TODO 197: Calculate the elasticity of demand by comparing changes in price to changes in sales quantity.
+# TODO 198: Determine the likelihood of a customer placing a repeat order within a given timeframe.
+# TODO 199: Identify locations where a single product contributes to more than 50% of total revenue.
+# TODO 200: Use a CTE to generate sales forecasts for the next quarter based on historical trends.
