@@ -1986,3 +1986,26 @@ if __name__ == '__main__':
     # execute_query(query)
 
 # TODO 134: Write a query to calculate the Gini coefficient of revenue distribution among customers.
+
+    # query = '''
+    # WITH customer_revenue AS (
+    #     SELECT o.customer_id,
+    #            SUM(op.quantity * op.price) AS revenue
+    #     FROM orders o
+    #     JOIN order_products op ON o.id = op.order_id
+    #     GROUP BY o.customer_id
+    # ),
+    # revenue_stats AS (
+    #     SELECT COUNT(*) AS customer_count,
+    #            AVG(revenue) AS mean_revenue
+    #     FROM customer_revenue
+    # ),
+    # absolute_diff AS (
+    #     SELECT SUM(ABS(a.revenue - b.revenue)) AS total_abs_diff
+    #     FROM customer_revenue a
+    #     CROSS JOIN customer_revenue b
+    # )
+    # SELECT ad.total_abs_diff / (2 * rs.customer_count * rs.customer_count * rs.mean_revenue) AS gini_coefficient
+    # FROM absolute_diff ad, revenue_stats rs
+    # '''
+    # execute_query(query)
