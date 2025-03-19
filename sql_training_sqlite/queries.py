@@ -2063,9 +2063,70 @@ if __name__ == '__main__':
 
 # TODO 138: Determine the most frequently ordered product per customer.
 
+    # query = '''
+    # WITH product_frequency AS (
+    #     SELECT o.customer_id,
+    #            op.product_id,
+    #            COUNT(op.product_id) AS order_count
+    #     FROM orders o
+    #     JOIN order_products op ON o.id = op.order_id
+    #     GROUP BY o.customer_id, op.product_id
+    # ),
+    # ranked_products AS (
+    #     SELECT pf.customer_id,
+    #            pf.product_id,
+    #            pf.order_count,
+    #            RANK() OVER (PARTITION BY pf.customer_id ORDER BY pf.order_count DESC) AS rnk
+    #     FROM product_frequency pf
+    # )
+    # SELECT c.id AS customer_id,
+    #        CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #        GROUP_CONCAT(rp.product_id) AS ids_of_products,
+    #        rp.order_count
+    # FROM ranked_products rp
+    # JOIN customers c ON rp.customer_id = c.id
+    # WHERE rp.rnk = 1
+    # GROUP BY customer_id
+    # '''
+    # execute_query(query)
+
 # TODO 139: Create a report showing the total revenue contribution of each customer as a percentage of the total revenue.
 
+    # query = '''
+    # WITH total_revenue AS (
+    #     SELECT SUM(quantity * price) AS revenue
+    #     FROM order_products
+    # )
+    # SELECT CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #        COALESCE(ROUND(SUM(op.quantity * op.price), 2), 0) customer_revenue,
+    #        COALESCE(ROUND(SUM(op.quantity * op.price) * 100 / tr.revenue, 2), 0) AS percentage_of_all_sales
+    # FROM customers c
+    # LEFT JOIN orders o ON c.id = o.customer_id
+    # LEFT JOIN order_products op ON o.id = op.order_id
+    # CROSS JOIN total_revenue tr
+    # GROUP BY c.id
+    # '''
+    # execute_query(query)
+
 # TODO 140: Identify the top 3 locations with the highest stock levels for each product.
+
+    # query = '''
+    # WITH ranked_locations AS (
+    #     SELECT w.product_id,
+    #            l.name AS location_name,
+    #            w.quantity AS stock_level,
+    #            RANK() OVER (PARTITION BY w.product_id ORDER BY w.quantity DESC) AS rank
+    #     FROM warehouse w
+    #     JOIN locations l ON l.id = w.location_id
+    # )
+    # SELECT rl.product_id,
+    #        rl.location_name,
+    #        rl.stock_level
+    # FROM ranked_locations rl
+    # WHERE rl.rank <= 3
+    # ORDER BY rl.product_id, rl.rank
+    # '''
+    # execute_query(query)
 
 # TODO 141: Generate a report that shows the month-over-month revenue growth rate.
 
