@@ -2012,9 +2012,54 @@ if __name__ == '__main__':
 
 # TODO 135: Retrieve the total number of orders and the total revenue per customer.
 
+    # query = '''
+    # SELECT c.id AS customer_id,
+    #        CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #        COUNT(DISTINCT o.id) AS number_of_orders,
+    #        COALESCE(ROUND(SUM(op.price * op.quantity), 2), 0) AS revenue_per_customer
+    # FROM customers c
+    # LEFT JOIN orders o ON c.id = o.customer_id
+    # LEFT JOIN order_products op ON o.id = op.order_id
+    # GROUP BY c.id
+    # '''
+    # execute_query(query)
+
 # TODO 136: Find the average number of products per order.
 
+    # query = '''
+    # WITH product_count AS (
+    #     SELECT order_id,
+    #            COUNT(DISTINCT product_id) AS number_of_products
+    #     FROM order_products
+    #     GROUP BY order_id
+    # )
+    # SELECT ROUND(AVG(number_of_products), 2) AS avg_products_per_order
+    # FROM product_count
+    # '''
+    # execute_query(query)
+
 # TODO 137: Calculate the running total of orders per month using a window function.
+
+    # query = '''
+    # WITH order_revenue AS (
+    #     SELECT order_id,
+    #            ROUND(SUM(quantity * price), 2) AS revenue
+    #     FROM order_products
+    #     GROUP BY order_id
+    # ),
+    # monthly_revenue AS (
+    #     SELECT strftime('%Y-%m', o.order_date) AS order_month,
+    #            ROUND(SUM(or_.revenue), 2) AS total_revenue
+    #     FROM order_revenue or_
+    #     JOIN orders o ON o.id = or_.order_id
+    #     GROUP BY order_month
+    # )
+    # SELECT order_month,
+    #        total_revenue,
+    #        ROUND(SUM(total_revenue) OVER (ORDER BY order_month), 2) AS cumulative_revenue
+    # FROM monthly_revenue
+    # '''
+    # execute_query(query)
 
 # TODO 138: Determine the most frequently ordered product per customer.
 
