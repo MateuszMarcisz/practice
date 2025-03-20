@@ -2130,7 +2130,43 @@ if __name__ == '__main__':
 
 # TODO 141: Generate a report that shows the month-over-month revenue growth rate.
 
+    # query = '''
+    # WITH monthly_revenue AS (
+    #     SELECT SUM(op.price * op.quantity) AS revenue,
+    #            strftime('%Y-%m', o.order_date) AS order_month
+    #     FROM order_products op
+    #     JOIN orders o ON op.order_id = o.id
+    #     GROUP BY order_month
+    # ) SELECT order_month,
+    #          revenue,
+    #          LAG(revenue) OVER (ORDER BY order_month) AS previous_month_revenue,
+    #          ROUND(((revenue - LAG(revenue) OVER (ORDER BY order_month)) * 100) / NULLIF(LAG(revenue) OVER (ORDER BY order_month), 0), 2) AS month_over_month_growth
+    #   FROM monthly_revenue
+    # '''
+    # execute_query(query)
+
 # TODO 142: Identify customers whose total spending is above the average customer spending.
+
+    # query = '''
+    # WITH customer_spending AS (
+    #     SELECT CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #            SUM(op.quantity * op.price) AS customer_revenue
+    #     FROM customers c
+    #     LEFT JOIN orders o ON c.id = o.customer_id
+    #     LEFT JOIN order_products op ON o.id = op.order_id
+    #     GROUP BY c.id
+    # ),
+    #     avg_spending AS (
+    #         SELECT AVG(customer_revenue) AS avg_revenue
+    #         FROM customer_spending
+    #     )
+    # SELECT cs.customer,
+    #        cs.customer_revenue,
+    #        as_.avg_revenue
+    # FROM customer_spending cs
+    # JOIN avg_spending as_ ON cs.customer_revenue > as_.avg_revenue
+    # '''
+    # execute_query(query)
 
 # TODO 143: Calculate the moving average of product sales over the last 3 months.
 
