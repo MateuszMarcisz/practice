@@ -2170,7 +2170,41 @@ if __name__ == '__main__':
 
 # TODO 143: Calculate the moving average of product sales over the last 3 months.
 
+    # query = '''
+    # WITH monthly_sales AS (
+    #     SELECT op.product_id,
+    #            strftime('%Y-%m', o.order_date) AS order_month,
+    #            SUM(op.quantity) AS total_sales
+    #     FROM order_products op
+    #     JOIN orders o ON op.order_id = o.id
+    #     GROUP BY op.product_id, order_month
+    # )
+    # SELECT ms.product_id,
+    #        ms.order_month,
+    #        ms.total_sales,
+    #        ROUND(AVG(ms.total_sales) OVER (
+    #            PARTITION BY ms.product_id
+    #            ORDER BY ms.order_month
+    #            ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
+    #        ), 2) AS moving_avg_3_months
+    # FROM monthly_sales ms
+    # ORDER BY ms.product_id, ms.order_month
+    # '''
+    # execute_query(query)
+
 # TODO 144: Determine the order in which products were added to the warehouse.
+
+# since there is no info in this db on the time of adding product to the warehouse the only option is simply sorting by id
+
+    # query = '''
+    # SELECT w.id AS potential_order,
+    #        w.product_id,
+    #        p.name
+    # FROM products p
+    # JOIN warehouse w ON p.id = w.product_id
+    # ORDER BY w.id
+    # '''
+    # execute_query(query)
 
 # TODO 145: Find customers who placed consecutive orders within 7 days of each other.
 
