@@ -2208,9 +2208,50 @@ if __name__ == '__main__':
 
 # TODO 145: Find customers who placed consecutive orders within 7 days of each other.
 
+    # query = '''
+    # WITH customer_orders AS (
+    #     SELECT customer_id,
+    #            id AS order_id,
+    #            order_date,
+    #            LAG(order_date) OVER (PARTITION BY customer_id ORDER BY order_date) AS prev_order_date,
+    #            julianday(order_date) - julianday(LAG(order_date) OVER (PARTITION BY customer_id ORDER BY order_date)) AS days_between
+    #     FROM orders
+    # )
+    # SELECT c.id AS customer_id,
+    #        CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #        co.order_id,
+    #        co.order_date,
+    #        co.prev_order_date,
+    #        co.days_between
+    # FROM customer_orders co
+    # JOIN customers c ON co.customer_id = c.id
+    # WHERE co.prev_order_date IS NOT NULL AND co.days_between <= 7
+    # '''
+    # execute_query(query)
+
 # TODO 146: Identify products that have never been ordered.
 
+    # query = '''
+    # SELECT p.name
+    # FROM products p
+    # LEFT JOIN order_products op ON p.id = op.product_id
+    # WHERE op.product_id IS NULL
+    # '''
+    # execute_query(query)
+
 # TODO 147: Create a pivot table showing the count of orders per status (Processing, Shipped, Delivered) by month.
+
+    # query = '''
+    # SELECT id,
+    #        strftime('%Y-%m', order_date) AS order_month,
+    #        COUNT(CASE WHEN status = 'Delivered' THEN status END) AS delivered,
+    #        COUNT(CASE WHEN status = 'Processing' THEN status END) AS processing,
+    #        COUNT(CASE WHEN status = 'Shipped' THEN status END) AS shipped
+    # FROM orders
+    # GROUP BY order_month
+    # ORDER BY order_month
+    # '''
+    # execute_query(query)
 
 # TODO 148: Unpivot the warehouse stock levels so that each product-location stock is displayed as separate rows.
 
