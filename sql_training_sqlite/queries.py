@@ -2254,8 +2254,27 @@ if __name__ == '__main__':
     # execute_query(query)
 
 # TODO 148: Unpivot the warehouse stock levels so that each product-location stock is displayed as separate rows.
+    # this i can do with python, ain't no way I would make union all 80 times...
 
 # TODO 149: Rank locations based on their total revenue, and assign a quartile rank using NTILE.
+
+    # query = '''
+    # WITH location_revenue AS (
+    #     SELECT l.id,
+    #            l.name,
+    #            COALESCE(ROUND(SUM(op.quantity * op.price), 2), 0) AS revenue
+    #     FROM locations l
+    #         LEFT JOIN warehouse w ON l.id = w.location_id
+    #         LEFT JOIN order_products op ON w.product_id = op.product_id
+    #     GROUP BY l.id)
+    # SELECT lr.id,
+    #        lr.name,
+    #        lr.revenue,
+    #        RANK() OVER (ORDER BY revenue DESC) AS ranking,
+    #        NTILE(4) OVER (ORDER BY revenue DESC) AS quartile
+    # FROM location_revenue lr
+    # '''
+    # execute_query(query)
 
 # TODO 150: Calculate the cumulative revenue per customer, sorted by order date.
 
