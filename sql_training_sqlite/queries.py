@@ -2278,9 +2278,67 @@ if __name__ == '__main__':
 
 # TODO 150: Calculate the cumulative revenue per customer, sorted by order date.
 
+    # query = '''
+    # WITH order_revenue AS (
+    #     SELECT o.id AS order_id,
+    #            o.customer_id,
+    #            o.order_date,
+    #            SUM(op.quantity * op.price) AS order_total
+    #     FROM orders o
+    #     LEFT JOIN order_products op ON o.id = op.order_id
+    #     GROUP BY o.id
+    # )
+    # SELECT c.id,
+    #        CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #        o.order_date,
+    #        COALESCE(ROUND(SUM(o.order_total) OVER (PARTITION BY c.id ORDER BY o.order_date), 2), 0) AS cumulative_revenue
+    # FROM customers c
+    # LEFT JOIN order_revenue o ON c.id = o.customer_id
+    # ORDER BY c.id, o.order_date
+    # '''
+    # execute_query(query)
+
 # CTEs, Aggregations, and Data Transformations
 # TODO 151: Use a CTE to calculate the total stock per location and filter locations where stock is below the average.
-# TODO 152: Compute the difference between the highest and lowest product prices in each category.
+
+    # query = '''
+    # WITH stock_location AS (
+    #     SELECT l.id,
+    #            l.name,
+    #            SUM(w.quantity) AS total_stock
+    #     FROM locations l
+    #     JOIN warehouse w ON l.id = w.location_id
+    #     GROUP BY l.id
+    # ),
+    # average_stock AS (
+    #     SELECT ROUND(AVG(total_stock), 2) AS avg_stock FROM stock_location
+    # )
+    # SELECT sl.name,
+    #        sl.total_stock,
+    #        al.avg_stock
+    # FROM stock_location sl
+    # JOIN average_stock al
+    # WHERE sl.total_stock < al.avg_stock
+    # '''
+    # execute_query(query)
+
+# TODO 152: Compute the difference between the highest and lowest product prices in each location.
+
+    # query = '''
+    # WITH min_max AS (
+    #     SELECT l.name,
+    #            MIN(p.price) AS min_price,
+    #            MAX(p.price) AS max_price
+    #     FROM locations l
+    #     JOIN warehouse w On l.id = w.location_id
+    #     JOIN products p ON w.product_id = p.id
+    #     GROUP BY l.id
+    # ) SELECT *,
+    #          ROUND(max_price - min_price, 2) AS difference
+    #   FROM min_max
+    # '''
+    # execute_query(query)
+
 # TODO 153: Generate a report showing the first and last order date per customer.
 # TODO 154: Calculate the percentage of total revenue contributed by each product.
 # TODO 155: Identify customers whose total spending in the last 6 months is greater than in the previous 6 months.
