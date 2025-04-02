@@ -2340,8 +2340,64 @@ if __name__ == '__main__':
     # execute_query(query)
 
 # TODO 153: Generate a report showing the first and last order date per customer.
+
+    # query = '''
+    # SELECT CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #        MIN(o.order_date) AS first_order,
+    #        MAX(o.order_date) AS last_order
+    # FROM customers c
+    # LEFT JOIN orders o ON c.id = o.customer_id
+    # GROUP BY c.id
+    # '''
+    # execute_query(query)
+
 # TODO 154: Calculate the percentage of total revenue contributed by each product.
+
+    # query = '''
+    # WITH total_revenue AS (
+    # SELECT SUM(price * quantity) AS revenue
+    # FROM order_products
+    # )
+    # SELECT p.name,
+    #        COALESCE(ROUND(SUM(op.price * op.quantity) * 100 / (SELECT revenue FROM total_revenue), 2), 0) AS percentage_of_revenue
+    # FROM products p
+    # LEFT JOIN order_products op ON p.id = op.product_id
+    # GROUP BY p.id
+    # '''
+    # execute_query(query)
+
 # TODO 155: Identify customers whose total spending in the last 6 months is greater than in the previous 6 months.
+
+    # query = '''
+    # WITH spending AS (
+    # SELECT o.customer_id,
+    #        CASE
+    #            WHEN o.order_date >= DATE('now', '-6 months') THEN 'recent'
+    #            WHEN o.order_date >= DATE('now', '-12 months') THEN 'previous'
+    #            END AS period,
+    #     SUM(op.price * op.quantity) AS total_spent
+    # FROM orders o
+    #     JOIN order_products op ON o.id = op.order_id
+    # WHERE o.order_date >= DATE('now', '-12 months')
+    # GROUP BY o.customer_id, period
+    # ),
+    # spending_pivot AS (
+    # SELECT customer_id,
+    #        COALESCE(SUM(CASE WHEN period = 'recent' THEN total_spent END), 0) AS recent_spending,
+    #        COALESCE(SUM(CASE WHEN period = 'previous' THEN total_spent END), 0) AS previous_spending
+    # FROM spending
+    # GROUP BY customer_id
+    # )
+    # SELECT c.id,
+    #        CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #        sp.recent_spending,
+    #        sp.previous_spending
+    # FROM customers c
+    # JOIN spending_pivot sp ON c.id = sp.customer_id
+    # WHERE sp.recent_spending > sp.previous_spending
+    # '''
+    # execute_query(query)
+
 # TODO 156: Find products that have been ordered at least once every month in the last year.
 # TODO 157: Identify customers who placed an order in every month of the last year.
 # TODO 158: Calculate the standard deviation of revenue per customer.
