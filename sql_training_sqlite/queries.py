@@ -2399,8 +2399,72 @@ if __name__ == '__main__':
     # execute_query(query)
 
 # TODO 156: Find products that have been ordered at least once every month in the last year.
+
+    # query = '''
+    #     WITH monthly_orders AS (
+    #     SELECT op.product_id,
+    #            strftime('%Y-%m', o.order_date) AS order_month
+    #     FROM order_products op
+    #     JOIN orders o ON op.order_id = o.id
+    #     WHERE o.order_date >= DATE('now', '-12 months')
+    #     GROUP BY op.product_id, order_month
+    # ),
+    # product_months AS (
+    #     SELECT product_id,
+    #            COUNT(DISTINCT order_month) AS months_with_orders
+    #     FROM monthly_orders
+    #     GROUP BY product_id
+    # )
+    # SELECT p.name,
+    #        pm.months_with_orders
+    # FROM product_months pm
+    # JOIN products p ON p.id = pm.product_id
+    # WHERE pm.months_with_orders = 12
+    # '''
+    # execute_query(query)
+
 # TODO 157: Identify customers who placed an order in every month of the last year.
+
+    # query = '''
+    #     WITH recent_orders AS (
+    #     SELECT customer_id,
+    #            strftime('%Y-%m', order_date) AS order_month
+    #     FROM orders
+    #     WHERE order_date >= DATE('now', '-12 months')
+    #     GROUP BY customer_id, order_month
+    # ),
+    # monthly_counts AS (
+    #     SELECT customer_id,
+    #            COUNT(DISTINCT order_month) AS months_ordered
+    #     FROM recent_orders
+    #     GROUP BY customer_id
+    # )
+    # SELECT c.id,
+    #        CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #        mc.months_ordered
+    # FROM monthly_counts mc
+    # JOIN customers c ON mc.customer_id = c.id
+    # WHERE months_ordered = 12
+    # '''
+    # execute_query(query)
+
 # TODO 158: Calculate the standard deviation of revenue per customer.
+
+    # query = '''
+    #     WITH customer_revenue AS (
+    #     SELECT CONCAT(c.first_name, ' ', c.last_name) AS customer,
+    #            COALESCE(ROUND(SUM(op.quantity * op.price), 2), 0) AS revenue
+    #     FROM customers c
+    #     LEFT JOIN orders o ON c.id = o.customer_id
+    #     LEFT JOIN order_products op ON o.id = op.order_id
+    #     GROUP BY c.id
+    # )
+    # SELECT SUM(cr.revenue) AS total_revenue,
+    #        ROUND(STDEV(cr.revenue), 2) AS st_dev
+    # FROM customer_revenue cr
+    # '''
+    # execute_query(query)
+
 # TODO 159: Determine the difference in total sales between the most and least sold products.
 # TODO 160: Find the maximum, minimum, and average order value for each customer.
 
