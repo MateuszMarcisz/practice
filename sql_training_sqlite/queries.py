@@ -2466,7 +2466,42 @@ if __name__ == '__main__':
     # execute_query(query)
 
 # TODO 159: Determine the difference in total sales between the most and least sold products.
+
+    query = '''
+        WITH ranked_sales AS (
+        SELECT product_id,
+               ROUND(SUM(price * quantity), 2) AS prodcut_revenue,
+               RANK() OVER(ORDER BY SUM(price * quantity) DESC) AS rank
+        FROM order_products op
+        GROUP BY product_id
+    )
+    SELECT MAX(prodcut_revenue) - MIN(prodcut_revenue) AS difference
+    FROM ranked_sales
+    '''
+    execute_query(query)
+
 # TODO 160: Find the maximum, minimum, and average order value for each customer.
+
+    query = '''
+        WITH order_revenue AS (
+        SELECT o.id AS order_id,
+               o.customer_id,
+               ROUND(SUM(op.price * op.quantity), 2) AS order_value
+        FROM orders o
+        JOIN order_products op ON o.id = op.order_id
+        GROUP BY o.id
+    )
+    
+    SELECT c.id AS customer_id,
+           CONCAT(c.first_name, ' ', c.last_name) AS customer,
+           MAX(orv.order_value) AS max_order_value,
+           MIN(orv.order_value) AS min_order_value,
+           ROUND(AVG(orv.order_value), 2) AS avg_order_value
+    FROM customers c
+    JOIN order_revenue orv ON c.id = orv.customer_id
+    GROUP BY c.id
+    '''
+    execute_query(query)
 
 # Window Functions
 # TODO 161: Calculate the rank of each product within its category based on total sales.
